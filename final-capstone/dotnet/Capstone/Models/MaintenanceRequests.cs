@@ -1,7 +1,7 @@
 namespace Capstone.Models
 
 {
-    public class Maintenance_Requests
+    public class MaintenanceRequests
     {
        public int maintenanceRequestId { get; set; }
        public int propertyId { get; set; }

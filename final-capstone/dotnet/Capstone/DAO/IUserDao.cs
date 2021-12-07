@@ -4,7 +4,7 @@ namespace Capstone.DAO
 {
     public interface IUserDao
     {
-        User GetUser(string username);
-        User AddUser(string username, string password, string role);
+        Users GetUser(string username);
+        Users AddUser(string username, string password, string role);
     }
 }
