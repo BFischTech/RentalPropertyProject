@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Capstone
 {
+
     public class Program
     {
         public static void Main(string[] args)

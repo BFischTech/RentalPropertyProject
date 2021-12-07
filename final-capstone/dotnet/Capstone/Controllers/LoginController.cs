@@ -27,7 +27,7 @@ namespace Capstone.Controllers
             IActionResult result = Unauthorized(new { message = "Username or password is incorrect" });
 
             // Get the user by username
-            User user = userDao.GetUser(userParam.Username);
+            Users user = userDao.GetUser(userParam.Username);
 
             // If we found a user and the password hash matches
             if (user != null && passwordHasher.VerifyHashMatch(user.PasswordHash, userParam.Password, user.Salt))
@@ -50,13 +50,13 @@ namespace Capstone.Controllers
         {
             IActionResult result;
 
-            User existingUser = userDao.GetUser(userParam.Username);
+            Users existingUser = userDao.GetUser(userParam.Username);
             if (existingUser != null)
             {
                 return Conflict(new { message = "Username already taken. Please choose a different username." });
             }
 
-            User user = userDao.AddUser(userParam.Username, userParam.Password, userParam.Role);
+            Users user = userDao.AddUser(userParam.Username, userParam.Password, userParam.Role);
             if (user != null)
             {
                 result = Created(user.Username, null); //values aren't read on client
