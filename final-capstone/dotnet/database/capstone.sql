@@ -54,7 +54,7 @@ CREATE TABLE properties
 	,city								VARCHAR(200)			NOT NULL
 	,state								VARCHAR(200)			NOT NULL
 	,zip_code							VARCHAR(200)			NOT NULL
-	,unit								VARCHAR(200)			NOT NULL
+	,unit								VARCHAR(200)			
 	,rent_amount						DECIMAL				    NOT NULL
 	,is_rented							BIT						NOT NULL
 	,rent_due_date						VARCHAR(50)				NOT NULL
@@ -157,8 +157,11 @@ FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE
 
 
 INSERT INTO properties (address, city, state, zip_code, unit, rent_amount, is_rented, rent_due_date)
-VALUES				 ('sample addy', 'sample city', 'sample state', 'sample zip', 'sample unit', 1000.00, 1, '15th')
-
+VALUES				 ('sample addy', 'sample city', 'sample state', 'sample zip', 'sample unit', 1000.00, 1, '15th'),
+				     ('3219 Steeple Chase Ln', 'Loveland', 'OH', '45140', 'A1', 1100.00, 1, '24th'),
+					 ('176 StoneRidge Blvd', 'South Lebanon', 'OH', '45065', 'NULL', 2200.00, 0, '15th'),
+					 ('627 Cherry Grove St', 'Casper', 'SC', '78140', 'C4', 670.00, 1, '12th'),
+					 ('983 Georgey Rows Ave', 'NY', 'NY', '2341', 'G5', 450.00, 1, '1st'),
 
 INSERT INTO images (image_url, description, property_id)
 VALUES			   ('https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT', 1)
