@@ -168,16 +168,25 @@ VALUES			   ('https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT', 1)
 
 
 INSERT INTO users (username, password_hash, salt, user_role)
-VALUES			 ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user')
-				,('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin')
-
+VALUES			 ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','User'),
+				 ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Admin'),
+				 ('DFox96','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Renter'),
+				 ('LawDog','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Renter'),
+				 ('FISHIE','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Renter'),
+				 ('BQ','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Employee'),
+				 ('Mercado','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Employee')
+				 
 
 INSERT INTO maintenance_requests (property_id, description, is_completed, requester_user_id, maintenance_user_id)
-VALUES			 (1, 'sample maintenance request description', 0, 1, 1)
+VALUES			 (1, 'sample maintenance request description', 0, 1, 1),
+				 (3, 'leaky bathroom ceiling', 0, 3, 6),
+				 (3, 'Toilet is loud', 0, 3, 7),
+				 (5, 'Replace front door lock', 0, 4, 7)
 
 
 INSERT INTO users_properties (user_id, property_id)
-VALUES			 (1, 1)
+VALUES			 (3, 3),
+				 (5, 4)
 
 
 --INSERT INTO users_maintenance_requests (user_id, maintenance_request_id)
