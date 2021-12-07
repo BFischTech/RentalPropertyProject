@@ -161,7 +161,7 @@ VALUES				 ('sample addy', 'sample city', 'sample state', 'sample zip', 'sample 
 				     ('3219 Steeple Chase Ln', 'Loveland', 'OH', '45140', 'A1', 1100.00, 1, '24th'),
 					 ('176 StoneRidge Blvd', 'South Lebanon', 'OH', '45065', 'NULL', 2200.00, 0, '15th'),
 					 ('627 Cherry Grove St', 'Casper', 'SC', '78140', 'C4', 670.00, 1, '12th'),
-					 ('983 Georgey Rows Ave', 'NY', 'NY', '2341', 'G5', 450.00, 1, '1st'),
+					 ('983 Georgey Rows Ave', 'NY', 'NY', '2341', 'G5', 450.00, 1, '1st')
 
 INSERT INTO images (image_url, description, property_id)
 VALUES			   ('https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT', 1)
