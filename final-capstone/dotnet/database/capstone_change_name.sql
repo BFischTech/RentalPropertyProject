@@ -36,14 +36,15 @@ IF OBJECT_ID ('Images')								IS NOT NULL DROP TABLE Images
 --	Create tables
 -- --------------------------------------------------------------------------------
 
-CREATE TABLE Images
-(
-	  imageID							INT IDENTITY(1,1)			NOT NULL
-	 ,description						VARCHAR(200)				NOT NULL
-	 ,CONSTRAINT Images_PK				PRIMARY KEY (imageID)
-)
+--CREATE TABLE Images
+--(
+--	  imageID							INT IDENTITY(1,1)			NOT NULL
+--	 ,description						VARCHAR(200)				NOT NULL
+--	 ,CONSTRAINT propertyID             FOREIGN KEY(propertyID)                         NOT NULL
+--	 ,CONSTRAINT Images_PK				PRIMARY KEY (imageID)
+--)
 
-CREATE TABLE Properties
+CREATE TABLE properties
 (
 	 propertyID							INT IDENTITY(1,1)					NOT NULL
 	,address							VARCHAR(200)			NOT NULL
@@ -57,7 +58,7 @@ CREATE TABLE Properties
 	,CONSTRAINT Properties_PK			PRIMARY KEY (propertyID)
 )
 
-CREATE TABLE Users
+CREATE TABLE users
 (
 	 userID								INT IDENTITY(1,1)					NOT NULL
 	,username							VARCHAR(200)			NOT NULL
@@ -68,13 +69,14 @@ CREATE TABLE Users
 	,CONSTRAINT Users_PK				PRIMARY KEY (userID)
 )
 
-CREATE TABLE MaintenanceRequests
+CREATE TABLE maintenance_requests
 (
 	  maintenanceRequestID						INT IDENTITY(1,1)					NOT NULL
 	 ,propertyID								INTEGER					NOT NULL
 	 ,description								VARCHAR(200)			NOT NULL
 	 ,isCompleted								BIT						NOT NULL
-	 ,userID									INTEGER					NOT NULL
+	 ,requester_userID						    INTEGER					NOT NULL
+	 ,maintenance_userID						INTEGER					NULL
 	 ,CONSTRAINT MaintenanceRequests_PK			PRIMARY KEY (maintenanceRequestID)
 )
 
@@ -107,6 +109,9 @@ CREATE TABLE Users_MaintenanceRequests
 --  4   Users_MaintenanceRequests	MaintenanceRequests		maintenanceRequestID
 --  5   MaintenanceRequests			MaintenanceRequests		maintenanceRequestID
 
+--DO NOT NEED
+--  6   Images                      Properties              propertyID
+
 --ALTER TABLE <Child Table> ADD CONSTRAINT <Child Table>_<Parent Table>_FK1
 --FOREIGN KEY ( <Child column> ) REFERENCES <Parent Table> ( <Parent column> )
 
@@ -131,13 +136,16 @@ FOREIGN KEY (maintenanceRequestID) REFERENCES MaintenanceRequests (maintenanceRe
 ALTER TABLE MaintenanceRequests ADD CONSTRAINT MaintenanceRequests_Properties_FK1
 FOREIGN KEY (propertyID) REFERENCES Properties (propertyID) ON DELETE CASCADE
 
+---- 6
+--ALTER TABLE Images  ADD CONSTRAINT Images_Properties_FK1
+--FOREIGN KEY (propertyID) REFERENCES Properties (propertyID) ON DELETE CASCADE
 
 -- --------------------------------------------------------------------------------
 --	INSERTS
 -- --------------------------------------------------------------------------------
 
-INSERT INTO Images (description)
-VALUES				('sample image description')
+--INSERT INTO Images (description, propertyID)
+--VALUES				('sample image description', 1)
 
 
 INSERT INTO Properties (address, city, state, zipCode, unit, rentAmount, isRented, rentDueDate)
@@ -149,7 +157,7 @@ VALUES			 ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 'A352')
 				,('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 'B365')
 
 
-INSERT INTO MaintenanceRequests (propertyID, description, isCompleted, userID)
+INSERT INTO MaintenanceRequests (propertyID, description, isCompleted, requester_userID	)
 VALUES			 (1, 'sample maintenance request description', 0, 1)
 
 
@@ -159,3 +167,4 @@ VALUES			 (1, 1)
 
 INSERT INTO Users_MaintenanceRequests (userID, maintenanceRequestID)
 VALUES			 (1, 1)
+
