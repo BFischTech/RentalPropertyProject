@@ -45,7 +45,7 @@ CREATE TABLE Images
 
 CREATE TABLE Properties
 (
-	 propertyID							INTEGER					NOT NULL
+	 propertyID							INT IDENTITY(1,1)					NOT NULL
 	,address							VARCHAR(200)			NOT NULL
 	,city								VARCHAR(200)			NOT NULL
 	,state								VARCHAR(200)			NOT NULL
@@ -59,7 +59,7 @@ CREATE TABLE Properties
 
 CREATE TABLE Users
 (
-	 userID								INTEGER					NOT NULL
+	 userID								INT IDENTITY(1,1)					NOT NULL
 	,username							VARCHAR(200)			NOT NULL
 	,password_hash						VARCHAR(200)			NOT NULL
 	,salt								VARCHAR(200)			NOT NULL
@@ -70,7 +70,7 @@ CREATE TABLE Users
 
 CREATE TABLE MaintenanceRequests
 (
-	  maintenanceRequestID						INTEGER					NOT NULL
+	  maintenanceRequestID						INT IDENTITY(1,1)					NOT NULL
 	 ,propertyID								INTEGER					NOT NULL
 	 ,description								VARCHAR(200)			NOT NULL
 	 ,isCompleted								BIT						NOT NULL
@@ -82,7 +82,7 @@ CREATE TABLE MaintenanceRequests
 
 CREATE TABLE Users_Properties
 (
-	 user_properties_id							INTEGER				NOT NULL
+	 user_properties_id							INT IDENTITY(1,1)				NOT NULL
 	,userID										INTEGER				NOT NULL
 	,propertyID									INTEGER				NOT NULL
 	,CONSTRAINT Users_Properties_PK				PRIMARY KEY (user_properties_id)
@@ -90,7 +90,7 @@ CREATE TABLE Users_Properties
 
 CREATE TABLE Users_MaintenanceRequests
 (
-	 users_MaintenanceRequestsID				INTEGER				NOT NULL
+	 users_MaintenanceRequestsID				INT IDENTITY(1,1)				NOT NULL
 	,userID										INTEGER				NOT NULL
 	,maintenanceRequestID						INTEGER				NOT NULL
 	,CONSTRAINT Users_MaintenanceRequests_PK	PRIMARY KEY (users_MaintenanceRequestsID)
@@ -153,9 +153,9 @@ INSERT INTO MaintenanceRequests (propertyID, description, isCompleted, userID)
 VALUES			 (1, 'sample maintenance request description', 0, 1)
 
 
-INSERT INTO Users_Properties (user_properties_id, userID, propertyID)
-VALUES			 (1, 1, 1)
+INSERT INTO Users_Properties (userID, propertyID)
+VALUES			 (1, 1)
 
 
-INSERT INTO Users_MaintenanceRequests (users_MaintenanceRequestsID, userID, maintenanceRequestID)
-VALUES			 (1, 1, 1)
+INSERT INTO Users_MaintenanceRequests (userID, maintenanceRequestID)
+VALUES			 (1, 1)
