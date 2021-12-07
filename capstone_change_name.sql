@@ -78,20 +78,24 @@ CREATE TABLE maintenance_requests
 	 ,property_id								INTEGER					NOT NULL
 	 ,description								VARCHAR(1500)			
 	 ,is_completed								BIT						NOT NULL
-	 ,user_id                                   INT                     NOT NULL
-	 --,requester_user_id						INTEGER					NOT NULL
-	 --,maintenance_user_id						INTEGER					
-	 ,CONSTRAINT maintenance_requests_PK		PRIMARY KEY (maintenance_request_id)
+	 --,user_id                                 INT                     NOT NULL
+	 ,requester_user_id						    INTEGER					NOT NULL
+	 ,maintenance_user_id						INTEGER					
+	 ,CONSTRAINT maintenance_requests_PK		PRIMARY KEY (maintenance_request_id),
+	 FOREIGN KEY (property_id) REFERENCES properties (property_id),
+	 FOREIGN KEY (requester_user_id) REFERENCES users (user_id),
+	 FOREIGN KEY (maintenance_user_id) REFERENCES users (user_id) 
+
 )
 
 
-CREATE TABLE users_maintenance_requests
-(
-	 users_maintenance_requests_id				INT IDENTITY(1,1)	NOT NULL
-	,user_id									INTEGER				NOT NULL
-	,maintenance_request_id						INTEGER				NOT NULL
-	,CONSTRAINT users_maintenance_requests_PK	PRIMARY KEY (users_maintenance_requests_id)
-)
+--CREATE TABLE users_maintenance_requests
+--(
+--	 users_maintenance_requests_id				INT IDENTITY(1,1)	NOT NULL
+--	,user_id									INTEGER				NOT NULL
+--	,maintenance_request_id						INTEGER				NOT NULL
+--	,CONSTRAINT users_maintenance_requests_PK	PRIMARY KEY (users_maintenance_requests_id)
+--)
 
 CREATE TABLE users_properties
 (
@@ -128,17 +132,19 @@ FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
 ALTER TABLE users_properties ADD CONSTRAINT users_properties_properties_FK1
 FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE
 
--- 3
-ALTER TABLE users_maintenance_requests ADD CONSTRAINT users_maintenanceRequests_users_FK1
-FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
+---- 3
+--ALTER TABLE users_maintenance_requests ADD CONSTRAINT users_maintenanceRequests_users_FK1
+--FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
 
--- 4
-ALTER TABLE users_maintenance_requests ADD CONSTRAINT users_maintenanceRequests_maintenance_requests_FK1
-FOREIGN KEY (maintenance_request_id) REFERENCES maintenance_requests (maintenance_request_id) ON DELETE CASCADE
+---- 4
+--ALTER TABLE users_maintenance_requests ADD CONSTRAINT users_maintenanceRequests_maintenance_requests_FK1
+--FOREIGN KEY (maintenance_request_id) REFERENCES maintenance_requests (maintenance_request_id) ON DELETE CASCADE
 
--- 5
-ALTER TABLE maintenance_requests ADD CONSTRAINT maintenance_requests_properties_FK1
-FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE
+---- 5
+--ALTER TABLE maintenance_requests ADD CONSTRAINT maintenance_requests_properties_FK1
+--FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE,
+--FOREIGN KEY (requester_user_id) REFERENCES users (user_id) ON DELETE CASCADE,
+--FOREIGN KEY (maintenance_user_id) REFERENCES users (user_id) ON DELETE CASCADE
 
 -- 6
 ALTER TABLE images ADD CONSTRAINT images_properties_FK1
@@ -163,14 +169,14 @@ VALUES			 ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user')
 				,('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin')
 
 
-INSERT INTO maintenance_requests (property_id, description, is_completed, user_id)
-VALUES			 (1, 'sample maintenance request description', 0, 1)
+INSERT INTO maintenance_requests (property_id, description, is_completed, requester_user_id, maintenance_user_id)
+VALUES			 (1, 'sample maintenance request description', 0, 1, 1)
 
 
 INSERT INTO users_properties (user_id, property_id)
 VALUES			 (1, 1)
 
 
-INSERT INTO users_maintenance_requests (user_id, maintenance_request_id)
-VALUES			 (1, 1)
+--INSERT INTO users_maintenance_requests (user_id, maintenance_request_id)
+--VALUES			 (1, 1)
 
