@@ -25,91 +25,95 @@ GO
 
 -- Drop Table Statements (drop children first)
 
-IF OBJECT_ID ('Users_Properties')					IS NOT NULL DROP TABLE Users_Properties
-IF OBJECT_ID ('Users_MaintenanceRequests')			IS NOT NULL DROP TABLE Users_MaintenanceRequests
-IF OBJECT_ID ('MaintenanceRequests')				IS NOT NULL DROP TABLE MaintenanceRequests
-IF OBJECT_ID ('Users')								IS NOT NULL DROP TABLE Users
-IF OBJECT_ID ('Properties')							IS NOT NULL DROP TABLE Properties
-IF OBJECT_ID ('Images')								IS NOT NULL DROP TABLE Images
+IF OBJECT_ID ('users_properties')					IS NOT NULL DROP TABLE users_properties
+IF OBJECT_ID ('users_maintenance_requests')			IS NOT NULL DROP TABLE users_maintenance_requests
+IF OBJECT_ID ('maintenance_requests')				IS NOT NULL DROP TABLE maintenance_requests
+IF OBJECT_ID ('users')								IS NOT NULL DROP TABLE users
+IF OBJECT_ID ('properties')							IS NOT NULL DROP TABLE properties
+IF OBJECT_ID ('images')								IS NOT NULL DROP TABLE images
 
 -- --------------------------------------------------------------------------------
 --	Create tables
 -- --------------------------------------------------------------------------------
 
---CREATE TABLE Images
---(
---	  imageID							INT IDENTITY(1,1)			NOT NULL
---	 ,description						VARCHAR(200)				NOT NULL
---	 ,CONSTRAINT propertyID             FOREIGN KEY(propertyID)                         NOT NULL
---	 ,CONSTRAINT Images_PK				PRIMARY KEY (imageID)
---)
+CREATE TABLE images
+(
+	  image_id							INT IDENTITY(1,1)			NOT NULL
+	 ,image_url						    VARCHAR(1000)				NOT NULL
+	 ,description						VARCHAR(1000)               
+	 ,property_id                       int                         NOT NULL
+	 ,CONSTRAINT images_PK				PRIMARY KEY (image_id)
+)
+
+
 
 CREATE TABLE properties
 (
-	 propertyID							INT IDENTITY(1,1)					NOT NULL
+	 property_id						INT IDENTITY(1,1)		NOT NULL
 	,address							VARCHAR(200)			NOT NULL
 	,city								VARCHAR(200)			NOT NULL
 	,state								VARCHAR(200)			NOT NULL
-	,zipCode							VARCHAR(200)			NOT NULL
+	,zip_code							VARCHAR(200)			NOT NULL
 	,unit								VARCHAR(200)			NOT NULL
-	,rentAmount							DECIMAL					NOT NULL
-	,isRented							BIT						NOT NULL
-	,rentDueDate						DATE					NOT NULL
-	,CONSTRAINT Properties_PK			PRIMARY KEY (propertyID)
+	,rent_amount						DECIMAL				    NOT NULL
+	,is_rented							BIT						NOT NULL
+	,rent_due_date						VARCHAR(50)				NOT NULL
+	,CONSTRAINT properties_PK			PRIMARY KEY (property_id)
 )
 
 CREATE TABLE users
 (
-	 userID								INT IDENTITY(1,1)					NOT NULL
+	 user_id							INT IDENTITY(1,1)		NOT NULL
 	,username							VARCHAR(200)			NOT NULL
 	,password_hash						VARCHAR(200)			NOT NULL
 	,salt								VARCHAR(200)			NOT NULL
 	,user_role							VARCHAR(50)				NOT NULL
-	,account_number						VARCHAR(200)			
-	,CONSTRAINT Users_PK				PRIMARY KEY (userID)
+  --,account_number						VARCHAR(200)			
+	,CONSTRAINT users_PK				PRIMARY KEY (user_id)
 )
 
 CREATE TABLE maintenance_requests
 (
-	  maintenanceRequestID						INT IDENTITY(1,1)					NOT NULL
-	 ,propertyID								INTEGER					NOT NULL
-	 ,description								VARCHAR(200)			NOT NULL
-	 ,isCompleted								BIT						NOT NULL
-	 ,requester_userID						    INTEGER					NOT NULL
-	 ,maintenance_userID						INTEGER					NULL
-	 ,CONSTRAINT MaintenanceRequests_PK			PRIMARY KEY (maintenanceRequestID)
+	  maintenance_request_id					INT IDENTITY(1,1)		NOT NULL
+	 ,property_id								INTEGER					NOT NULL
+	 ,description								VARCHAR(1500)			
+	 ,is_completed								BIT						NOT NULL
+	 ,user_id                                   INT                     NOT NULL
+	 --,requester_user_id						INTEGER					NOT NULL
+	 --,maintenance_user_id						INTEGER					
+	 ,CONSTRAINT maintenance_requests_PK		PRIMARY KEY (maintenance_request_id)
 )
 
 
-
-CREATE TABLE Users_Properties
+CREATE TABLE users_maintenance_requests
 (
-	 user_properties_id							INT IDENTITY(1,1)				NOT NULL
-	,userID										INTEGER				NOT NULL
-	,propertyID									INTEGER				NOT NULL
-	,CONSTRAINT Users_Properties_PK				PRIMARY KEY (user_properties_id)
+	 users_maintenance_requests_id				INT IDENTITY(1,1)	NOT NULL
+	,user_id									INTEGER				NOT NULL
+	,maintenance_request_id						INTEGER				NOT NULL
+	,CONSTRAINT users_maintenance_requests_PK	PRIMARY KEY (users_maintenance_requests_id)
 )
 
-CREATE TABLE Users_MaintenanceRequests
+CREATE TABLE users_properties
 (
-	 users_MaintenanceRequestsID				INT IDENTITY(1,1)				NOT NULL
-	,userID										INTEGER				NOT NULL
-	,maintenanceRequestID						INTEGER				NOT NULL
-	,CONSTRAINT Users_MaintenanceRequests_PK	PRIMARY KEY (users_MaintenanceRequestsID)
+	 user_properties_id							INT IDENTITY(1,1)	NOT NULL
+	,user_id									INTEGER				NOT NULL
+	,property_id								INTEGER				NOT NULL
+	,CONSTRAINT users_properties_PK				PRIMARY KEY (user_properties_id)
 )
+
 
 -- --------------------------------------------------------------------------------
 --	Create relationships. Foreign Keys.
 -- --------------------------------------------------------------------------------
 --		Child						Parent					Column
 --      -----						------					---------
---	1	Users_Properties			Users					userID
---  2   Users_Properties			Properties				propertyID
---  3   Users_MaintenanceRequests	Users					userID
---  4   Users_MaintenanceRequests	MaintenanceRequests		maintenanceRequestID
---  5   MaintenanceRequests			MaintenanceRequests		maintenanceRequestID
+--	1	users_properties			users					user_id
+--  2   users_properties			properties				property_id
+--  3   users_maintenance_requests	users					user_id
+--  4   users_maintenance_requests	maintenance_requests	maintenance_requestID
+--  5   maintenance_requests		maintenance_requests	maintenance_requestID
 
---DO NOT NEED
+
 --  6   Images                      Properties              propertyID
 
 --ALTER TABLE <Child Table> ADD CONSTRAINT <Child Table>_<Parent Table>_FK1
@@ -117,54 +121,56 @@ CREATE TABLE Users_MaintenanceRequests
 
 
 -- 1
-ALTER TABLE Users_Properties ADD CONSTRAINT Users_Properties_Users_FK1
-FOREIGN KEY (userID) REFERENCES Users (userID) ON DELETE CASCADE
+ALTER TABLE users_properties ADD CONSTRAINT users_properties_users_FK1
+FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
 
 -- 2
-ALTER TABLE Users_Properties ADD CONSTRAINT Users_Properties_Properties_FK1
-FOREIGN KEY (propertyID) REFERENCES Properties (propertyID) ON DELETE CASCADE
+ALTER TABLE users_properties ADD CONSTRAINT users_properties_properties_FK1
+FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE
 
 -- 3
-ALTER TABLE Users_MaintenanceRequests ADD CONSTRAINT Users_MaintenanceRequests_Users_FK1
-FOREIGN KEY (userID) REFERENCES Users (userID) ON DELETE CASCADE
+ALTER TABLE users_maintenance_requests ADD CONSTRAINT users_maintenanceRequests_users_FK1
+FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
 
 -- 4
-ALTER TABLE Users_MaintenanceRequests ADD CONSTRAINT Users_MaintenanceRequests_MaintenanceRequests_FK1
-FOREIGN KEY (maintenanceRequestID) REFERENCES MaintenanceRequests (maintenanceRequestID) ON DELETE CASCADE
+ALTER TABLE users_maintenance_requests ADD CONSTRAINT users_maintenanceRequests_maintenance_requests_FK1
+FOREIGN KEY (maintenance_request_id) REFERENCES maintenance_requests (maintenance_request_id) ON DELETE CASCADE
 
 -- 5
-ALTER TABLE MaintenanceRequests ADD CONSTRAINT MaintenanceRequests_Properties_FK1
-FOREIGN KEY (propertyID) REFERENCES Properties (propertyID) ON DELETE CASCADE
+ALTER TABLE maintenance_requests ADD CONSTRAINT maintenance_requests_properties_FK1
+FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE
 
----- 6
---ALTER TABLE Images  ADD CONSTRAINT Images_Properties_FK1
---FOREIGN KEY (propertyID) REFERENCES Properties (propertyID) ON DELETE CASCADE
+-- 6
+ALTER TABLE images ADD CONSTRAINT images_properties_FK1
+FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE
 
 -- --------------------------------------------------------------------------------
 --	INSERTS
 -- --------------------------------------------------------------------------------
 
---INSERT INTO Images (description, propertyID)
---VALUES				('sample image description', 1)
 
 
-INSERT INTO Properties (address, city, state, zipCode, unit, rentAmount, isRented, rentDueDate)
-VALUES				 ('sample addy', 'sample city', 'sample state', 'sample zip', 'sample unit', 1000.00, 1, '8-1-21')
+INSERT INTO properties (address, city, state, zip_code, unit, rent_amount, is_rented, rent_due_date)
+VALUES				 ('sample addy', 'sample city', 'sample state', 'sample zip', 'sample unit', 1000.00, 1, '15th')
 
 
-INSERT INTO Users (username, password_hash, salt, user_role, account_number)
-VALUES			 ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 'A352')
-				,('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 'B365')
+INSERT INTO images (image_url, description, property_id)
+VALUES			   ('https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT', 1)
 
 
-INSERT INTO MaintenanceRequests (propertyID, description, isCompleted, requester_userID	)
+INSERT INTO users (username, password_hash, salt, user_role)
+VALUES			 ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user')
+				,('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin')
+
+
+INSERT INTO maintenance_requests (property_id, description, is_completed, user_id)
 VALUES			 (1, 'sample maintenance request description', 0, 1)
 
 
-INSERT INTO Users_Properties (userID, propertyID)
+INSERT INTO users_properties (user_id, property_id)
 VALUES			 (1, 1)
 
 
-INSERT INTO Users_MaintenanceRequests (userID, maintenanceRequestID)
+INSERT INTO users_maintenance_requests (user_id, maintenance_request_id)
 VALUES			 (1, 1)
 
