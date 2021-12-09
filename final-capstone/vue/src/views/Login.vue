@@ -1,5 +1,6 @@
 <template>
   <div id="login" class="text-center">
+     <the-header></the-header>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -38,11 +39,12 @@
 </template>
 
 <script>
+import TheHeader from '../components/TheHeader.vue'
 import authService from "../services/AuthService";
 
 export default {
   name: "login",
-  components: {},
+  components: { TheHeader },
   data() {
     return {
       user: {
