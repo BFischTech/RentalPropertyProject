@@ -53,6 +53,30 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    // {
+    //   path: '/renter/?user.id',
+    //   name: 'renter',
+    //   component: renter
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
+    // {
+    //   path: '/landlord/?user.id',
+    //   name: 'home',
+    //   component: Home,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
+    // {
+    //   path: '/maintenance/?user.id',
+    //   name: 'home',
+    //   component: Home,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
   ]
 })
 

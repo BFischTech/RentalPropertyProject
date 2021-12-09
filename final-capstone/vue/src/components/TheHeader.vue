@@ -1,5 +1,10 @@
 <template>
-  <div class="the-header">test</div>
+  <div class="the-header">THIS IS OUR HEADER
+    <router-link to="/">Home</router-link>
+    <router-link to="/login">Login</router-link>
+    <router-link to="/logout">Logout</router-link>
+    <router-link to="/register">Register</router-link>
+  </div>
 </template>
 
 <script>
@@ -10,9 +15,15 @@ export default {
 
 
 <style scoped>
+
+
+
+
+
 .the-header {
-  grid-area: header;
+  grid-area: the-header;
   background-color: #f69a00;
+  font-size: 5rem;
 }
 
 .container {
@@ -25,14 +36,14 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .container {
-    grid-template-areas: "header header";
+    grid-template-areas: "the-header the-header";
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media screen and (max-width: 768px) {
   .container {
-    grid-template-areas: "header";
+    grid-template-areas: "the-header";
     grid-template-columns: 1fr;
   }
 }

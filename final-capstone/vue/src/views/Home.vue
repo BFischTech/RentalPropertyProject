@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>ALL PROPERTIES</h1>
+    <the-header></the-header>
     <div v-for="property in properties" v-bind:key="property.id">
       <h2>{{property.address}}</h2>
       <h2>{{property.city}}</h2>
@@ -17,10 +17,11 @@
 
 <script>
 
-//import TheHeader from "../components/TheHeader.vue";
+import TheHeader from '../components/TheHeader.vue';
 import PropertyService from "../services/PropertyService.js";
 
 export default {
+  components: { TheHeader },
   name: "home",
     data() {
       return {
