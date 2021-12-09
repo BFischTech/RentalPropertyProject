@@ -23,7 +23,7 @@ namespace Capstone.DAO
                 conn.Open();
 
                 var sql = 
-                    "SELECT property_id, address, city, state, zip_code, unit, rent_amount, is_rented, rent_due_date " +
+                    "SELECT property_id, address, city, state, zip_code" +
                     "FROM properties";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -36,10 +36,6 @@ namespace Capstone.DAO
                     property.city = Convert.ToString(reader["city"]);
                     property.state = Convert.ToString(reader["state"]);
                     property.zipcode = Convert.ToString(reader["zip_code"]);
-                    property.unit = Convert.ToString(reader["unit"]);
-                    property.rentAmount = Convert.ToDecimal(reader["rent_amount"]);
-                    property.isRented = Convert.ToBoolean(reader["is_rented"]);
-                    property.rentDueDate = Convert.ToString(reader["rent_due_date"]);
                     properties.Add(property);
                 }                
             }

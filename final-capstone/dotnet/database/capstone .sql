@@ -31,6 +31,8 @@ IF OBJECT_ID ('maintenance_requests')				IS NOT NULL DROP TABLE maintenance_requ
 IF OBJECT_ID ('users')								IS NOT NULL DROP TABLE users
 IF OBJECT_ID ('properties')							IS NOT NULL DROP TABLE properties
 IF OBJECT_ID ('images')								IS NOT NULL DROP TABLE images
+IF OBJECT_ID ('unit')                               IS NOT NULL DROP TABLE unit
+IF OBJECT_ID ('users_units')                        IS NOT NULL DROP TABLE users_units
 
 -- --------------------------------------------------------------------------------
 --	Create tables
@@ -41,7 +43,7 @@ CREATE TABLE images
 	  image_id							INT IDENTITY(1,1)			NOT NULL
 	 ,image_url						    VARCHAR(1000)				NOT NULL
 	 ,description						VARCHAR(1000)               
-	 ,unit_id                           int                         NOT NULL
+	 ,unit_id                           int                         
 	 ,CONSTRAINT images_PK				PRIMARY KEY (image_id)
 )
 
@@ -207,7 +209,8 @@ VALUES     (1, 1, 0, 1, 0, NULL, 420, 0, '15th', 1),
 		   (4, 2.5, 1, 1, 0, 3, 2600, 0, '25th', 6)
 
 INSERT INTO images (image_url, description, unit_id)
-VALUES			   ('https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT', 1)
+VALUES			   ('https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT', 1),
+				   ('https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img', 5)
 
 
 INSERT INTO users (username, password_hash, salt, user_role)
