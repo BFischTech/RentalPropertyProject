@@ -1,7 +1,7 @@
 <template>
   <h1>
-  MashedPotatoes</h1>
-   
+    MashedPotatoes
+  </h1>
 </template>
 
 <script>

@@ -26,13 +26,13 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
       path: "/login",
       name: "login",
-      component: Login,
+      components: { default: Login, main: Home },
       meta: {
         requiresAuth: false
       }
@@ -40,7 +40,7 @@ const router = new Router({
     {
       path: "/logout",
       name: "logout",
-      component: Logout,
+      components: { default: Logout, main: Home },
       meta: {
         requiresAuth: false
       }
@@ -48,35 +48,11 @@ const router = new Router({
     {
       path: "/register",
       name: "register",
-      component: Register,
+      components: { default: Register, main: Home },
       meta: {
         requiresAuth: false
       }
     },
-    // {
-    //   path: '/renter/?user.id',
-    //   name: 'renter',
-    //   component: renter
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // },
-    // {
-    //   path: '/landlord/?user.id',
-    //   name: 'home',
-    //   component: Home,
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // },
-    // {
-    //   path: '/maintenance/?user.id',
-    //   name: 'home',
-    //   component: Home,
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // },
   ]
 })
 

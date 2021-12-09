@@ -1,27 +1,22 @@
 <template>
   <div class="home">
-    <the-header></the-header>
     <div v-for="property in properties" v-bind:key="property.id">
+       <h2><img src="https://i.imgur.com/s9wmsrg.png" alt="pretty stuff"></h2>
+      <h2>{{property.rent_amount}}</h2>
       <h2>{{property.address}}</h2>
       <h2>{{property.city}}</h2>
       <h2>{{property.state}}</h2>
       <h2>{{property.zip_code}}</h2>
       <h2>{{property.unit}}</h2>
-      <h2><img src="https://i.imgur.com/s9wmsrg.png" alt="pretty stuff"></h2>
-      <h2>{{property.rent_amount}}</h2>
-      
-  </div> 
+   </div> 
   </div>
 </template>
 
 
 <script>
-
-import TheHeader from '../components/TheHeader.vue';
 import PropertyService from "../services/PropertyService.js";
 
 export default {
-  components: { TheHeader },
   name: "home",
     data() {
       return {
@@ -31,15 +26,13 @@ export default {
     created() {
       PropertyService.getAllProperties().then(response => {
         this.properties = response.data;
-  }
-  );
+    });
   },
 };
 
 </script>
 
 <style scoped>
-
 body {
     margin: 0;
 }
