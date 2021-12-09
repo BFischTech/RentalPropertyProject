@@ -4,7 +4,13 @@
     <router-link class="link" to="/login">Login</router-link>
     <router-link class="link" to="/logout">Logout</router-link>
     <router-link class="link" to="/register">Register</router-link>
-  </div>
+  
+  
+  <b-button>Button</b-button>
+  <b-button variant="danger">Button</b-button>
+  <b-button variant="success">Button</b-button>
+  <b-button variant="outline-primary">Button</b-button>
+</div>
 </template>
 
 <script>
