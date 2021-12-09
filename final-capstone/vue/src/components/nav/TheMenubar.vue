@@ -2,8 +2,8 @@
     <header id="menubar">
     <nav>
       <ul id="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Properties</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="properties">Properties</a></li>
         <li><a href="#">Gallery</a></li>
         <li><a href="#">Contact Us</a></li>
       </ul>

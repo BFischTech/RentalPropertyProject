@@ -3,12 +3,10 @@
     <div id="nav">
       <router-link :to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
-    <router-view></router-view>
-    <router-view name="header"></router-view>
-    <router-view name="menubar"></router-view>
-    <the-header></the-header>
-    <the-menubar></the-menubar>
-    <router-view name="main"></router-view>
+  <the-header></the-header>
+  <the-menubar></the-menubar>
+  <router-view></router-view>
+
   </div>
 </template>
 

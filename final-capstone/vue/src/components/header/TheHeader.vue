@@ -17,19 +17,10 @@
           </ul>
         </div> 
       </div>
+      
+       <b-button class="loginButton" href="/login" variant="outline-dark" pill="true">Login</b-button>
+      <b-button class="loginButton" href="/register" variant="outline-dark" pill="true">Register</b-button>
 
-      <div id="login-bar">    
-        <ul>  
-          <li>
-            <input type="text" />
-          </li>
-          <li>
-            <input type="text" />
-          </li>
-        </ul>
-        <p>Forgot Password</p>
-        <button>Log in</button>
-      </div> 
     </div>
 </template>
 
@@ -44,6 +35,12 @@ header > nav {
   flex-grow: 1;
 }
 
+
+.loginButton {
+  display:flex;
+  font-size: 4rem;
+  justify-content: center;
+}
 
 #menubar {
   background-color: #95C482;

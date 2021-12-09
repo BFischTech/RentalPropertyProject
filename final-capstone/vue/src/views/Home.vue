@@ -14,13 +14,14 @@
 
 
 <script>
+
 import PropertyService from "../services/PropertyService.js";
 
 export default {
   name: "home",
     data() {
       return {
-        properties: []
+        properties: [],
       }
     },
     created() {
@@ -28,7 +29,7 @@ export default {
         this.properties = response.data;
     });
   },
-};
+}
 
 </script>
 
