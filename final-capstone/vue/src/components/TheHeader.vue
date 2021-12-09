@@ -22,7 +22,7 @@ export default {
 
 .the-header {
   grid-area: the-header;
-  background-color: #f69a00;
+  background-color: #80B969;
   font-size: 5rem;
 }
 
