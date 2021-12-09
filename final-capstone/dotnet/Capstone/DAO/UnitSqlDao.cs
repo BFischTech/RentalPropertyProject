@@ -33,22 +33,16 @@ namespace Capstone.DAO
                     while (reader.Read())
                     {
                         Unit unit = new Unit();
+                        
 
                         unit.unitId = Convert.ToInt32(reader["unit_id"]);
                         unit.bedroomCount = Convert.ToInt32(reader["bedroom_count"]);
                         unit.bathroomCount = Convert.ToDecimal(reader["bathroom_count"]);
                         unit.petFriendly = Convert.ToBoolean(reader["pet_friendly"]);
                         unit.nonSmoking = Convert.ToBoolean(reader["non_smoking"]);
+                        //run time error when passing NULL values... needs fixxed!!!!!!!!!!!!!!!!.
                         unit.poolAccess = Convert.ToBoolean(reader["pool_access"]);
-                        if (reader["parking_spots"] == null)
-                        {
-                            unit.parkingSpots = 0;
-                        }
-                        else
-                        {
-                            unit.parkingSpots = Convert.ToDecimal(reader["parking_spots"]);
-                        }
-
+                        unit.parkingSpots = Convert.ToDecimal(reader["parking_spots"]);
                         unit.rentAmount = Convert.ToDecimal(reader["rent_amount"]);
                         unit.isRented = Convert.ToBoolean(reader["is_rented"]);
                         unit.rentDueDate = Convert.ToString(reader["rent_due_date"]);
