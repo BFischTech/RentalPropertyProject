@@ -41,24 +41,44 @@ CREATE TABLE images
 	  image_id							INT IDENTITY(1,1)			NOT NULL
 	 ,image_url						    VARCHAR(1000)				NOT NULL
 	 ,description						VARCHAR(1000)               
-	 ,property_id                       int                         NOT NULL
+	 ,unit_id                           int                         NOT NULL
 	 ,CONSTRAINT images_PK				PRIMARY KEY (image_id)
 )
 
 
 
+
+
 CREATE TABLE properties
 (
+--rating question mark
+
 	 property_id						INT IDENTITY(1,1)		NOT NULL
+	,property_name                      VARCHAR(300)            NOT NULL
+	,property_description               VARCHAR(500)            
 	,address							VARCHAR(200)			NOT NULL
 	,city								VARCHAR(200)			NOT NULL
 	,state								VARCHAR(200)			NOT NULL
 	,zip_code							VARCHAR(200)			NOT NULL
-	,unit								VARCHAR(200)			
-	,rent_amount						DECIMAL				    NOT NULL
-	,is_rented							BIT						NOT NULL
-	,rent_due_date						VARCHAR(50)				NOT NULL
 	,CONSTRAINT properties_PK			PRIMARY KEY (property_id)
+	
+)
+
+CREATE TABLE unit
+(
+	unit_id                            INT IDENTITY(1,1)        NOT NULL,
+	bedroom_count                      INT                      NOT NULL,
+	bathroom_count                     DECIMAL                  NOT NULL,
+	pet_friendly                       BIT                      NOT NULL,
+	non_smoking                        BIT                      NOT NULL,
+	pool_access                        BIT                              ,
+	parking_spots                      DECIMAL                          ,
+	rent_amount						   DECIMAL				        NOT NULL,
+	is_rented						   BIT						NOT NULL,
+	rent_due_date					   VARCHAR(50)				NOT NULL,
+	property_id                        INT                      NOT NULL,
+	CONSTRAINT unit_PK                 PRIMARY KEY (unit_id),
+	FOREIGN KEY (property_id) REFERENCES properties (property_id)
 )
 
 CREATE TABLE users
@@ -75,17 +95,16 @@ CREATE TABLE users
 CREATE TABLE maintenance_requests
 (
 	  maintenance_request_id					INT IDENTITY(1,1)		NOT NULL
-	 ,property_id								INTEGER					NOT NULL
+	 ,unit_id							        INTEGER					NOT NULL
 	 ,description								VARCHAR(1500)			
 	 ,is_completed								BIT						NOT NULL
 	 --,user_id                                 INT                     NOT NULL
 	 ,requester_user_id						    INTEGER					NOT NULL
 	 ,maintenance_user_id						INTEGER					
 	 ,CONSTRAINT maintenance_requests_PK		PRIMARY KEY (maintenance_request_id),
-	 FOREIGN KEY (property_id) REFERENCES properties (property_id),
+	 FOREIGN KEY (unit_id) REFERENCES unit (unit_id),
 	 FOREIGN KEY (requester_user_id) REFERENCES users (user_id),
 	 FOREIGN KEY (maintenance_user_id) REFERENCES users (user_id) 
-
 )
 
 
@@ -103,6 +122,17 @@ CREATE TABLE users_properties
 	,user_id									INTEGER				NOT NULL
 	,property_id								INTEGER				NOT NULL
 	,CONSTRAINT users_properties_PK				PRIMARY KEY (user_properties_id)
+)
+
+CREATE TABLE users_units
+(
+	--user_id references the renter attached to this unit
+	user_unit_id                        INT IDENTITY(1,1)             NOT NULL,
+	user_id                             INT                           NOT NULL,
+	unit_id                             INT                           NOT NULL,
+	CONSTRAINT user_unit_id             PRIMARY KEY (user_unit_id),
+	FOREIGN KEY (user_id)  REFERENCES users (user_id),
+	FOREIGN KEY (unit_id)  REFERENCES unit (unit_id)
 )
 
 
@@ -147,8 +177,8 @@ FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE
 --FOREIGN KEY (maintenance_user_id) REFERENCES users (user_id) ON DELETE CASCADE
 
 -- 6
-ALTER TABLE images ADD CONSTRAINT images_properties_FK1
-FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE
+ALTER TABLE images ADD CONSTRAINT images_unit_FK1
+FOREIGN KEY (unit_id) REFERENCES unit (unit_id) ON DELETE CASCADE
 
 -- --------------------------------------------------------------------------------
 --	INSERTS
@@ -156,14 +186,27 @@ FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE
 
 
 
-INSERT INTO properties (address, city, state, zip_code, unit, rent_amount, is_rented, rent_due_date)
-VALUES				 ('sample addy', 'sample city', 'sample state', 'sample zip', 'sample unit', 1000.00, 1, '15th'),
-				     ('3219 Steeple Chase Ln', 'Loveland', 'OH', '45140', 'A1', 1100.00, 1, '24th'),
-					 ('176 StoneRidge Blvd', 'South Lebanon', 'OH', '45065', 'NULL', 2200.00, 0, '15th'),
-					 ('627 Cherry Grove St', 'Casper', 'SC', '78140', 'C4', 670.00, 1, '12th'),
-					 ('983 Georgey Rows Ave', 'NY', 'NY', '2341', 'G5', 450.00, 1, '1st')
+INSERT INTO properties (property_name, property_description, address, city, state, zip_code)
+VALUES				 ('sample name', 'sample description', 'sample addy', 'sample city', 'sample state', 'sample zip'),
+				     ('Steeple Chase', 'It has horses', '3219 Steeple Chase Ln', 'Loveland', 'OH', '45140'),
+					 ('Corner House', 'Looks like a house', '176 StoneRidge Blvd', 'South Lebanon', 'OH', '45065'),
+					 ('Beach House', 'OH GOD, SAND EVEYYWHERE', '627 Cherry Grove St', 'Casper', 'SC', '78140'),
+					 ('Afordable Houseing', 'Has a roof', '983 Georgey Rows Ave', 'NY', 'NY', '2341'),
+					 ('Lake House', ' beautiful lake view', '436 Anchor BLVD', 'Alpena', 'MI', '6754')
 
-INSERT INTO images (image_url, description, property_id)
+INSERT INTO unit (bedroom_count, bathroom_count, pet_friendly, non_smoking, pool_access, parking_spots, rent_amount, is_rented, rent_due_date, property_id)
+VALUES     (1, 1, 0, 1, 0, NULL, 420, 0, '15th', 1),
+		   (2, 1.5, 1, 1, 1, 2, 920, 0, '25th', 2),
+		   (1, 1, 1, 1, 1, 1, 720, 1, '25th', 2),
+		   (4, 3.5, 1, 1, 0, 4, 2200, 0, '4th', 3),
+		   (3, 2, 0, 0, 0, 2, 2500, 1, '12', 4),
+		   (2, 1, 0, 1, 0, 0, 400, 0, '1st', 5),
+		   (2, 1, 0, 1, 0, 0, 400, 0, '1st', 5),
+		   (1, 1, 0, 1, 0, 0, 320, 0, '1st', 5),
+		   (1, 1, 0, 1, 0, 0, 320, 0, '1st', 5),
+		   (4, 2.5, 1, 1, 0, 3, 2600, 0, '25th', 6)
+
+INSERT INTO images (image_url, description, unit_id)
 VALUES			   ('https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT', 1)
 
 
@@ -177,16 +220,25 @@ VALUES			 ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','User'),
 				 ('Mercado','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Employee')
 				 
 
-INSERT INTO maintenance_requests (property_id, description, is_completed, requester_user_id, maintenance_user_id)
+INSERT INTO maintenance_requests (unit_id, description, is_completed, requester_user_id, maintenance_user_id)
 VALUES			 (1, 'sample maintenance request description', 0, 1, 1),
-				 (3, 'leaky bathroom ceiling', 0, 3, 6),
+				 (2, 'leaky bathroom ceiling', 0, 3, 6),
 				 (3, 'Toilet is loud', 0, 3, 7),
-				 (5, 'Replace front door lock', 0, 4, 7)
+				 (3, 'Replace front door lock', 0, 4, 7)
 
 
 INSERT INTO users_properties (user_id, property_id)
 VALUES			 (3, 3),
 				 (5, 4)
+
+
+
+INSERT INTO users_units (user_id, unit_id)
+VALUES              (3, 2),
+					(4, 2),
+					(5, 4)
+					
+
 
 
 --INSERT INTO users_maintenance_requests (user_id, maintenance_request_id)
