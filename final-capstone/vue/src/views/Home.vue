@@ -2,10 +2,12 @@
   <div class="home">
     <div v-for="property in properties" v-bind:key="property.id">
        <h2><img src="https://i.imgur.com/s9wmsrg.png" alt="pretty stuff"></h2>
+          <h2>{{ property.name }}</h2>     
+        <h2>{{ property.description }}</h2>             
       <h2>{{ property.address }}</h2>
       <h2>{{ property.city }}</h2>
       <h2>{{ property.state }}</h2>
-      <h2>{{ property.zip }}</h2>
+      <h2>{{ property.zipCode }}</h2>
    </div> 
   </div>
 </template>

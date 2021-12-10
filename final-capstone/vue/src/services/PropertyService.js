@@ -4,5 +4,9 @@ export default {
 
     getAllProperties() {
         return axios.get('/properties')
+    },
+
+    getAllUnits() {
+        return axios.get('/units')
     }
 }
