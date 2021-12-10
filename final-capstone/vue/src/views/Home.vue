@@ -2,7 +2,7 @@
   <div class="home">
     <div v-for="property in properties" v-bind:key="property.propertyId">
       <h2><img :src="property.imageUrl" alt="pretty stuff"></h2>
-      <h2>&#36;{{ property.rentAmount }}</h2>  
+      <h2>{{ property.rentAmount }}</h2>  
       <h2>{{ property.propertyName }}</h2>
       <h4>{{ property.city }}, {{ property.state }}</h4>
       <i class="fa fa-bed" aria-hidden="true"> {{ property.bedroomCount }} Bedrooms</i>

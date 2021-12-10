@@ -7,6 +7,9 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Renter from '../views/Renter.vue'
 import Contact from '../views/Contact.vue'
+import Landlord from '../views/Landlord.vue'
+import Employee from '../views/Employee.vue'
+
 
 Vue.use(Router)
 
@@ -67,7 +70,23 @@ const router = new Router({
       name: 'contact',
       component: Contact,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/employee',
+      name: 'employee',
+      component: Employee,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/landlord',
+      name: 'landlord',
+      component: Landlord,
+      meta: {
+        requiresAuth: true
       }
     },
   ]
