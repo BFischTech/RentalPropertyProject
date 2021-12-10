@@ -98,5 +98,6 @@ namespace Capstone.DAO {
             };
             return properties;
         }
+
     }
 }

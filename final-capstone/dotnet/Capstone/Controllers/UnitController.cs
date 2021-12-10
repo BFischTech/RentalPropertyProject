@@ -25,5 +25,12 @@ namespace Capstone.Controllers
         public ActionResult<List<Unit>> GetAllUnits() {
             return Ok(_unitDao.GetAllUnits());
         }
+
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        public ActionResult<List<Unit>> GetAllUnitsByPropertyId(int id)
+        {
+            return Ok(_unitDao.GetUnitsByPropertyId(id));
+        }
     }
 }

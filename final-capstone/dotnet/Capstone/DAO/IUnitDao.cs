@@ -9,5 +9,6 @@ namespace Capstone.DAO
     public interface IUnitDao
     {
         IList<Unit> GetAllUnits();
+        IList<Unit> GetUnitsByPropertyId(int id);
     }
 }

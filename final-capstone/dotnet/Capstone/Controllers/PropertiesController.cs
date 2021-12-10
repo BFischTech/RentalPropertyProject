@@ -24,8 +24,8 @@ namespace Capstone.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult<List<Properties>> GetAllProperties() {
-            return Ok(_propertiesDao.GetAllProperties());
+        public ActionResult<List<PropertiesUnitsImages>> GetAllProperties() {
+            return Ok(_propertiesDao.GetAllPropertiesUnitsImages());
         }
     }
 }

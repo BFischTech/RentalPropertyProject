@@ -10,7 +10,8 @@ namespace Capstone.Models
     //     public string state { get; set; }
     //     public string zipCode { get; set; }
     // }
-    public class Properties
+
+    public class PropertiesUnitsImages
     {  
         public int propertyId { get; set; }
         public string propertyName { get; set; }
