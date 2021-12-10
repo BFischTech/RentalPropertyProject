@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 namespace Capstone.DAO {
     public class UnitSqlDao : IUnitDao {
         private readonly string _connectionString;
+
         public UnitSqlDao(string dbConnectionString) {
             _connectionString = dbConnectionString;
         }
@@ -27,8 +28,7 @@ namespace Capstone.DAO {
                         unitList.Add(GetAllUnitsFromReader(reader));
                     }
                 }
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 throw;
             }
             return unitList;

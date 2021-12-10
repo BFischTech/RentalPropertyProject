@@ -9,24 +9,29 @@ using System.Data.SqlClient;
 namespace Capstone.DAO {
     public class PropertiesSqlDao : IPropertiesDao {
         private readonly string _connectionString;
+
         public PropertiesSqlDao(string dbConnectionString) {
             _connectionString = dbConnectionString;
         }
+
         public IList<Properties> GetAllProperties() {
             IList<Properties> propertyList = new List<Properties>();
+            try {
+                using (SqlConnection conn = new SqlConnection(_connectionString)) {
+                    conn.Open();
 
-            using (SqlConnection conn = new SqlConnection(_connectionString)) {
-                conn.Open();
+                    var sql = 
+                        "SELECT property_id, property_name, property_description, address, city, state, zip_code " +
+                        "FROM properties;";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-                var sql = 
-                    "SELECT property_id, address, city, state, zip_code FROM properties";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read()) {
-                    propertyList.Add(GetAllPropertiesFromReader(reader));
-                }                
+                    while (reader.Read()) {
+                        propertyList.Add(GetAllPropertiesFromReader(reader));
+                    }                
+                }
+            } catch (Exception) { 
+                throw;
             }
             return propertyList;
         }
