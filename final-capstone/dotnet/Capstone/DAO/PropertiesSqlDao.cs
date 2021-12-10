@@ -36,8 +36,8 @@ namespace Capstone.DAO {
         //     return propertyList;
         // }
 
-        public IList<Properties> GetAllProperties() {
-            IList<Properties> propertyList = new List<Properties>();
+        public IList<PropertiesUnitsImages> GetAllPropertiesUnitsImages() {
+            IList<PropertiesUnitsImages> propertyList = new List<PropertiesUnitsImages>();
             try {
                 using (SqlConnection conn = new SqlConnection(_connectionString)) {
                     conn.Open();
@@ -76,8 +76,8 @@ namespace Capstone.DAO {
         //     return properties;
         // }
 
-        private Properties GetAllPropertiesFromReader(SqlDataReader reader) {
-            Properties properties = new Properties() {
+        private PropertiesUnitsImages GetAllPropertiesFromReader(SqlDataReader reader) {
+            PropertiesUnitsImages properties = new PropertiesUnitsImages() {
                 propertyId = Convert.ToInt32(reader["propertyId"]),
                 propertyName = Convert.ToString(reader["propertyName"]),
                 propertyDescription = Convert.ToString(reader["propertyDescription"]),
