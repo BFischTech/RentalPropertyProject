@@ -10,7 +10,7 @@ namespace Capstone.Models
         public string address { get; set; }
         public string city { get; set; }
         public string state { get; set; }
-        public string zipcode { get; set; }
+        public string zipCode { get; set; }
     }
 
    

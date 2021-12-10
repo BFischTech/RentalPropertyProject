@@ -18,21 +18,14 @@ namespace Capstone.Controllers
     {
         private readonly IPropertiesDao _propertiesDao;
 
-        public PropertiesController(IPropertiesDao propertiesDao)
-        {
+        public PropertiesController(IPropertiesDao propertiesDao) {
             _propertiesDao = propertiesDao;
         }
 
-
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult<List<Properties>> GetAllProperties()
-        {
+        public ActionResult<List<Properties>> GetAllProperties() {
             return Ok(_propertiesDao.GetAllProperties());
         }
-
-        
-
-        
     }
 }

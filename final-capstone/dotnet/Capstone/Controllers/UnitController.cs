@@ -13,20 +13,16 @@ namespace Capstone.Controllers
     [ApiController]
     [Authorize]
 
-    public class UnitController : ControllerBase
-    {
+    public class UnitController : ControllerBase {
         private readonly IUnitDao _unitDao;
 
-        public UnitController(IUnitDao unitDao)
-        {
+        public UnitController(IUnitDao unitDao) {
             _unitDao = unitDao;
         }
 
-
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult<List<Unit>> GetAllUnits()
-        {
+        public ActionResult<List<Unit>> GetAllUnits() {
             return Ok(_unitDao.GetAllUnits());
         }
     }
