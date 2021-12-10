@@ -7,5 +7,6 @@ namespace Capstone.DAO
 {
     interface IMaintenceRequestsDao
     {
+        
     }
 }
