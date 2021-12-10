@@ -37,7 +37,7 @@ IF OBJECT_ID ('users_units')                    IS NOT NULL DROP TABLE users_uni
 -- --------------------------------------------------------------------------------
 --	Create tables
 -- --------------------------------------------------------------------------------
-CREATE TABLE images
+CREATE TABLE unit_images
 (
 	 image_id			  INT IDENTITY(1,1)  NOT NULL,
 	 image_url			  VARCHAR(1000)	     NOT NULL,
@@ -52,7 +52,8 @@ CREATE TABLE properties
 
 	property_id			      INT IDENTITY(1,1) NOT NULL,
 	property_name             VARCHAR(300)      NOT NULL,
-	property_description      VARCHAR(500),            
+	property_description      VARCHAR(500)      NOT NULL,  
+	property_img		      VARCHAR(1000)     NOT NULL,
 	address				      VARCHAR(200)	    NOT NULL,
 	city					  VARCHAR(200)	    NOT NULL,
 	state					  VARCHAR(200)	    NOT NULL,
@@ -169,21 +170,21 @@ FOREIGN KEY (property_id) REFERENCES properties (property_id) ON DELETE CASCADE
 --FOREIGN KEY (maintenance_user_id) REFERENCES users (user_id) ON DELETE CASCADE
 
 -- 6
-ALTER TABLE images ADD CONSTRAINT images_unit_FK1
+ALTER TABLE unit_images ADD CONSTRAINT images_unit_FK1
 FOREIGN KEY (unit_id) REFERENCES unit (unit_id) ON DELETE CASCADE
 
 -- --------------------------------------------------------------------------------
 --	INSERTS
 -- --------------------------------------------------------------------------------
 INSERT INTO 
-	properties (property_name, property_description, address, city, state, zip_code)
+	properties (property_name, property_description, property_img,  address, city, state, zip_code)
 VALUES 
-	('sample name', 'sample description', 'sample addy', 'sample city', 'sample state', 'sample zip'),
-	('Steeple Chase', 'It has horses', '3219 Steeple Chase Ln', 'Loveland', 'OH', '45140'),
-    ('Corner House', 'Looks like a house', '176 StoneRidge Blvd', 'South Lebanon', 'OH', '45065'),
-	('Beach House', 'OH GOD, SAND EVEYYWHERE', '627 Cherry Grove St', 'Casper', 'SC', '78140'),
-	('Afordable Houseing', 'Has a roof', '983 Georgey Rows Ave', 'NY', 'NY', '2341'),
-	('Lake House', ' beautiful lake view', '436 Anchor BLVD', 'Alpena', 'MI', '6754')
+	('sample name', 'sample description', 'https://www.cprealestate.com/shared/fs/0543/company/shutterstock_213290023%20%281%29.jpg', 'sample addy', 'sample city', 'sample state', 'sample zip'),
+	('Steeple Chase', 'Apartment complex that has nice ponds', 'https://cdngeneralcf.rentcafe.com/dmslivecafe/3/50497/70590713_2557871087604384_3601364742377046016_o.jpg?&quality=85&width=956&height=717&mode=crop', '3219 Steeple Chase Ln', 'Loveland', 'OH', '45140'),
+    ('Corner House', 'Four bedroom House', 'https://resources.stuff.co.nz/content/dam/images/1/z/i/f/b/u/image.related.StuffLandscapeThreeByTwo.1464x976.1xiv2f.png/1584385031980.jpg', '176 StoneRidge Blvd', 'South Lebanon', 'OH', '45065'),
+	('Beach House', 'Beach House, private beach access', 'https://www.mymove.com/wp-content/uploads/2013/08/GettyImages-200181509-001-scaled.jpg', '627 Cherry Grove St', 'Casper', 'SC', '78140'),
+	('Afordable Houseing', 'Apartment complex for the poor', 'https://blackthen.com/wp-content/uploads/2015/06/cabrini-green.jpg', '983 Georgey Rows Ave', 'NY', 'NY', '2341'),
+	('Lake House', ' House on the lake, access to a boat dock', 'https://www.cprealestate.com/shared/fs/0543/company/shutterstock_213290023%20%281%29.jpg', '436 Anchor BLVD', 'Alpena', 'MI', '6754')
 
 INSERT INTO 
 	unit (bedroom_count, bathroom_count, pet_friendly, non_smoking, pool_access, parking_spots, rent_amount, is_rented, rent_due_date, property_id)
@@ -200,7 +201,7 @@ VALUES
 	(4, 2.5, 1, 1, 0, 3, 2600, 0, '25th', 6)
 
 INSERT INTO 
-	images (image_url, description, unit_id)
+	unit_images (image_url, description, unit_id)
 VALUES 
 	('https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT', 1),
 	('https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img', 5)

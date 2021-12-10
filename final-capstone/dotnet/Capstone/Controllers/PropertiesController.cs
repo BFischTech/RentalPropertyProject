@@ -22,10 +22,17 @@ namespace Capstone.Controllers
             _propertiesDao = propertiesDao;
         }
 
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public ActionResult<List<PropertiesUnitsImages>> GetAllProperties() {
+        //    return Ok(_propertiesDao.GetAllPropertiesUnitsImages());
+        //}
+
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult<List<PropertiesUnitsImages>> GetAllProperties() {
-            return Ok(_propertiesDao.GetAllPropertiesUnitsImages());
+        public ActionResult<List<Properties>> GetAllProperties()
+        {
+            return Ok(_propertiesDao.GetAllProperties());
         }
     }
 }
