@@ -4,8 +4,8 @@
       <ul id="menu">
         <li><a href="/">Home</a></li>
         <li><a href="properties">Properties</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/contact">Contact Us</a></li>
       </ul>
     </nav>
   </header>
@@ -42,19 +42,18 @@ header > nav {
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-
-#menu {
   justify-content: space-evenly;
+
 }
 
 header > nav > ul > li {
   font-family: 'Oswald', sans-serif;
-  font-size: 20px;
+  font-size: 3vh;
   text-transform: uppercase;
   color: #707070;
   padding: 0 20px 0 0;
   margin-left: 20px;
+  
 }
 
 ul > li > a,

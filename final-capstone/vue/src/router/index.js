@@ -5,6 +5,8 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import Renter from '../views/Renter.vue'
+import Contact from '../views/Contact.vue'
 
 Vue.use(Router)
 
@@ -50,7 +52,22 @@ const router = new Router({
       name: "register",
       components: { default: Register, main: Home },
       meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/renter',
+      name: 'renter',
+      component: Renter,
+      meta: {
         requiresAuth: true
+      }
+    }, {
+      path: '/contact',
+      name: 'contact',
+      component: Contact,
+      meta: {
+        requiresAuth: false
       }
     },
   ]

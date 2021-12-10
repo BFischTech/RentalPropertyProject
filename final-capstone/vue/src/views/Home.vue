@@ -2,12 +2,10 @@
   <div class="home">
     <div v-for="property in properties" v-bind:key="property.id">
        <h2><img src="https://i.imgur.com/s9wmsrg.png" alt="pretty stuff"></h2>
-      <h2>{{property.rent_amount}}</h2>
-      <h2>{{property.address}}</h2>
-      <h2>{{property.city}}</h2>
-      <h2>{{property.state}}</h2>
-      <h2>{{property.zip_code}}</h2>
-      <h2>{{property.unit}}</h2>
+      <h2>{{ property.address }}</h2>
+      <h2>{{ property.city }}</h2>
+      <h2>{{ property.state }}</h2>
+      <h2>{{ property.zip }}</h2>
    </div> 
   </div>
 </template>
@@ -34,6 +32,11 @@ export default {
 </script>
 
 <style scoped>
+
+img {
+  width: 35rem;
+  height: 35rem;
+}
 body {
     margin: 0;
 }

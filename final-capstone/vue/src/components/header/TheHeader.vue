@@ -18,8 +18,8 @@
         </div> 
       </div>
       
-       <b-button class="loginButton" href="/login" variant="outline-dark" pill="true">Login</b-button>
-      <b-button class="loginButton" href="/register" variant="outline-dark" pill="true">Register</b-button>
+       <b-button class="w-50 h-75 loginButton" href="/login" variant="outline-dark" pill="true">Login</b-button>
+      <b-button class="w-50  h-75 loginButton" href="/register" variant="outline-dark" pill="true">Register</b-button>
 
     </div>
 </template>
@@ -38,8 +38,13 @@ header > nav {
 
 .loginButton {
   display:flex;
-  font-size: 4rem;
+  font-size: 3vw;
   justify-content: center;
+  align-self: center;
+  align-items: center;
+  padding-bottom: 1.2vw;
+  justify-self: center;
+  ;
 }
 
 #menubar {

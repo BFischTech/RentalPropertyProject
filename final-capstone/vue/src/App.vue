@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link :to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-    </div>
+    </div> -->
   <the-header></the-header>
   <the-menubar></the-menubar>
   <router-view></router-view>

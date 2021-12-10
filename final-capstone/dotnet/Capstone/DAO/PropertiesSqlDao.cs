@@ -19,8 +19,7 @@ namespace Capstone.DAO {
                 conn.Open();
 
                 var sql = 
-                    "SELECT property_id, property_name, property_description, address, city, state, zip_code " +
-                    "FROM properties;";
+                    "SELECT property_id, address, city, state, zip_code FROM properties";
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
