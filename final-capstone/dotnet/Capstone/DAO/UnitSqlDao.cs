@@ -34,6 +34,36 @@ namespace Capstone.DAO {
             return unitList;
         }
 
+        public IList<Unit> GetUnitsByPropertyId(int id)
+        {
+            IList<Unit> unitList = new List<Unit>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    conn.Open();
+                    string sql = "SELECT unit_id, bedroom_count, pet_friendly, non_smoking, pool_access, parking_spots, rent_amount, is_rented, rent_due_date, property_id " +
+                                 "FROM unit " +
+                                 "WHERE property_id = @id;";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@amount", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        unitList.Add(GetAllUnitsFromReader(reader));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return unitList;
+        }
+
         private Unit GetAllUnitsFromReader(SqlDataReader reader) {
             Unit units = new Unit() {
                 unitId = Convert.ToInt32(reader["unit_id"]),
