@@ -1,22 +1,19 @@
 <template>
   <div class="home">
-    <div v-for="property in properties" v-bind:key="property.id">
-       <h2><img src="https://i.imgur.com/s9wmsrg.png" alt="pretty stuff"></h2>
-          <h2>{{ property.name }}</h2>     
-        <h2>{{ property.description }}</h2>             
-      <h2>{{ property.address }}</h2>
-      <h2>{{ property.city }}</h2>
-      <h2>{{ property.state }}</h2>
-      <h2>{{ property.zipCode }}</h2>
+    <div v-for="property in properties" v-bind:key="property.propertyId">
+      <h2><img :src="property.imageUrl" alt="pretty stuff"></h2>
+      <h2>&#36;{{ property.rentAmount }}</h2>  
+      <h2>{{ property.propertyName }}</h2>
+      <h4>{{ property.city }}, {{ property.state }}</h4>
+      <i class="fa fa-bed" aria-hidden="true"> {{ property.bedroomCount }} Bedrooms</i>
+      <i class="fa fa-shower" aria-hidden="true"> {{ property.bathroomCount }} Bathrooms</i>
    </div> 
   </div>
 </template>
 
 
 <script>
-
 import PropertyService from "../services/PropertyService.js";
-
 export default {
   name: "home",
     data() {
@@ -34,7 +31,7 @@ export default {
 </script>
 
 <style scoped>
-
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 img {
   width: 35rem;
   height: 35rem;
