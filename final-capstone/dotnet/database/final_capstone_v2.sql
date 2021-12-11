@@ -32,6 +32,7 @@ IF OBJECT_ID ('maintenance_requests')       IS NOT NULL DROP TABLE maintenance_r
 IF OBJECT_ID ('users')                      IS NOT NULL DROP TABLE users
 IF OBJECT_ID ('tenant')                     IS NOT NULL DROP TABLE tenant
 IF OBJECT_ID ('owner')                      IS NOT NULL DROP TABLE owner
+IF OBJECT_ID ('employee')                   IS NOT NULL DROP TABLE employee
 IF OBJECT_ID ('unit_images')                IS NOT NULL DROP TABLE unit_images
 IF OBJECT_ID ('unit_types')                 IS NOT NULL DROP TABLE unit_types
 IF OBJECT_ID ('maintenance_request_types')  IS NOT NULL DROP TABLE maintenance_request_types
@@ -59,6 +60,17 @@ CREATE TABLE [owner] (
 
   CONSTRAINT [PK_owner_id] PRIMARY KEY (owner_id),
   CONSTRAINT [FK_owner_id] FOREIGN KEY (owner_id) REFERENCES [users] (user_id)
+);
+
+CREATE TABLE [employee] (
+  employee_id         INT           NOT NULL,
+  first_name          VARCHAR(255)  NOT NULL,
+  last_name           VARCHAR(255)  NOT NULL,
+  email               VARCHAR(255)  NOT NULL,
+  mobile_number       VARCHAR(255)  NOT NULL,
+
+  CONSTRAINT [PK_employee_id] PRIMARY KEY (employee_id),
+  CONSTRAINT [FK_employee_id] FOREIGN KEY (employee_id) REFERENCES [users] (user_id)
 );
 
 CREATE TABLE [properties] (
@@ -157,11 +169,14 @@ CREATE TABLE [maintenance_requests] (
   concern                   VARCHAR(MAX)      NOT NULL,
   request_date_time         DATETIME          NOT NULL DEFAULT GETDATE(),
   request_status_id         INT               NOT NULL,
+  employee_assigned_id		INT	,			  		
 
   CONSTRAINT [PK_maintenance_request_id] PRIMARY KEY (maintenance_request_id),
   CONSTRAINT [FK_maintenance_request_tenant_id] FOREIGN KEY (tenant_id) REFERENCES [tenant] (tenant_id),
   CONSTRAINT [FK_request_type_id] FOREIGN KEY (request_type_id) REFERENCES [maintenance_request_types] (maintenance_request_type_id),
-  CONSTRAINT [FK_request_status_id] FOREIGN KEY (request_status_id) REFERENCES [maintenance_request_status] (maintenance_request_status_id)
+  CONSTRAINT [FK_request_status_id] FOREIGN KEY (request_status_id) REFERENCES [maintenance_request_status] (maintenance_request_status_id),
+  CONSTRAINT [FK_maintenance_request_employee_id] FOREIGN KEY (employee_assigned_id) REFERENCES [employee] (employee_id),
+
 );
 
 -- --------------------------------------------------------------------------------
@@ -176,13 +191,20 @@ VALUES
 	('LawDog','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
 	('FISHIE','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
 	('BQ','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
-	('Mercado','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant');
+	('Mercado','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Employee');
+
 
 INSERT INTO [owner] 
   (owner_id, first_name, last_name, email, mobile_number)
 VALUES	 
 	(2, 'Joe', 'Riggs', 'jr@gmail.com', '5132341234'),
   (1, 'Mike', 'Jordan', 'mj@gmail.com', '5132341234');
+
+INSERT INTO [employee] 
+  (employee_id, first_name, last_name, email, mobile_number)
+VALUES	 
+	(7, 'Clark', 'Mercado', 'cm@gmail.com', '5132341234');
+  
 
 INSERT INTO [unit_types] 
   (unit_type_id, unit_type_name)
@@ -258,9 +280,15 @@ INSERT INTO [maintenance_requests]
   (tenant_id, request_type_id, concern, request_status_id)
 VALUES	 
 	(6, 2, 'sample maintenance request description', 1),
-	(5, 3, 'leaky bathroom ceiling', 2),
-	(3, 1, 'Toilet is loud', 3),
-	(3, 6, 'Replace front door lock', 1);
+	(5, 3, 'leaky bathroom ceiling', 2);
+	
+INSERT INTO [maintenance_requests] 
+  (tenant_id, request_type_id, concern, request_status_id, employee_assigned_id)
+VALUES	 
+	
+	(3, 1, 'Toilet is loud', 3, 7),
+	(3, 6, 'Replace front door lock', 1, 7);
+
 
 INSERT INTO [unit_images] 
   (unit_id, image_url, image_caption)
