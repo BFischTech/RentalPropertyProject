@@ -66,6 +66,7 @@ namespace Capstone
             services.AddTransient<IPropertiesDao>(m => new PropertiesSqlDao(connectionString));
             services.AddTransient<IImagesDao>(m => new ImagesSqlDao(connectionString));
             services.AddTransient<IUnitDao>(m => new UnitSqlDao(connectionString));
+            services.AddTransient<IMaintenceRequestsDao>(m => new MaintenanceRequestsSqlDao(connectionString));
 
         }
 

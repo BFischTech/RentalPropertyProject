@@ -1,13 +1,13 @@
 <template>
   <div class="home">
-    <div class="property" v-for="property in properties" v-bind:key="property.propertyId">
-      <h2><img :src="property.propertyImg" alt="pretty stuff"></h2>
-      <h2>{{ property.propertyDescription }}</h2>  
-      <h2>{{ property.propertyName }}</h2>
-      <h4>{{ property.address }} </h4>
-      <h4>{{ property.city }},{{ property.state }},{{property.zipCode}}</h4>
-
-   </div> 
+    <div class="property" v-for="property in properties" :key="property.propertyId">
+      <b-card  :title="property.name" :img-src="property.imageUrl" :sub-title="property.description" img-alt="Image" img-top tag="article" class="mb-2">
+        <b-card-text >
+          {{ property.address }} <br> {{ property.city }}, {{ property.state }}, {{property.zipCode}}
+        </b-card-text>
+          <b-button href="#" variant="primary">{{ property.availableUnits }} : Available Units</b-button>
+      </b-card>
+    </div>
   </div>
 </template>
 

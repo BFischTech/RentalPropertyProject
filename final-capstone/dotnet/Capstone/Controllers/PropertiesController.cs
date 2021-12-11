@@ -30,9 +30,9 @@ namespace Capstone.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult<List<Properties>> GetAllProperties()
+        public ActionResult<List<PropertiesWithAvailableUnits>> GetAllPropertiesWithAvailableUnits()
         {
-            return Ok(_propertiesDao.GetAllProperties());
+            return Ok(_propertiesDao.GetAllPropertiesWithAvailableUnits());
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Capstone.Models;
 
 namespace Capstone.DAO
 {
-    interface IMaintenceRequestsDao
+    public interface IMaintenceRequestsDao
     {
-        
+        IList<MaintenanceRequestsByOwner> GetMaintenanceRequestsByOwner(int ownerId);
+
+        IList<MaintenanceRequestsByTenant> GetMaintenanceRequestsByTenant(int tenantId);
     }
 }
