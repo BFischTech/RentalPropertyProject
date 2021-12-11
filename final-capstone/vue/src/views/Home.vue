@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div v-for="property in properties" v-bind:key="property.propertyId">
+    <div class="property" v-for="property in properties" v-bind:key="property.propertyId">
       <h2><img :src="property.propertyImg" alt="pretty stuff"></h2>
       <h2>{{ property.propertyDescription }}</h2>  
       <h2>{{ property.propertyName }}</h2>
@@ -39,17 +39,22 @@ img {
 body {
     margin: 0;
 }
-.container {
-    display: grid;
-    grid-template-areas:
-        "header header header"
-        "nav content side"
-        "footer footer footer";
-    grid-template-columns: 200px 1fr 200px;
-    grid-template-rows: 125px 1fr 85px;
-    gap: 10px;
+
+.home {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 2em auto;
     height: 100vh;
 }
+
+.property {
+  border: 5px solid white ;
+
+}
+
 header {
     grid-area: header;
     background-color: #F69A00;

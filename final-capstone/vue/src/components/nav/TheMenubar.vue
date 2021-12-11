@@ -3,8 +3,7 @@
     <nav>
       <ul id="menu">
         <li><a href="/">Home</a></li>
-        <li><a href="properties">Properties</a></li>
-        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/available">Available To Rent</a></li>
         <li><a href="/contact">Contact Us</a></li>
       </ul>
     </nav>
