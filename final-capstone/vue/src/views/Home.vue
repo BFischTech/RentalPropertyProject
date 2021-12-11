@@ -1,12 +1,12 @@
 <template>
   <div class="home">
     <div v-for="property in properties" v-bind:key="property.propertyId">
-      <h2><img :src="property.imageUrl" alt="pretty stuff"></h2>
-      <h2>{{ property.rentAmount }}</h2>  
+      <h2><img :src="property.propertyImg" alt="pretty stuff"></h2>
+      <h2>{{ property.propertyDescription }}</h2>  
       <h2>{{ property.propertyName }}</h2>
-      <h4>{{ property.city }}, {{ property.state }}</h4>
-      <i class="fa fa-bed" aria-hidden="true"> {{ property.bedroomCount }} Bedrooms</i>
-      <i class="fa fa-shower" aria-hidden="true"> {{ property.bathroomCount }} Bathrooms</i>
+      <h4>{{ property.address }} </h4>
+      <h4>{{ property.city }},{{ property.state }},{{property.zipCode}}</h4>
+
    </div> 
   </div>
 </template>
