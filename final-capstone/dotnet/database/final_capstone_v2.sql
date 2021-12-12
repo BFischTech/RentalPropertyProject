@@ -200,33 +200,53 @@ CREATE TABLE [maintenance_requests] (
 INSERT INTO [users] 
   (username, password_hash, salt, user_role)
 VALUES 
-	('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','User'),
 	('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Admin'),
-	('DFox96','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
-	('LawDog','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
-	('FISHIE','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
-	('BQ','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
-	('Mercado','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Employee');
+  ('owner1','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
+	('owner2','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
+	('owner3','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
+  ('owner4','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
+	('owner5','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
+  ('employee1','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Employee'),
+  ('employee2','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Employee'),
+	('employee3','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Employee'),
+	('user1','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','User'),
+  ('user2','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','User'),
+  ('user3','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','User'),
+  ('user4','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','User'),
+	('tenant1','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant2','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+	('tenant3','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant4','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant5','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+	('tenant6','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant7','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant8','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+	('tenant9','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant10','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant');
 
 
 INSERT INTO [owner] 
   (owner_id, first_name, last_name, email, mobile_number)
 VALUES	 
-	(2, 'Joe', 'Riggs', 'jr@gmail.com', '5132341234'),
-  (1, 'Mike', 'Jordan', 'mj@gmail.com', '5132341234');
+	(2, 'Bradley', 'Fisch', 'FischBradley@localhost.com', '5131234567'),
+  (3, 'Bradley', 'Quinton', 'QuintonBradley@localhost.com', '5131234567'),
+  (4, 'Dustin', 'Fox', 'FoxDustin@localhost.com', '5131234567'),
+  (5, 'Matthew', 'Lawson', 'LawsonMatthew@localhost.com', '5131234567'),
+  (6, 'Joe', 'Riggs', 'RiggsJoe@localhost.com', '5131234567');
 
 INSERT INTO [employee] 
   (employee_id, first_name, last_name, email, mobile_number)
 VALUES	 
-	(7, 'Clark', 'Mercado', 'cm@gmail.com', '5132341234');
+	(7, 'Clark', 'Mercado', 'MercadoClark@localhost.com', '5131234567'),
+  (8, 'Jhorel', 'Mercado', 'JhorelMercado@localhost.com', '5131234567'),
+  (9, 'Juan', 'Perez', 'PerezJuan@localhost.com', '5131234567');
   
-
 INSERT INTO [unit_types] 
   (unit_type_id, unit_type_name)
 VALUES	 
   (1, 'House'),
   (2, 'Apartment'),
-  (3, 'Condominium');
+  (3, 'Condo');
 
 INSERT INTO [maintenance_request_types] 
   (maintenance_request_type_id, maintenance_request_type_name)
@@ -248,26 +268,36 @@ VALUES
 INSERT INTO [properties] 
   (name, description, address, city, state, zip_code, image_url, owner_id)
 VALUES 
-  ('sample name', 'sample description', 'sample addy', 'sample city', 'sample state', 'sample zip', 'https://www.cprealestate.com/shared/fs/0543/company/shutterstock_213290023%20%281%29.jpg', 1),
-  ('Steeple Chase', 'Apartment complex that has nice ponds', '3219 Steeple Chase Ln', 'Loveland', 'OH', '45140' , 'https://cdngeneralcf.rentcafe.com/dmslivecafe/3/50497/70590713_2557871087604384_3601364742377046016_o.jpg?&quality=85&width=956&height=717&mode=crop', 2),
-  ('Corner House', 'Four bedroom House', '176 StoneRidge Blvd', 'South Lebanon', 'OH', '45065', 'https://resources.stuff.co.nz/content/dam/images/1/z/i/f/b/u/image.related.StuffLandscapeThreeByTwo.1464x976.1xiv2f.png/1584385031980.jpg', 2),
-  ('Beach House', 'Beach House, private beach access', '627 Cherry Grove St', 'Casper', 'SC', '78140', 'https://www.mymove.com/wp-content/uploads/2013/08/GettyImages-200181509-001-scaled.jpg', 1),
-  ('Afordable Houseing', 'Apartment complex for the poor', '983 Georgey Rows Ave', 'NY', 'NY', '2341', 'https://blackthen.com/wp-content/uploads/2015/06/cabrini-green.jpg', 2),
-  ('Lake House', ' House on the lake, access to a boat dock', '436 Anchor BLVD', 'Alpena', 'MI', '6754', 'https://www.cprealestate.com/shared/fs/0543/company/shutterstock_213290023%20%281%29.jpg', 2);
+  ('BQ Real Estate', 'BQ Real Estate is a residential property management company...', '4025 Lakeside Drive', 'Cincinnati', 'OH', '45100', 'https://www.cprealestate.com/shared/fs/0543/company/shutterstock_213290023%20%281%29.jpg', 6),
+  ('Fish Properties', 'Settle in somewhere new. Discover stays to live, work, or just relax', '3219 Steeple Chase Ln', 'Loveland', 'OH', '45140' , 'https://cdngeneralcf.rentcafe.com/dmslivecafe/3/50497/70590713_2557871087604384_3601364742377046016_o.jpg?&quality=85&width=956&height=717&mode=crop', 2),
+  ('StateBarn Estate', 'THe quick brown fox jumps over the lazy dog', '176 StoneRidge Blvd', 'South Lebanon', 'OH', '45065', 'https://resources.stuff.co.nz/content/dam/images/1/z/i/f/b/u/image.related.StuffLandscapeThreeByTwo.1464x976.1xiv2f.png/1584385031980.jpg', 3),
+  ('Zillow', 'Beach House, private beach access', '627 Cherry Grove St', 'Casper', 'SC', '78140', 'https://www.mymove.com/wp-content/uploads/2013/08/GettyImages-200181509-001-scaled.jpg', 4),
+  ('Ayala Properties', 'Apartment complex for the poor', '983 Georgey Rows Ave', 'NY', 'NY', '2341', 'https://blackthen.com/wp-content/uploads/2015/06/cabrini-green.jpg', 5),
+  ('Lake House', ' House on the lake, access to a boat dock', '436 Anchor BLVD', 'Alpena', 'MI', '6754', 'https://www.cprealestate.com/shared/fs/0543/company/shutterstock_213290023%20%281%29.jpg', 6);
 
 INSERT INTO [units] 
-  (property_id, unit_type_id, rent_amount, is_rented, rent_due_date)
+  (property_id, unit_type_id, rent_amount, is_rented)
 VALUES 
-  (1, 1, 420,  0, '15th'),
-  (2, 1, 920,  0, '25th'),
-  (2, 2, 720,  1, '25th'),
-  (3, 3, 2200, 0, '4th'),
-  (4, 1, 2500, 1, '12'),
-  (1, 2, 400,  0, '1st'),
-  (1, 2, 400,  0, '1st'),
-  (1, 1, 320,  0, '1st'),
-  (2, 3, 320,  0, '1st'),
-  (3, 2, 2600, 0, '25th');
+  (1, 1, 320,  0),
+  (1, 1, 500,  0),
+  (1, 1, 300,  1),
+  (1, 2, 400,  1),
+  (1, 2, 400,  0),
+  (2, 1, 320,  1),
+  (2, 1, 250,  0),
+  (2, 1, 300,  1),
+  (3, 2, 320,  1),
+  (3, 2, 500,  1),
+  (3, 2, 300,  0),
+  (3, 2, 400,  0),
+  (3, 2, 400,  1),
+  (4, 1, 320,  0),
+  (4, 2, 500,  0),
+  (4, 3, 300,  1),
+  (5, 1, 320,  0),
+  (5, 2, 500,  1),
+  (5, 2, 300,  1),
+  (5, 3, 400,  0);
 
 INSERT INTO [amenities] 
   (unit_id, bedroom_count, bathroom_count, pet_allowed, smoking_allowed, pool_access, parking_spots)
@@ -281,35 +311,77 @@ VALUES
   (7,  2, 1,   0, 1, 0, 1),
   (8,  1, 1,   0, 1, 0, 0),
   (9,  1, 1,   0, 1, 0, 0),
-  (10, 1, 2.5, 1, 1, 0, 3);
+  (10, 1, 2.5, 1, 1, 0, 3),
+  (11, 1, 1,   0, 1, 0, 0),
+  (12, 2, 1.5, 1, 1, 1, 2),
+  (13, 1, 1,   1, 1, 1, 1),
+  (14, 4, 3.5, 1, 1, 0, 4),
+  (15, 3, 2,   0, 0, 0, 2),
+  (16, 2, 1,   0, 1, 0, 0),
+  (17, 2, 1,   0, 1, 0, 1),
+  (18, 1, 1,   0, 1, 0, 0),
+  (19, 1, 1,   0, 1, 0, 0),
+  (20, 1, 2.5, 1, 1, 0, 3);
 
 INSERT INTO [tenant] 
   (tenant_id, unit_rented_id, first_name, last_name, email, mobile_number)
 VALUES	 
-  (6, 2, 'Dustin', 'Fox', 'dustin@gmail.com', '5132341234'),
-  (5, 4, 'Bradley', 'Fisch', 'fish@gmail.com', '513233434'),
-  (3, 3, 'Matthew', 'Lawson', 'Matt.L@gmail.com', '5132341234'),
-  (4, 6, 'Bradley', 'Quinton', 'BQ@gmail.com', '5132341234');
+  (14, 3, 'Aubrie', 'Wall', 'WallAubrie@gmail.com', '5131234567'),
+  (15, 4, 'Kiley', 'Coleman', 'KileyColeman@gmail.com', '5131234567'),
+  (16, 6, 'Jaxon', 'Archer', 'JaxonArcher@gmail.com', '5131234567'),
+  (17, 8, 'Caitlin', 'Avery', 'CaitlinAvery@gmail.com', '5131234567'),
+  (18, 9, 'Kimora', 'Long', 'KimoraLong@gmail.com', '5131234567'),
+  (19, 10, 'Lorelei', 'May', 'LoreleiMay@gmail.com', '5131234567'),
+  (20, 13, 'Angie', 'Tucker', 'AngieTucker@gmail.com', '5131234567'),
+  (21, 16, 'Kamari', 'Todd', 'KamariTodd@gmail.com', '5131234567'),
+  (22, 18, 'Peyton', 'Bradley', 'PeytonBradley@gmail.com', '5131234567'),
+  (23, 19, 'Cynthia', 'Kelly', 'CynthiaKelly@gmail.com', '5131234567');
 
 INSERT INTO [maintenance_requests] 
   (tenant_id, request_type_id, concern, request_status_id)
 VALUES	 
-	(6, 2, 'sample maintenance request description', 1),
-	(5, 3, 'leaky bathroom ceiling', 2);
+	(14, 2, 'the quick brown fox jumps over the lazy dog', 1),
+	(16, 3, 'leaky bathroom ceiling', 2),
+  (18, 1, 'sample maintenance request description', 3),
+	(20, 3, 'leaky bathroom ceiling', 2),
+	(23, 6, 'leaky bathroom ceiling', 1),
+  (17, 2, 'sample maintenance request description', 1),
+	(16, 4, 'leaky bathroom ceiling', 2),
+  (20, 2, 'sample maintenance request description', 3),
+	(20, 3, 'leaky bathroom ceiling', 1),
+	(23, 6, 'leaky bathroom ceiling', 2);
 	
 INSERT INTO [maintenance_requests] 
   (tenant_id, request_type_id, concern, request_status_id, employee_assigned_id)
 VALUES	 
 	
-	(3, 1, 'Toilet is loud', 3, 7),
-	(3, 6, 'Replace front door lock', 1, 7);
+	(16, 1, 'Toilet is loud', 3, 7),
+	(18, 6, 'Replace front door lock', 1, 7);
 
 
 INSERT INTO [unit_images] 
   (unit_id, image_url, image_caption)
 VALUES 
-	(2, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
-	(9, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img');
+	(1, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	(2, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+  (3, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	(4, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+  (5, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	(6, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+  (7, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	(8, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+  (9, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	(10, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+  (11, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	(12, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+  (13, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	(14, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+  (15, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+  (16, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+  (17, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	(18, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+  (19, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	(20, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img');
 
 INSERT INTO [unit_images] 
   (unit_id, image_caption)
@@ -324,11 +396,21 @@ INSERT INTO [unit_location]
 VALUES 
   (1,  '0', '0',   '6711 Fayetta Drive',         'Hamilton',      'OH', '45011'),
   (2,  '0', '0',   '6989 Sleepy Chase Ln',       'Loveland',      'OH', '45140'),
-  (3,  '2', '101', '176 StoneRidge Blvd',        'South Lebanon', 'OH', '45065'),
-  (4,  '1', '305', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
-  (5,  '0', '0',   '983 Georgey Rows Ave',       'NY',            'NY', '2341'),
-  (6,  '2', '102', '176 StoneRidge Blvd',        'Alpena',        'MI', '6754'),
-  (7,  '3', '101', '3219 Steeple Chase Ln',      'Loveland',      'OH', '45140'),
+  (3,  '0', '101', '176 StoneRidge Blvd',        'South Lebanon', 'OH', '45065'),
+  (4,  '1', 'A1', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
+  (5,  '1', 'A2',   '983 Georgey Rows Ave',       'NY',            'NY', '2341'),
+  (6,  '0', '0', '176 StoneRidge Blvd',        'Alpena',        'MI', '6754'),
+  (7,  '0', '0', '3219 Steeple Chase Ln',      'Loveland',      'OH', '45140'),
   (8,  '0', '0',   '911 RollongStone Blvd',      'South Lebanon', 'OH', '45065'),
-  (9,  '3', '606', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
-  (10, '0', '6',   '983 Georgey Rows Ave',       'NY',            'NY', '2341');
+  (9,  '2', '606', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
+  (10, '2', '101',   '983 Georgey Rows Ave',       'NY',            'NY', '2341'),
+  (11,  '1', 'A3',   '6711 Fayetta Drive',         'Hamilton',      'OH', '45011'),
+  (12,  '1', 'C2',   '6989 Sleepy Chase Ln',       'Loveland',      'OH', '45140'),
+  (13,  '1', 'B10', '176 StoneRidge Blvd',        'South Lebanon', 'OH', '45065'),
+  (14,  '0', '0', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
+  (15,  '1', '0',   '983 Georgey Rows Ave',       'NY',            'NY', '2341'),
+  (16,  '1', '102', '176 StoneRidge Blvd',        'Alpena',        'MI', '6754'),
+  (17,  '0', '0', '3219 Steeple Chase Ln',      'Loveland',      'OH', '45140'),
+  (18,  '1', 'A4',   '911 RollongStone Blvd',      'South Lebanon', 'OH', '45065'),
+  (19,  '2', '301', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
+  (20, '1', 'B6',   '983 Georgey Rows Ave',       'NY',            'NY', '2341');
