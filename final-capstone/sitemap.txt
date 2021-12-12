@@ -1,0 +1,316 @@
+Superior Properties
+Site Map
+
+
+ANONYMOUS USER
+Home
+  Header
+    Logo (image)
+    Social media (links)
+	Methods:
+	  1. anchor tag redirect to outside social media websites
+    Phone number (text)
+    Login (button)
+	Methods:
+	  1. go to separate login page
+    Register (button)
+	Methods:
+	  1. go to separate register page
+  Navigation Bar
+    Home (link)
+	Methods:
+	  1. router-link that takes user to home page
+    Available to Rent (link)
+	Methods:
+	  1. router-link to another page that has every unit available to rent
+	     each of these units will be shown individually
+    Contact Us (link)
+	Methods:
+	  1. router-link to a contact us page with a form to submit
+    * About Us (link) * optional
+	Methods:
+	  1. router-link to a page with our elevator pitches
+  Main content
+    Photos of all available properties, street addy, with units available
+	(Details - button)
+	Methods:
+	  1. router-link to page for that particular property
+  Footer
+    Copyright (text)
+
+
+
+
+Available Rentals
+Header
+  Logo (image)
+    Social media (links)
+	Methods:
+	  1. anchor tag redirect to outside social media websites
+    Phone number (text)
+    Login (button)
+	Methods:
+	  1. go to separate login page
+    Register (button)
+	Methods:
+	  1. go to separate register page
+  Navigation Bar
+    Home (link)
+	Methods:
+	  1. router-link that takes user to home page
+    Available to Rent (link)
+	Methods:
+	  1. router-link to another page that has every unit available to rent
+	     each of these units will be shown individually
+    Contact Us (link)
+	Methods:
+	  1. router-link to a contact us page with a form to submit
+    * About Us (link) * optional
+	Methods:
+	  1. router-link to a page with our elevator pitches
+  Main content
+    Photos of available units to rent (text description with button to 
+	detailed view)
+	Methods:
+	  1.  router-link that takes user to an individual unit's page
+    * Contact to rent (button) * optional
+	Methods:
+	  1.  router-link that takes user to "contact us" form
+  Footer
+    Copyright (text)
+
+
+
+Available Unit
+ Header
+  Logo (image)
+    Social media (links)
+	Methods:
+	  1. anchor tag redirect to outside social media websites
+    Phone number (text)
+    Login (button)
+	Methods:
+	  1. go to separate login page
+    Register (button)
+	Methods:
+	  1. go to separate register page
+  Navigation Bar
+    Home (link)
+	Methods:
+	  1. router-link that takes user to home page
+    Available to Rent (link)
+	Methods:
+	  1. router-link to another page that has every unit available to rent
+	     each of these units will be shown individually
+    Contact Us (link)
+	Methods:
+	  1. router-link to a contact us page with a form to submit
+    * About Us (link) * optional
+	Methods:
+	  1. router-link to a page with our elevator pitches
+  Main content
+    Photo of available unit to rent (text description of unit)
+    * Contact to rent (button) * optional
+	Methods:
+	  1.  router-link that takes user to "contact us" form
+  Footer
+    Copyright (text)
+
+
+
+
+* Contact Us * optional
+  Header
+    Logo (image)
+    Social media (links)
+    Phone number (link)
+    Login (button)
+    Register (button)
+  Navigation Bar
+    Home (link)
+    Available to Rent (link)
+    Contact Us (link)
+  Main content
+    Form (form that an anonymous user can submit to have someone get in touch with them about renting, taking a tour, etc)
+    Home (button that takes user back to home page after submitting form)
+  Footer
+    Copyright (text)
+
+
+
+
+Login
+  Header
+    Logo (image)
+    Social media (links)
+    Phone number (link)
+  Navigation Bar
+    Home (link)
+    Available to Rent (link)
+    Contact Us (link)
+  Main content
+    Login text fields (input for login username and password)
+    Submit (button)
+	Methods:
+	  1. router-link that takes user to page based on their role
+  Footer
+    Copyright (text)
+
+
+
+
+Register
+  Header
+    Logo (image)
+    Social media (links)
+    Phone number (link)
+  Navigation Bar
+    Home (link)
+    Available to Rent (link)
+    Contact Us (link)
+  Main content
+    Register text fields (input for registering username and password)
+    Set user role (drop-down menu that user chooses role from)
+	Methods:
+	  1. drop-down that lets user choose their role
+    Submit (button)
+	Methods:
+	  1. router-link that takes user to login page
+  Footer
+    Copyright (text)
+
+----------------------------------------------------------------------------------------------------------------------------
+
+RENTER
+  Header
+    Logo (image)
+    Social media (links)
+    Phone number (link)
+    Show role (text)
+    Logout (button)
+	Methods:
+	  1. router-link that logs user out and redirects them to the home page
+  Navigation Bar
+    Home (link)
+    Available to Rent (link)
+    Contact Us (link)
+  Main content
+    Renter portal (text with personal welcome message and "how can we help you?" 
+	text)
+    Pay rent (button)
+	Methods:
+	  1. router-link to the rent payment form page or do a pop-up rental
+		payment form
+    Submit a maintenance request (button)
+	Methods:
+	  1. router-link to a post form page or a pop-up maintenance request
+		form with post request to the db (drop-down list of types of
+		requests)
+    See all requests (button)
+	Methods:
+	  1. router-link to a separate page that shows all requests and their
+		status for that user (or, have a pop up that shows this info)
+  Footer
+    Copyright (text)
+
+----------------------------------------------------------------------------------------------------------------------------
+  
+EMPLOYEE
+  Header
+    Logo (image)
+    Social media (links)
+    Phone number (link)
+    Show role (text)
+    Logout (button)
+	Methods:
+	  1. router-link that logs user out and redirects them to the home page
+  Navigation Bar
+    Home (link)
+    Available to Rent (link)
+    Contact Us (link)
+  Main content
+    Employee portal (text with personal welcome message)
+    See list of maintenance requests assigned to them (table with checkboxes that
+	shows if a request was completed and they can check the box when the
+	work is completed)
+	Methods:
+	  1. check-box that allows for an employee to check the box
+  Footer
+    Copyright (text)
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+LANDLORD
+  Header
+    Logo (image)
+    Social media (links)
+    Phone number (link)
+    Show role (text)
+    Logout (button)
+	Methods:
+	  1. router-link that logs user out and redirects them to the home page
+  Navigation Bar
+    Home (link)
+    Available to Rent (link)
+    Contact Us (link)
+  Main content
+    Landlord portal (text with personal welcome message)
+    Add new property listings (form)
+	Methods:
+	  1. form that allows landlord to add a property to the db
+	  2. drop-down menus on the form
+	  3. owner attaches own id via drop-down or input text field
+    Add new renters to properties/units (form)
+	Methods:
+	  1. form that allows landlord to add a renter to a property/unit
+	  2. drop-down of all renters that are not attached to a property
+    Update info about a property (form with update button)
+	Methods:
+	  1. list of rows where each row (maybe in a table) has property info
+		that the landlord can view; at the end of the row is an update
+		button or link that takes them to a form page that has
+		pre-populated data about the property that they can edit; this
+		can be a v-for
+    View all maintenance requests and assign maintenance requests (table)
+	See list of maintenance requests assigned to them (table with checkboxes 
+	that shows requests with dropdown menus to the right of each
+	request and the menu has all available employees)
+	Methods:
+	  1. v-for to show requests and drop-down that shows the maintenance
+		employees
+  Footer
+    Copyright (text)
+
+Form page for updating properties
+  Header
+    Logo (image)
+    Social media (links)
+    Phone number (link)
+    Show role (text)
+    Logout (button)
+	Methods:
+	  1. router-link that logs user out and redirects them to the home page
+  Navigation Bar
+    Home (link)
+    Available to Rent (link)
+    Contact Us (link)
+  Main content
+    Form for updating property
+    Add new property listings (form)
+	Methods:
+	  1. list of rows where each row (maybe in a table) has property info
+		that the landlord can view; at the end of the row is an update
+		button or link that takes them to a form page that has
+		pre-populated data about the property that they can edit; this
+		can be a v-for
+
+
+
+
+
+
+
+
+
+  

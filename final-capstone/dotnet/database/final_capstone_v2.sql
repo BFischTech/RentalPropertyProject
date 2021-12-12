@@ -150,11 +150,11 @@ CREATE TABLE [amenities] (
 
 CREATE TABLE [tenant] (
   tenant_id       INT           NOT NULL,
-  unit_rented_id  INT           NOT NULL,
-  first_name      VARCHAR(255)  NOT NULL,
-  last_name       VARCHAR(255)  NOT NULL,
-  email           VARCHAR(255)  NOT NULL,
-  mobile_number   VARCHAR(255)  NOT NULL,
+  unit_rented_id  INT,
+  first_name      VARCHAR(255),
+  last_name       VARCHAR(255),
+  email           VARCHAR(255),
+  mobile_number   VARCHAR(255),
   
   CONSTRAINT [PK_tenant_id] PRIMARY KEY (tenant_id),
   CONSTRAINT [FK_tenant_id] FOREIGN KEY (tenant_id) REFERENCES [users] (user_id),
@@ -258,16 +258,16 @@ VALUES
 INSERT INTO [units] 
   (property_id, unit_type_id, rent_amount, is_rented, rent_due_date)
 VALUES 
-  (1, 1, 420,  0, '15th'),
-  (2, 1, 920,  0, '25th'),
-  (2, 2, 720,  1, '25th'),
-  (3, 3, 2200, 0, '4th'),
-  (4, 1, 2500, 1, '12'),
-  (1, 2, 400,  0, '1st'),
-  (1, 2, 400,  0, '1st'),
-  (1, 1, 320,  0, '1st'),
-  (2, 3, 320,  0, '1st'),
-  (3, 2, 2600, 0, '25th');
+  (1, 1, 420,  0, 15),
+  (2, 1, 920,  0, 25),
+  (2, 2, 720,  1, 25),
+  (3, 3, 2200, 0, 4),
+  (4, 1, 2500, 1, 12),
+  (1, 2, 400,  0, 1),
+  (1, 2, 400,  0, 1),
+  (1, 1, 320,  0, 1),
+  (2, 3, 320,  0, 1),
+  (3, 2, 2600, 0, 25);
 
 INSERT INTO [amenities] 
   (unit_id, bedroom_count, bathroom_count, pet_allowed, smoking_allowed, pool_access, parking_spots)
