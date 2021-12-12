@@ -276,7 +276,7 @@ VALUES
   ('Lake House', ' House on the lake, access to a boat dock', '436 Anchor BLVD', 'Alpena', 'MI', '6754', 'https://www.cprealestate.com/shared/fs/0543/company/shutterstock_213290023%20%281%29.jpg', 6);
 
 INSERT INTO [units] 
-  (property_id, unit_type_id, rent_amount, is_rented)
+  (property_id, unit_type_id, rent_amount, is_rented, rent_due_date)
 VALUES 
   (1, 1, 420,  0, 15),
   (2, 1, 920,  0, 25),
@@ -301,17 +301,17 @@ VALUES
   (7,  2, 1,   0, 1, 0, 1),
   (8,  1, 1,   0, 1, 0, 0),
   (9,  1, 1,   0, 1, 0, 0),
-  (10, 1, 2.5, 1, 1, 0, 3),
-  (11, 1, 1,   0, 1, 0, 0),
-  (12, 2, 1.5, 1, 1, 1, 2),
-  (13, 1, 1,   1, 1, 1, 1),
-  (14, 4, 3.5, 1, 1, 0, 4),
-  (15, 3, 2,   0, 0, 0, 2),
-  (16, 2, 1,   0, 1, 0, 0),
-  (17, 2, 1,   0, 1, 0, 1),
-  (18, 1, 1,   0, 1, 0, 0),
-  (19, 1, 1,   0, 1, 0, 0),
-  (20, 1, 2.5, 1, 1, 0, 3);
+  (10, 1, 2.5, 1, 1, 0, 3)
+  --(11, 1, 1,   0, 1, 0, 0),
+  --(12, 2, 1.5, 1, 1, 1, 2),
+  --(13, 1, 1,   1, 1, 1, 1),
+  --(14, 4, 3.5, 1, 1, 0, 4),
+  --(15, 3, 2,   0, 0, 0, 2),
+  --(16, 2, 1,   0, 1, 0, 0),
+  --(17, 2, 1,   0, 1, 0, 1),
+  --(18, 1, 1,   0, 1, 0, 0),
+  --(19, 1, 1,   0, 1, 0, 0),
+  --(20, 1, 2.5, 1, 1, 0, 3);
 
 INSERT INTO [tenant] 
   (tenant_id, unit_rented_id, first_name, last_name, email, mobile_number)
@@ -321,11 +321,11 @@ VALUES
   (16, 6, 'Jaxon', 'Archer', 'JaxonArcher@gmail.com', '5131234567'),
   (17, 8, 'Caitlin', 'Avery', 'CaitlinAvery@gmail.com', '5131234567'),
   (18, 9, 'Kimora', 'Long', 'KimoraLong@gmail.com', '5131234567'),
-  (19, 10, 'Lorelei', 'May', 'LoreleiMay@gmail.com', '5131234567'),
-  (20, 13, 'Angie', 'Tucker', 'AngieTucker@gmail.com', '5131234567'),
-  (21, 16, 'Kamari', 'Todd', 'KamariTodd@gmail.com', '5131234567'),
-  (22, 18, 'Peyton', 'Bradley', 'PeytonBradley@gmail.com', '5131234567'),
-  (23, 19, 'Cynthia', 'Kelly', 'CynthiaKelly@gmail.com', '5131234567');
+  (19, 10, 'Lorelei', 'May', 'LoreleiMay@gmail.com', '5131234567');
+  --(20, 13, 'Angie', 'Tucker', 'AngieTucker@gmail.com', '5131234567'),
+  --(21, 16, 'Kamari', 'Todd', 'KamariTodd@gmail.com', '5131234567'),
+  --(22, 18, 'Peyton', 'Bradley', 'PeytonBradley@gmail.com', '5131234567'),
+  --(23, 19, 'Cynthia', 'Kelly', 'CynthiaKelly@gmail.com', '5131234567');
 
 INSERT INTO [maintenance_requests] 
   (tenant_id, request_type_id, concern, request_status_id)
@@ -333,13 +333,13 @@ VALUES
 	(14, 2, 'the quick brown fox jumps over the lazy dog', 1),
 	(16, 3, 'leaky bathroom ceiling', 2),
   (18, 1, 'sample maintenance request description', 3),
-	(20, 3, 'leaky bathroom ceiling', 2),
-	(23, 6, 'leaky bathroom ceiling', 1),
+	--(20, 3, 'leaky bathroom ceiling', 2),
+	--(23, 6, 'leaky bathroom ceiling', 1),
   (17, 2, 'sample maintenance request description', 1),
-	(16, 4, 'leaky bathroom ceiling', 2),
-  (20, 2, 'sample maintenance request description', 3),
-	(20, 3, 'leaky bathroom ceiling', 1),
-	(23, 6, 'leaky bathroom ceiling', 2);
+	(16, 4, 'leaky bathroom ceiling', 2);
+ -- (20, 2, 'sample maintenance request description', 3),
+	--(20, 3, 'leaky bathroom ceiling', 1),
+	--(23, 6, 'leaky bathroom ceiling', 2);
 	
 INSERT INTO [maintenance_requests] 
   (tenant_id, request_type_id, concern, request_status_id, employee_assigned_id)
@@ -361,17 +361,17 @@ VALUES
   (7, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
 	(8, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
   (9, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
-	(10, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
-  (11, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
-	(12, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
-  (13, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
-	(14, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
-  (15, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
-  (16, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
-  (17, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
-	(18, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
-  (19, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
-	(20, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img');
+	(10, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img');
+ -- (11, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	--(12, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+ -- (13, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	--(14, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+ -- (15, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+ -- (16, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+ -- (17, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	--(18, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img'),
+ -- (19, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+	--(20, 'https://www.arkbh.com/wp-content/uploads/2021/01/crack_houses-1024x640.jpg', 'Affordable housing img');
 
 INSERT INTO [unit_images] 
   (unit_id, image_caption)
@@ -384,23 +384,23 @@ VALUES
 INSERT INTO [unit_location] 
   (unit_location_id, unit_building_number, unit_number, unit_street_address, unit_city, unit_state, unit_zip_code)
 VALUES 
-  (1,  '0', '0',   '6711 Fayetta Drive',         'Hamilton',      'OH', '45011'),
-  (2,  '0', '0',   '6989 Sleepy Chase Ln',       'Loveland',      'OH', '45140'),
-  (3,  '0', '101', '176 StoneRidge Blvd',        'South Lebanon', 'OH', '45065'),
-  (4,  '1', 'A1', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
-  (5,  '1', 'A2',   '983 Georgey Rows Ave',       'NY',            'NY', '2341'),
-  (6,  '0', '0', '176 StoneRidge Blvd',        'Alpena',        'MI', '6754'),
-  (7,  '0', '0', '3219 Steeple Chase Ln',      'Loveland',      'OH', '45140'),
-  (8,  '0', '0',   '911 RollongStone Blvd',      'South Lebanon', 'OH', '45065'),
-  (9,  '2', '606', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
-  (10, '2', '101',   '983 Georgey Rows Ave',       'NY',            'NY', '2341'),
-  (11,  '1', 'A3',   '6711 Fayetta Drive',         'Hamilton',      'OH', '45011'),
-  (12,  '1', 'C2',   '6989 Sleepy Chase Ln',       'Loveland',      'OH', '45140'),
-  (13,  '1', 'B10', '176 StoneRidge Blvd',        'South Lebanon', 'OH', '45065'),
-  (14,  '0', '0', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
-  (15,  '1', '0',   '983 Georgey Rows Ave',       'NY',            'NY', '2341'),
-  (16,  '1', '102', '176 StoneRidge Blvd',        'Alpena',        'MI', '6754'),
-  (17,  '0', '0', '3219 Steeple Chase Ln',      'Loveland',      'OH', '45140'),
-  (18,  '1', 'A4',   '911 RollongStone Blvd',      'South Lebanon', 'OH', '45065'),
-  (19,  '2', '301', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
-  (20, '1', 'B6',   '983 Georgey Rows Ave',       'NY',            'NY', '2341');
+  (1,  0, '0',   '6711 Fayetta Drive',         'Hamilton',      'OH', '45011'),
+  (2,  0, '0',   '6989 Sleepy Chase Ln',       'Loveland',      'OH', '45140'),
+  (3,  0, '101', '176 StoneRidge Blvd',        'South Lebanon', 'OH', '45065'),
+  (4,  1, 'A1', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
+  (5,  1, 'A2',   '983 Georgey Rows Ave',       'NY',            'NY', '2341'),
+  (6,  0, '0', '176 StoneRidge Blvd',        'Alpena',        'MI', '6754'),
+  (7,  0, '0', '3219 Steeple Chase Ln',      'Loveland',      'OH', '45140'),
+  (8,  0, '0',   '911 RollongStone Blvd',      'South Lebanon', 'OH', '45065'),
+  (9,  2, '606', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
+  (10, 2, '101',   '983 Georgey Rows Ave',       'NY',            'NY', '2341');
+  --(11,  1, 'A3',   '6711 Fayetta Drive',         'Hamilton',      'OH', '45011'),
+  --(12,  1, 'C2',   '6989 Sleepy Chase Ln',       'Loveland',      'OH', '45140'),
+  --(13,  1, 'B10', '176 StoneRidge Blvd',        'South Lebanon', 'OH', '45065'),
+  --(14,  0, '0', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
+  --(15,  1, '0',   '983 Georgey Rows Ave',       'NY',            'NY', '2341'),
+  --(16,  1, '102', '176 StoneRidge Blvd',        'Alpena',        'MI', '6754'),
+  --(17,  0, '0', '3219 Steeple Chase Ln',      'Loveland',      'OH', '45140'),
+  --(18,  1, 'A4',   '911 RollongStone Blvd',      'South Lebanon', 'OH', '45065'),
+  --(19,  2, '301', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
+  --(20, 1, 'B6',   '983 Georgey Rows Ave',       'NY',            'NY', '2341');
