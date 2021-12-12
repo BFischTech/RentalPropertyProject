@@ -268,94 +268,94 @@ VALUES
 	(
     'Simple House', 
     'Beautiful, Tranquil home with Game room near city, lake and skiing! Rare find!', 
-    'https://media.vrbo.com/lodging/32000000/31190000/31189800/31189799/8318a561.f10.jpg', 
     '7822 Rolling stone dr.', 
     'Hamilton', 
     'OH', 
-    '56122', 
+    '56122',
+    'https://hosting.photobucket.com/images/i/clarkjtm/1.jpg',  
     2
   ),
 	(
     'The Cozy Cumberland', 
     'The Cozy Cumberland is a well-furnished 3 Bedroom 2 Bath “Entire House” with complete privacy', 
-    'https://media.vrbo.com/lodging/33000000/32460000/32458100/32458007/c4558a49.f10.jpg', 
     '4321 Queens island ln', 
     'Cincinnati', 
     'OH', 
-    '45999', 
+    '45999',
+    'https://hosting.photobucket.com/images/i/clarkjtm/2.jpg',  
     3
   ),
   (
     'Corner House', 
     'Four bedroom House', 
-    'https://resources.stuff.co.nz/content/dam/images/1/z/i/f/b/u/image.related.StuffLandscapeThreeByTwo.1464x976.1xiv2f.png/1584385031980.jpg', 
     '176 StoneRidge Blvd', 
     'South Lebanon', 
     'OH', 
-    '45065', 
+    '45065',
+    'https://hosting.photobucket.com/images/i/clarkjtm/3.jpg',  
     4
   ),
   (
     'Beach House', 
-    'Beach House, private beach access', 
-    'https://www.mymove.com/wp-content/uploads/2013/08/GettyImages-200181509-001-scaled.jpg', 
+    'Beach House, private beach access',  
     '627 Cherry Grove St', 
     'Casper', 
     'SC', 
     '78140', 
+    'https://hosting.photobucket.com/images/i/clarkjtm/4.jpg',
     5
   ),
 	(
     'Lake House', 
     ' House on the lake, access to a boat dock', 
-    'https://www.cprealestate.com/shared/fs/0543/company/shutterstock_213290023%20%281%29.jpg', 
     '436 Anchor BLVD', 
     'Alpena', 
     'MI', 
-    '6754', 
+    '6754',
+    'https://hosting.photobucket.com/images/i/clarkjtm/5.jpg', 
     6
   ),
   --Apartment
 	(
     'Steeple Chase', 
     'Apartment complex that has nice ponds', 
-    'https://cdngeneralcf.rentcafe.com/dmslivecafe/3/50497/70590713_2557871087604384_3601364742377046016_o.jpg?&quality=85&width=956&height=717&mode=crop', 
     '3219 Steeple Chase Ln', 
     'Loveland', 
     'OH', 
-    '45140', 
+    '45140',
+    'https://hosting.photobucket.com/images/i/clarkjtm/6.jpg',  
     7
   ),
 	(
     'Afordable Houseing', 
-    'Apartment complex for the poor', 
-    'https://blackthen.com/wp-content/uploads/2015/06/cabrini-green.jpg', 
+    'Apartment complex for the poor',  
     '983 Georgey Rows Ave', 
     'NY', 
     'NY', 
-    '2341', 
+    '2341',
+    'https://hosting.photobucket.com/images/i/clarkjtm/7.jpg', 
     8
   ),
   
   --Condo
 	(
     'The Summit', 
-    'The Summit 1BR 1.5BA Beautiful unit with great views!', 
-    'https://media.vrbo.com/lodging/32000000/31410000/31400700/31400622/1effedee.f10.jpg', 
+    'The Summit 1BR 1.5BA Beautiful unit with great views!',  
     '711 S Thomas Dr', 
     'Casper', 
     'NY', 
-    '54222', 
+    '54222',
+    'https://hosting.photobucket.com/images/i/clarkjtm/8.jpg', 
     9
   ),
   (
     'Piece of Paradise', 
-    'Your Piece of Paradise! Super 2B/2B Beachfront Condo At Island Winds, Heated Pool, Tennis, WiFi', 
-    'https://media.vrbo.com/lodging/73000000/72110000/72101900/72101886/81af8d6e.f10.jpg', 
+    'Your Piece of Paradise! Super 2B/2B Beachfront Condo At Island Winds, Heated Pool, Tennis, WiFi',  
     '12370 Estero Blvd', 
     'Alpena', 
     'MI', 
-    '78442', 
+    '78442',
+    'https://hosting.photobucket.com/images/i/clarkjtm/9.jpg', 
     10
   );
 

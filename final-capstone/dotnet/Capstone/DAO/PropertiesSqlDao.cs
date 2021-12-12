@@ -21,12 +21,11 @@ namespace Capstone.DAO
                     conn.Open();
 
                     var sql =
-                        "SELECT p.property_id , name, description, address, city, state, zip_code, image_url, COUNT(u.is_rented) AS 'available_units' " +
+                        "SELECT p.property_id AS 'id', ut.unit_type_name AS 'type', p.name, p.description, p.address, p.city, p.state, p.zip_code, p.image_url " +
                         "FROM properties p " +
                         "INNER JOIN units u ON u.property_id = p.property_id " +
-                        "WHERE u.is_rented <> 1 " +
-                        "GROUP BY " +
-                        "p.property_id, p.name, p.description, p.address, p.city, p.state, p.zip_code, p.image_url;";
+                        "INNER JOIN unit_types ut ON ut.unit_type_id = u.unit_type_id " +
+                        "WHERE u.is_rented <> 1;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -44,7 +43,8 @@ namespace Capstone.DAO
         private PropertiesWithAvailableUnits GetAllPropertiesWithAvailableUnitsFromReader(SqlDataReader reader) {
             PropertiesWithAvailableUnits propertyWithAvailableUnits = new PropertiesWithAvailableUnits();
 
-            propertyWithAvailableUnits.propertyId = Convert.ToInt32(reader["property_id"]);
+            propertyWithAvailableUnits.propertyId = Convert.ToInt32(reader["id"]);
+            propertyWithAvailableUnits.propertyType = Convert.ToString(reader["type"]);
             propertyWithAvailableUnits.name = Convert.ToString(reader["name"]);
             propertyWithAvailableUnits.description = Convert.ToString(reader["description"]);
             propertyWithAvailableUnits.address = Convert.ToString(reader["address"]);
@@ -52,7 +52,7 @@ namespace Capstone.DAO
             propertyWithAvailableUnits.state = Convert.ToString(reader["state"]);
             propertyWithAvailableUnits.zipCode = Convert.ToString(reader["zip_code"]);
             propertyWithAvailableUnits.imageUrl = Convert.ToString(reader["image_url"]);
-            propertyWithAvailableUnits.availableUnits = Convert.ToInt32(reader["available_units"]);
+
 
             return propertyWithAvailableUnits;
         }
