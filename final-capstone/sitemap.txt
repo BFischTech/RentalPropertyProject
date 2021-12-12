@@ -24,7 +24,7 @@ Home
 	Methods:
 	  1. router-link to another page that has every unit available to rent
 	     each of these units will be shown individually
-    Contact Us (link)
+    * Contact Us (link) * optional
 	Methods:
 	  1. router-link to a contact us page with a form to submit
     * About Us (link) * optional
@@ -187,6 +187,7 @@ RENTER
     Social media (links)
     Phone number (link)
     Show role (text)
+    Renter page (button)
     Logout (button)
 	Methods:
 	  1. router-link that logs user out and redirects them to the home page
@@ -221,6 +222,7 @@ EMPLOYEE
     Social media (links)
     Phone number (link)
     Show role (text)
+    Employee page (button)
     Logout (button)
 	Methods:
 	  1. router-link that logs user out and redirects them to the home page
@@ -247,6 +249,7 @@ LANDLORD
     Social media (links)
     Phone number (link)
     Show role (text)
+    Landlord page (button)
     Logout (button)
 	Methods:
 	  1. router-link that logs user out and redirects them to the home page

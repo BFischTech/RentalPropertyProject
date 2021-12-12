@@ -1,0 +1,76 @@
+User Story Cards
+
+1. Add social media links to header (e.g. Facebook, Instagram, etc) with anchor tag.
+2. Delete link from phone number text in header (i.e., make sure there's no link and it's just text).
+3. Get login button set up to take user to separate login page upon clicking.
+4. Get register button set up to take user to separate register page upon clicking.
+5. Get "home" link on nav bar to take user to home page.
+6. Get "available to rent" link on nav bar to take user to page that has every unit available to rent.
+7. Create MVC function that grabs all available properties and available units as an HTTP Get method 
+	(backend). SQL statement queries for an image, address, city, state, zip, number of units to rent.
+8. Create frontend functionality to display all available properties when home page is loaded.
+9. Create a frontend details button that takes user to individual property's page.
+10. Create footer component.
+
+11. Create MVC function that gets all available units where is_rented is set to false. Show image, address,
+	city, state, zip, rental price.
+12. Create frontend functionality that takes user to individual unit's page when "details" button is clicked.
+13. Create frontend functionality that displays available unit cards with details given by backend. 
+
+14. Create MVC function that gets all information about a single unit (e.g., amenities, rental price, etc.).
+15.  Create frontend functionality that displays individual unit cards with details given by backend.
+16. Create frontend functionality that takes user to their specific role page.
+
+17. Create frontend functionality that allows user to choose role.
+18. Create frontend functionality that shows renter role to user.
+19. Create frontend functionality that allows for renter to go to renter page (i.e., button).
+20. Create logout button on renter page.
+21. Create on renter page text with personal welcome and "how can we help you?" text.
+22. Create pay rent button that shows rental payment form.
+23. Create MVC functionality that allows for renter to post payment (put request).
+24. Add column in database that adds "rent_due" boolean to allow landlord to keep track of whether rent
+	is due.
+25. Create frontend functionality that allows renter to submit a maintenance request.
+26. Create backend functionality that adds maintenance request to db (put request).
+27. Create frontend functionality that allows user to see all requests.
+28. FOR RENTER, Create backend functionality that sends all maintenance requests to the frontend view based on
+	get request from frontend.
+29. Create frontend functionality that shows employee role to user.
+30. Create frontend functionality that allows for employee to go to employee page (i.e., button).
+31. Create frontend functionality that allows for employee to see a list of maintenance requests assigned
+	to the employee.
+32. FOR EMPLOYEE, Create backend functionality that sends all maintenance requests to the frontend view based on
+	get request from frontend.
+33. Create frontend functionality that shows landlord role to user.
+34. Create frontend functionality that allows for landlord to go to landlord page (i.e., button).
+35. Create frontend functionality to add welcome message to landlord.
+36. Create frontend functionality to add welcome message to employee.
+37. Create frontend functionality (form with drop-down menus and owner_id via drop-down or text field) that 
+	allows landlord to add a new property listing.
+38. Create MVC functionality that accepts a frontend put request that adds new property data to the db (from
+	the landlord "new property" form).
+39. Create frontend functionality (form with drop-down menus of renters not attached to a property) that 
+	allows landlord to add an unattached renter to a unit.
+40. Create MVC functionality that accepts a frontend put request that adds new renter data to the db (from
+	the landlord "add renter" form).
+41. Create frontend functionality that allows landlord to update information about a property (form with
+	update button). Table with list of rows where each row has property info
+		that the landlord can view; at the end of the row is an update
+		button or link that takes them to a form page that has
+		pre-populated data about the property that they can edit; this
+		can be a v-for
+42. Create MVC functionality that accepts put request from landlord to update info about a property.
+43. Create frontend functionality that allows landlord to view all maintenance requests and allows
+	landlord to assign maintenance requests to employee. See list of maintenance requests assigned to 
+	them (table with checkboxes 
+	that shows requests with dropdown menus to the right of each
+	request and the menu has all available employees); v-for to show requests and drop-down that
+	shows the maintenance employees
+44. Create MVC functionality that accepts a get request from landlord to view all maintenance requests.
+45. Create MVC functionality that accepts put request from landlord that allows landlord to assign
+	maintenance requests to employee.
+
+
+
+
+
