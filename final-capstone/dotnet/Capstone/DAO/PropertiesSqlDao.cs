@@ -10,18 +10,14 @@ namespace Capstone.DAO
     {
         private readonly string _connectionString;
 
-        public PropertiesSqlDao(string dbConnectionString)
-        {
+        public PropertiesSqlDao(string dbConnectionString) {
             _connectionString = dbConnectionString;
         }
 
-        public IList<PropertiesWithAvailableUnits> GetAllPropertiesWithAvailableUnits()
-        {
+        public IList<PropertiesWithAvailableUnits> GetAllPropertiesWithAvailableUnits() {
             IList<PropertiesWithAvailableUnits> propertyWithAvailableUnitsList = new List<PropertiesWithAvailableUnits>();
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(_connectionString))
-                {
+            try {
+                using (SqlConnection conn = new SqlConnection(_connectionString)) {
                     conn.Open();
 
                     var sql =
@@ -34,22 +30,18 @@ namespace Capstone.DAO
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    while (reader.Read())
-                    {
+                    while (reader.Read()) {
                         propertyWithAvailableUnitsList.Add(GetAllPropertiesWithAvailableUnitsFromReader(reader));
                     }
                 }
-            }
-            catch (Exception)
-            {
+            } catch (SqlException) {
                 throw;
             }
             return propertyWithAvailableUnitsList;
         }
 
         //Helper method to Convert DB data based off the correct model
-        private PropertiesWithAvailableUnits GetAllPropertiesWithAvailableUnitsFromReader(SqlDataReader reader)
-        {
+        private PropertiesWithAvailableUnits GetAllPropertiesWithAvailableUnitsFromReader(SqlDataReader reader) {
             PropertiesWithAvailableUnits propertyWithAvailableUnits = new PropertiesWithAvailableUnits();
 
             propertyWithAvailableUnits.propertyId = Convert.ToInt32(reader["property_id"]);

@@ -87,7 +87,9 @@ CREATE TABLE [properties] (
   CONSTRAINT [FK_properties_owner_id] FOREIGN KEY (owner_id) REFERENCES [owner] (owner_id)
 );
 
--- 1: House, 2: Apartment, 3: Condominium
+-- 1: House, 
+-- 2: Apartment, 
+-- 3: Condo
 CREATE TABLE [unit_types] (
   unit_type_id    INT          NOT NULL,
   unit_type_name  VARCHAR(255) NOT NULL,
@@ -96,27 +98,41 @@ CREATE TABLE [unit_types] (
 );
 
 CREATE TABLE [units] (
-  unit_id         INT IDENTITY(1,1) NOT NULL,
-  property_id     INT               NOT NULL,
-  unit_type_id    INT               NOT NULL,
-  rent_amount     DECIMAL           NOT NULL,
-  is_rented       BIT               NOT NULL DEFAULT 0,
-  rent_due_date   VARCHAR(50)       NOT NULL,
+  unit_id                  INT IDENTITY(1,1) NOT NULL,
+  property_id              INT               NOT NULL,
+  unit_type_id             INT               NOT NULL,
+  rent_amount              DECIMAL           NOT NULL,
+  is_rented                BIT               NOT NULL DEFAULT 0,
+  rent_due_date            INT               NOT NULL DEFAULT 15,
   
   CONSTRAINT [PK_unit_id] PRIMARY KEY (unit_id),
   CONSTRAINT [FK_property_id] FOREIGN KEY (property_id) REFERENCES [properties] (property_id),
   CONSTRAINT [FK_unit_type_id] FOREIGN KEY (unit_type_id) REFERENCES [unit_types] (unit_type_id)
 );
 
+CREATE TABLE [unit_location] (
+  unit_location_id      INT NOT NULL,
+  unit_building_number  INT NOT NULL DEFAULT 0,
+  unit_number           VARCHAR(255) ,
+  unit_street_address   VARCHAR(255) NOT NULL,
+  unit_city             VARCHAR(255) NOT NULL,
+  unit_state            VARCHAR(255) NOT NULL,
+  unit_zip_code         VARCHAR(255) NOT NULL, 
+
+  CONSTRAINT [PK_unit_location_id] PRIMARY KEY (unit_location_id),
+  CONSTRAINT [FK_unit_location_id] FOREIGN KEY (unit_location_id) REFERENCES [units] (unit_id),           
+);
+
 CREATE TABLE [unit_images] (
   image_id        INT IDENTITY(1,1) NOT NULL,
   unit_id         INT               NOT NULL,
   image_url       VARCHAR(MAX)      NOT NULL CHECK (image_url=null) DEFAULT 'https://www.pngfind.com/pngs/m/156-1568188_blank-house-cliparts-plain-house-clipart-hd-png.png',
-  image_caption   VARCHAR(255),
+  image_caption   VARCHAR(255)      DEFAULT 'Insert Image Please!',
 
   CONSTRAINT [PK_image_id] PRIMARY KEY (image_id),
   CONSTRAINT [FK_unit_images_unit_id] FOREIGN KEY (unit_id) REFERENCES [units] (unit_id),
 );
+
 
 CREATE TABLE [amenities] (
   amenities_id      INT IDENTITY(1,1) NOT NULL,
@@ -161,7 +177,6 @@ CREATE TABLE [maintenance_request_status] (
   CONSTRAINT [PK_maintenance_request_status_id] PRIMARY KEY (maintenance_request_status_id)
 );
 
-
 CREATE TABLE [maintenance_requests] (
   maintenance_request_id    INT IDENTITY(1,1) NOT NULL,
   tenant_id                 INT               NOT NULL,
@@ -169,7 +184,7 @@ CREATE TABLE [maintenance_requests] (
   concern                   VARCHAR(MAX)      NOT NULL,
   request_date_time         DATETIME          NOT NULL DEFAULT GETDATE(),
   request_status_id         INT               NOT NULL,
-  employee_assigned_id		INT	,			  		
+  employee_assigned_id		  INT	,			  		
 
   CONSTRAINT [PK_maintenance_request_id] PRIMARY KEY (maintenance_request_id),
   CONSTRAINT [FK_maintenance_request_tenant_id] FOREIGN KEY (tenant_id) REFERENCES [tenant] (tenant_id),
@@ -303,3 +318,17 @@ VALUES
 	(3, 'blank default img url'),
 	(4, 'blank default img url'),
 	(5, 'blank default img url');
+
+INSERT INTO [unit_location] 
+  (unit_location_id, unit_building_number, unit_number, unit_street_address, unit_city, unit_state, unit_zip_code)
+VALUES 
+  (1,  '0', '0',   '6711 Fayetta Drive',         'Hamilton',      'OH', '45011'),
+  (2,  '0', '0',   '6989 Sleepy Chase Ln',       'Loveland',      'OH', '45140'),
+  (3,  '2', '101', '176 StoneRidge Blvd',        'South Lebanon', 'OH', '45065'),
+  (4,  '1', '305', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
+  (5,  '0', '0',   '983 Georgey Rows Ave',       'NY',            'NY', '2341'),
+  (6,  '2', '102', '176 StoneRidge Blvd',        'Alpena',        'MI', '6754'),
+  (7,  '3', '101', '3219 Steeple Chase Ln',      'Loveland',      'OH', '45140'),
+  (8,  '0', '0',   '911 RollongStone Blvd',      'South Lebanon', 'OH', '45065'),
+  (9,  '3', '606', '627 Cherry Grove St',        'Casper',        'SC', '78140'),
+  (10, '0', '6',   '983 Georgey Rows Ave',       'NY',            'NY', '2341');

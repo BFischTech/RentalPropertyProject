@@ -27,7 +27,7 @@ namespace Capstone.Controllers
         }
 
         [HttpGet("tenant")]
-        [Authorize(Roles ="Tenant")]
+        [Authorize(Roles ="Tenant" )]
         public ActionResult<IList<MaintenanceRequestsByOwner>> GetMaintenanceRequestsByTenant() {
             return Ok(_maintenceRequestsDao.GetMaintenanceRequestsByTenant(Convert.ToInt32(User.FindFirst("sub")?.Value)));
         }
