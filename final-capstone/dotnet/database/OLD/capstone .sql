@@ -181,7 +181,7 @@ INSERT INTO
 VALUES 
 	('sample name', 'sample description', 'https://www.cprealestate.com/shared/fs/0543/company/shutterstock_213290023%20%281%29.jpg', 'sample addy', 'sample city', 'sample state', 'sample zip'),
 	('Steeple Chase', 'Apartment complex that has nice ponds', 'https://cdngeneralcf.rentcafe.com/dmslivecafe/3/50497/70590713_2557871087604384_3601364742377046016_o.jpg?&quality=85&width=956&height=717&mode=crop', '3219 Steeple Chase Ln', 'Loveland', 'OH', '45140'),
-    ('Corner House', 'Four bedroom House', 'https://resources.stuff.co.nz/content/dam/images/1/z/i/f/b/u/image.related.StuffLandscapeThreeByTwo.1464x976.1xiv2f.png/1584385031980.jpg', '176 StoneRidge Blvd', 'South Lebanon', 'OH', '45065'),
+  ('Corner House', 'Four bedroom House', 'https://resources.stuff.co.nz/content/dam/images/1/z/i/f/b/u/image.related.StuffLandscapeThreeByTwo.1464x976.1xiv2f.png/1584385031980.jpg', '176 StoneRidge Blvd', 'South Lebanon', 'OH', '45065'),
 	('Beach House', 'Beach House, private beach access', 'https://www.mymove.com/wp-content/uploads/2013/08/GettyImages-200181509-001-scaled.jpg', '627 Cherry Grove St', 'Casper', 'SC', '78140'),
 	('Afordable Houseing', 'Apartment complex for the poor', 'https://blackthen.com/wp-content/uploads/2015/06/cabrini-green.jpg', '983 Georgey Rows Ave', 'NY', 'NY', '2341'),
 	('Lake House', ' House on the lake, access to a boat dock', 'https://www.cprealestate.com/shared/fs/0543/company/shutterstock_213290023%20%281%29.jpg', '436 Anchor BLVD', 'Alpena', 'MI', '6754')
