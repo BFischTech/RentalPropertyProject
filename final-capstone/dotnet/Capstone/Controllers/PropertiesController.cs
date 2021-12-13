@@ -34,5 +34,15 @@ namespace Capstone.Controllers
         {
             return Ok(_propertiesDao.GetAllPropertiesWithAvailableUnits());
         }
+
+        [HttpPost]
+        [Authorize(Roles = "Owner")]
+        public ActionResult CreateProperty(NewPropertyPost property)
+        {
+            int ownerId = Convert.ToInt32(User.FindFirst("sub")?.Value);
+
+            _propertiesDao.PostNewProperty(property, ownerId);
+            return NoContent();
+        }
     }
 }
