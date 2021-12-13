@@ -4,6 +4,7 @@ using Capstone.Models;
 using Capstone.Security;
 using Capstone.Security.Models;
 
+
 namespace Capstone.DAO
 {
     public class UserSqlDao : IUserDao
@@ -69,6 +70,41 @@ namespace Capstone.DAO
 
             return GetUser(username);
         }
+
+
+        public Users GetUserRoleById(int userId)
+        {
+            Users returnUser = new Users();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT user_id, user_role, username FROM users WHERE user_id = @user_Id", conn);
+                    cmd.Parameters.AddWithValue("@user_Id", userId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+
+                        returnUser.UserId = Convert.ToInt32(reader["user_id"]);
+                        returnUser.Username = Convert.ToString(reader["username"]);
+                        returnUser.PasswordHash = "XXXX";
+                        returnUser.Salt = "XXXX";
+                        returnUser.Role = Convert.ToString(reader["user_role"]);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return returnUser;
+        }
+
 
         private Users GetUserFromReader(SqlDataReader reader)
         {
