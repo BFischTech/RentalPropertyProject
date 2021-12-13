@@ -7,7 +7,13 @@
         <b-card-text >
           {{ property.city }}, {{ property.state }}, {{property.zipCode}}
         </b-card-text>
-          <b-button href="#" variant="primary">View Details</b-button>
+        <div>
+          <router-link>
+            <b-button href="#" variant="primary">View Details</b-button>
+          </router-link>
+          
+        </div>
+          
           <b-button href="#" variant="primary">{{property.availableUnits}}Available Units</b-button>
       </b-card>
     </div>
