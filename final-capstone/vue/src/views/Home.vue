@@ -1,20 +1,22 @@
 <template>
-  <div class="home">
-    <div class="property" v-for="property in properties" :key="property.propertyId">
-      {{ property.propertyType }}
-      <b-card  :title="property.name" :img-src="property.imageUrl" :sub-title="property.description" img-alt="Image" img-top tag="article" class="mb-2">
-
+  <div id="container-grid">
+    <div id="property" v-for="property in properties" :key="property.propertyId">
+      <b-card :header="property.propertyType" :title="property.name" :img-src="property.imageUrl" :sub-title="property.description.substring(0,60)+'...'" img-alt="Image" img-top tag="article" class="mb-2">
         <b-card-text >
           {{ property.city }}, {{ property.state }}, {{property.zipCode}}
         </b-card-text>
+        <i class="fa fa-bed" aria-hidden="true"> {{property.bedroomCount}} Bedroom&#40;s&#41;</i>
+        <i class="fa fa-shower" aria-hidden="true">{{property.bathroomCount}} Bathroom&#40;s&#41;</i>
+
         <div>
           <router-link>
             <b-button href="#" variant="primary">View Details</b-button>
           </router-link>
-          
+        <p v-if="property.availableUnits >= 1 && property.propertyType !== 'House'">{{property.availableUnits}} - Available Unit&#40;s&#41;</p>
+        <p v-if="property.availableUnits >= 1 && property.propertyType === 'House'">Available To Rent</p>
         </div>
-          
-          <b-button href="#" variant="primary">{{property.availableUnits}}Available Units</b-button>
+          <b-button href="#" variant="primary">View Details</b-button>
+
       </b-card>
     </div>
   </div>
@@ -41,89 +43,67 @@ export default {
 
 <style scoped>
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
+
+@media (min-width:801px) {
+img {
+  width: 30rem;
+  height: 20rem;
+}
+
+#container-grid {
+  display: grid;
+  grid-template: 1fr 1fr 1fr;
+  row-gap: 5px;
+  column-gap: 5px;
+  grid-template-areas: 
+    "property property property";
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+}
+
+#property {
+  display: flex;
+  align-items: center;
+}
+
+#container {
+  background-color: white;
+  width: 35rem;
+  padding: 20px;
+}
+}
+
+@madia (max-width:800px) {
 img {
   width: 35rem;
-  height: 35rem;
+  height: 20rem;
 }
-body {
-    margin: 0;
-}
-
-.home {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: 2em auto;
-    height: 100vh;
-}
-
-.property {
-  border: 5px solid white ;
-
+#container-grid {
+  display: grid;
+  grid-template: 1fr 1fr;
+  row-gap: 5px;
+  column-gap: 5px;
+  grid-template-areas: 
+    "property property";
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
 }
 
-header {
-    grid-area: header;
-    background-color: #F69A00;
+#property {
+  display: flex;
+  align-items: center;
 }
-nav {
-    grid-area: nav;
-    margin-left: 0.5rem;
-    background-color: #F2EAD2;
+
+#container {
+  background-color: white;
+  width: 35rem;
+  padding: 20px;
 }
-main {
-    grid-area: content;
-    background-color: #F9F5F0;
 }
-aside {
-    grid-area: side;
-    margin-right: 0.5rem;
-    background-color: #F2EAD2;
-}
-footer {
-    grid-area: footer;
-    background-color: #331312;
-}
-header, footer {
-    color: #FFFFFF;
-}
-nav, main, aside {
-    color: #74889A;
-}
-header, footer, nav, main, aside {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 24px;
-    text-transform: uppercase;
-}
-div.content {
-    text-align: center;
-    padding-top: 20px;
-}
-/*if screen size is less than 769*/
-@media (max-width: 768px) {
-    .container {
-        grid-template-areas:
-            "header"
-            "nav"
-            "content"
-            "side"
-            "footer";
-        grid-template-columns: 1fr;
-        grid-template-rows:
-            auto /* Header */
-            75px /* Nav */
-            1fr /* Content */
-            75px /* Sidebar */
-            auto; /* Footer */
-    }
-    header, footer, nav, main, aside {
-        padding: 5px 0;
-    }
-    nav, aside {
-      margin: 0;
-    }
-}
- 
+
 </style>

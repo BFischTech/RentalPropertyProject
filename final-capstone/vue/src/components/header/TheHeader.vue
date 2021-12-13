@@ -6,7 +6,7 @@
             <img src="logo.png" alt="Tech Elevator Logo" class="logo">
           </a>
         </div> 
-  
+
         <div id="social-bar">    
         <ul>  
             <i class="fa fa-facebook-official" aria-hidden="true">  <a href="https://www.facebook.com/techelevator/" target="_blank">Like us on Facebook</a></i>
@@ -17,9 +17,11 @@
           </ul>
         </div> 
       </div>
-      
-       <b-button class="w-50 h-75 loginButton" href="/login" variant="outline-dark" pill="true">Login</b-button>
-      <b-button class="w-50  h-75 loginButton" href="/register" variant="outline-dark" pill="true">Register</b-button>
+  
+      <h1 v-if="$store.state.token != ''">Welcome! {{ $store.state.user.role }}</h1>
+      <b-button class="w-50 h-75 loginButton" href="/logout" variant="outline-dark" pill="true" v-if="$store.state.token != ''">Logout</b-button>
+      <b-button class="w-50 h-75 loginButton" href="/login" variant="outline-dark" pill="true" v-if="$store.state.token === ''">Login</b-button>
+      <b-button class="w-50 h-75 loginButton" href="/register" variant="outline-dark" pill="true" v-if="$store.state.token === ''">Register</b-button>
 
     </div>
 </template>
