@@ -13,4 +13,17 @@ namespace Capstone.Models
         public string imageUrl { get; set; }
         public int availableUnits { get; set; }
     }
+
+    public class NewPropertyPost
+    {
+        public string propertyName { get; set; }
+        public string propertyDescription { get; set; }
+        public string propertyAddress { get; set; }
+        public string propertyCity { get; set; }
+        public string propertyState { get; set; }
+        public string propertyZipCode { get; set; }
+        public string propertyImgUrl { get; set; }
+        public int propertyOwnerId { get; set; }
+    }
+
 }

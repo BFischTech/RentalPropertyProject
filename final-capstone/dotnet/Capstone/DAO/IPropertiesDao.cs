@@ -9,5 +9,6 @@ namespace Capstone.DAO
     public interface IPropertiesDao
     {
         IList<PropertiesWithAvailableUnits> GetAllPropertiesWithAvailableUnits();
+        void PostNewProperty(NewPropertyPost property, int ownerId);
     }
 }
