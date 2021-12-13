@@ -3,28 +3,46 @@ using System;
 namespace Capstone.Models
 
 {
-    public class MaintenanceRequestsByOwner
+    public class MaintenanceRequestsViewsForOwner
     {
        public int maintenanceRequestId { get; set; }
-       public string from { get; set; }
-       public int propertyNo { get; set; }
-       public int unitNo { get; set; }
+       public int propertyId { get; set; }
+       public string fromTenant { get; set; }
+       public string unitAdresss { get; set; }
        public string requestType { get; set; }
        public string concern { get; set; }
        public string dateTimeRequestMade { get; set; }
        public string requestStatus { get; set; }
+       public string EmployeeeAssigned { get; set; }
 
     }
 
-    public class MaintenanceRequestsByTenant
+    public class MaintenanceRequestsViewsForTenant
     {
         public int maintenanceRequestId { get; set; }
-        public string from { get; set; }
-        public int unitNo { get; set; }
         public string requestType { get; set; }
         public string concern { get; set; }
         public string dateTimeRequestMade { get; set; }
         public string requestStatus { get; set; }
+        public string EmployeeeAssigned { get; set; }
 
     }
+
+    public class MaintenanceRequestsViewsForEmployee
+    {
+        public int maintenanceRequestId { get; set; }
+        public int propertyId { get; set; }
+        public string unitType { get; set; }
+        public string fromTenant { get; set; }
+        public int unitBuildingNumber { get; set; }
+        public string unitNumber { get; set; }
+        public string unitAdresss { get; set; }
+        public string requestType { get; set; }
+        public string concern { get; set; }
+        public string dateTimeRequestMade { get; set; }
+        public string requestStatus { get; set; }
+        public string EmployeeeAssigned { get; set; }
+    }
+
+
 }

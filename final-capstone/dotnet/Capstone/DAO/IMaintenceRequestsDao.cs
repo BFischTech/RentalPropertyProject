@@ -5,8 +5,10 @@ namespace Capstone.DAO
 {
     public interface IMaintenceRequestsDao
     {
-        IList<MaintenanceRequestsByOwner> GetMaintenanceRequestsByOwner(int ownerId);
+        IList<MaintenanceRequestsViewsForOwner> GetMaintenanceRequestsForOwner(int ownerId);
 
-        IList<MaintenanceRequestsByTenant> GetMaintenanceRequestsByTenant(int tenantId);
+        IList<MaintenanceRequestsViewsForTenant> GetMaintenanceRequestsForTenant(int tenantId);
+
+        IList<MaintenanceRequestsViewsForEmployee> GetMaintenanceRequestsForEmployee(int employeeeId);
     }
 }
