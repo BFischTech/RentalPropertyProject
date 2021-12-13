@@ -1,4 +1,4 @@
- -- --------------------------------------------------------------------------------
+  -- --------------------------------------------------------------------------------
 -- Options
 -- --------------------------------------------------------------------------------
 USE master;
@@ -367,10 +367,20 @@ VALUES
   (3, 1, 119, 0, 15),
   (4, 1, 280, 0, 15),
   (5, 1, 135, 0, 15),
+--Apartment
   (6, 2, 199, 1, 15),
+  (6, 2, 199, 1, 15),
+--Apartment
   (7, 2, 185, 0, 15),
+  (7, 2, 185, 0, 15),
+--Condo
   (8, 3, 67, 0, 15),
+  (8, 3, 67, 0, 15),
+--Condo
+  (9, 3, 100, 0, 15),
   (9, 3, 100, 0, 15);
+
+
 
 INSERT INTO [amenities] 
   (unit_id, bedroom_count, bathroom_count, pet_allowed, smoking_allowed, pool_access, parking_spots)
@@ -382,10 +392,16 @@ VALUES
   (5, 1, 1,   1, 1, 1, 1),
 
   (6, 1, 1, 1, 1, 1, 1),
-  (7, 2, 1, 0, 0, 1, 1),
+  (7, 1, 1, 1, 1, 1, 1),
 
   (8, 2, 1, 0, 0, 1, 1),
-  (9, 1, 1, 1, 1, 1, 1);
+  (9, 2, 1, 0, 0, 1, 1),
+
+  (10, 2, 1, 0, 0, 1, 1),
+  (11, 2, 1, 0, 0, 1, 1),
+
+  (12, 1, 1, 1, 1, 1, 1),
+  (13, 1, 1, 1, 1, 1, 1);
 
 INSERT INTO [tenant] 
   (tenant_id, unit_rented_id, first_name, last_name, email, mobile_number)
@@ -417,9 +433,13 @@ VALUES
 	(4, 'https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741', 'Affordable housing img'),
   (5, 'https://media.istockphoto.com/photos/colonial-style-house-picture-id1284097677', 'OH GOD WHAT IS THAT'),
 	(6, 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Affordable housing img'),
-  (7, 'https://media.istockphoto.com/photos/exterior-view-of-modern-apartment-building-picture-id1273552068', 'OH GOD WHAT IS THAT'),
-	(8, 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Affordable housing img'),
-  (9, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT');
+  (7, 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Affordable housing img'),
+  (8, 'https://media.istockphoto.com/photos/exterior-view-of-modern-apartment-building-picture-id1273552068', 'OH GOD WHAT IS THAT'),
+  (9, 'https://media.istockphoto.com/photos/exterior-view-of-modern-apartment-building-picture-id1273552068', 'OH GOD WHAT IS THAT'),
+	(10, 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Affordable housing img'),
+	(11, 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Affordable housing img'),
+  (12, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
+  (13, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT');
 
 INSERT INTO [unit_images] 
   (unit_id, image_caption)
@@ -432,7 +452,11 @@ VALUES
 	(6, 'blank default img url'),
 	(7, 'blank default img url'),
 	(8, 'blank default img url'),
-  (9, 'blank default img url');
+  (9, 'blank default img url'),
+  (10, 'blank default img url'),
+  (11, 'blank default img url'),
+  (12, 'blank default img url'),
+  (13, 'blank default img url');
 
 INSERT INTO [unit_location] 
   (unit_location_id, unit_building_number, unit_number, unit_street_address, unit_city, unit_state, unit_zip_code)
@@ -443,6 +467,10 @@ VALUES
   (4,  0, '0', '627 Cherry Grove St', 'Casper', 'SC', '78140'),
   (5,  0, '0', '436 Anchor BLVD', 'Alpena', 'MI', '6754'),
   (6,  0, 'A1', '3219 Steeple Chase Ln', 'Loveland', 'OH', '45140'),
-  (7,  0, 'A1', '983 Georgey Rows Ave', 'NY', 'NY', '2341'),
-  (8,  1, '301', '711 S Thomas Dr', 'Casper', 'NY', '54222'),
-  (9,  2, '606', '12370 Estero Blvd', 'Alpena', 'MI', '78442');
+  (7,  0, 'A2', '3219 Steeple Chase Ln', 'Loveland', 'OH', '45140'),
+  (8,  0, 'A1', '983 Georgey Rows Ave', 'NY', 'NY', '2341'),
+  (9,  0, 'A2', '983 Georgey Rows Ave', 'NY', 'NY', '2341'),
+  (10,  1, '301', '711 S Thomas Dr', 'Casper', 'NY', '54222'),
+  (11,  1, '302', '711 S Thomas Dr', 'Casper', 'NY', '54222'),
+  (12,  2, '606', '12370 Estero Blvd', 'Alpena', 'MI', '78442'),
+  (13,  2, '406', '12370 Estero Blvd', 'Alpena', 'MI', '78442');

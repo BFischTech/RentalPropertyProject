@@ -11,5 +11,6 @@ namespace Capstone.Models
         public string state { get; set; }
         public string zipCode { get; set; }
         public string imageUrl { get; set; }
+        public int availableUnits { get; set; }
     }
 }

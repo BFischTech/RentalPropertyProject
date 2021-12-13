@@ -21,11 +21,15 @@ namespace Capstone.DAO
                     conn.Open();
 
                     var sql =
-                        "SELECT p.property_id AS 'id', ut.unit_type_name AS 'type', p.name, p.description, p.address, p.city, p.state, p.zip_code, p.image_url " +
-                        "FROM properties p " +
+                        "SELECT p.property_id AS 'id' , ut.unit_type_name AS 'type', name, description, address, city, state, zip_code, image_url, COUNT(u.is_rented) AS 'available_units' " +
+                        "FROM properties p  " +
                         "INNER JOIN units u ON u.property_id = p.property_id " +
                         "INNER JOIN unit_types ut ON ut.unit_type_id = u.unit_type_id " +
-                        "WHERE u.is_rented <> 1;";
+                        "WHERE u.is_rented <> 1  " +
+                        "GROUP BY " +
+                        "p.property_id , ut.unit_type_name, p.name, p.description, p.address, p.city, p.state, p.zip_code, p.image_url " +
+                        "ORDER BY " +
+                        "p.property_id ASC;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -52,6 +56,7 @@ namespace Capstone.DAO
             propertyWithAvailableUnits.state = Convert.ToString(reader["state"]);
             propertyWithAvailableUnits.zipCode = Convert.ToString(reader["zip_code"]);
             propertyWithAvailableUnits.imageUrl = Convert.ToString(reader["image_url"]);
+            propertyWithAvailableUnits.availableUnits = Convert.ToInt32(reader["available_units"]);
 
 
             return propertyWithAvailableUnits;

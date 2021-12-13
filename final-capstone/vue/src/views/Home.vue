@@ -8,6 +8,7 @@
           {{ property.city }}, {{ property.state }}, {{property.zipCode}}
         </b-card-text>
           <b-button href="#" variant="primary">View Details</b-button>
+          <b-button href="#" variant="primary">{{property.availableUnits}}Available Units</b-button>
       </b-card>
     </div>
   </div>
