@@ -1,6 +1,6 @@
 <template>
   <div class="fluid-container footer">
-    <p class="text-center">&#169;2021 Superiror Property. All Rights Reserved.</p>
+    <p class="text-center">&#169;2021 Superior Property. All Rights Reserved.</p>
   </div>
 </template>
 

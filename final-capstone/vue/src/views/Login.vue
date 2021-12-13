@@ -38,7 +38,9 @@
 </template>
 
 <script>
+
 import authService from "../services/AuthService";
+import propertyService from "../services/PropertyService";
 
 export default {
   name: "login",
@@ -53,13 +55,16 @@ export default {
     };
   },
   methods: {
+    
     login() {
+      propertyService ()
       authService
         .login(this.user)
         .then(response => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
+            this.$store.get(response.data.user.role).getUserRole();
             this.$router.push("/");
           }
         })

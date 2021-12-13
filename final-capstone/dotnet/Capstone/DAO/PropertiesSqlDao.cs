@@ -57,6 +57,38 @@ namespace Capstone.DAO
             return propertyWithAvailableUnitsList;
         }
 
+       
+        public void PostNewProperty(NewPropertyPost property, int ownerId)
+        {
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    conn.Open();
+                    string sql = "INSERT INTO properties (name, description, address, city, state, zip_code, image_url, owner_id) " +
+                                 "VALUES (@name, @desctription, @address, @city, @state, @zipcode, @imageUrl, @ownerId)";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@name", property.propertyName);
+                    cmd.Parameters.AddWithValue("@desctription", property.propertyDescription);
+                    cmd.Parameters.AddWithValue("@address", property.propertyAddress);
+                    cmd.Parameters.AddWithValue("@city", property.propertyCity);
+                    cmd.Parameters.AddWithValue("@state", property.propertyState);
+                    cmd.Parameters.AddWithValue("@zipcode", property.propertyZipCode);
+                    cmd.Parameters.AddWithValue("@imageUrl", property.propertyImgUrl);
+                    cmd.Parameters.AddWithValue("@ownerId", ownerId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+
+                throw;
+            }
+
+        }
+
         //Helper method to Convert DB data based off the correct model
         private PropertiesWithAvailableUnits GetAllPropertiesWithAvailableUnitsFromReader(SqlDataReader reader) {
             PropertiesWithAvailableUnits propertyWithAvailableUnits = new PropertiesWithAvailableUnits();

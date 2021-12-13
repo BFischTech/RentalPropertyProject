@@ -18,6 +18,8 @@
           <b-button href="#" variant="primary">View Details</b-button>
 
       </b-card>
+    
+      
     </div>
   </div>
 </template>

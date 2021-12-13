@@ -2,6 +2,8 @@
 using Capstone.DAO;
 using Capstone.Models;
 using Capstone.Security;
+using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Capstone.Controllers
 {
@@ -67,6 +69,17 @@ namespace Capstone.Controllers
             }
 
             return result;
+        }
+
+        [HttpGet] //if works try authenticated
+        [Authorize]
+        public ActionResult GetUserRole()
+        {
+            //returns user with xxxx for salt and password, requires id derived through token
+            string IdTokenString = User.FindFirst("sub").Value;
+            int IdTokenInt = Convert.ToInt32(IdTokenString);
+            Users censoredUser = userDao.GetUserRoleById(IdTokenInt);
+            return Ok(censoredUser);
         }
     }
 }
