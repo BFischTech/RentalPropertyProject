@@ -9,11 +9,11 @@
   
         <div id="social-bar">    
         <ul>  
-            <i class="fa fa-facebook-official" aria-hidden="true">  <a href="#">Like us on Facebook</a></i>
+            <i class="fa fa-facebook-official" aria-hidden="true">  <a href="https://www.facebook.com/techelevator/" target="_blank">Like us on Facebook</a></i>
             <br>
-            <i class="fa fa-instagram" aria-hidden="true">  <a href="#">Follow us on instagram</a></i>
+            <i class="fa fa-instagram" aria-hidden="true">  <a href="https://www.instagram.com/techelevator/?hl=en" target="_blank">Follow us on instagram</a></i>
             <br>
-            <i class="fa fa-phone-square" aria-hidden="true"> <a href="#">1(513)123-4567</a></i>
+            <i class="fa fa-phone-square" aria-hidden="true"> <a>1 (439) 3825 968</a></i>
           </ul>
         </div> 
       </div>
@@ -85,6 +85,7 @@ a:visited {
 ul > li > a:hover {
   color: #00AFEF;
   text-decoration: underline;
+  
 }
 
 .logo {
