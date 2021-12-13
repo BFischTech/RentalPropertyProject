@@ -8,5 +8,9 @@ export default {
 
     getAllUnits() {
         return axios.get('/units')
+    },
+    
+    getUserRole() {
+        return axios.get('/login')
     }
 }

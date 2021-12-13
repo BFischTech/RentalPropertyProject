@@ -73,7 +73,7 @@ namespace Capstone.Controllers
 
         [HttpGet] //if works try authenticated
         [Authorize]
-        public ActionResult  GetUserRole()
+        public ActionResult GetUserRole()
         {
             //returns user with xxxx for salt and password, requires id derived through token
             string IdTokenString = User.FindFirst("sub").Value;
