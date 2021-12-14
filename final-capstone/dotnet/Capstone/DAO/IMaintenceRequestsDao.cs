@@ -10,5 +10,6 @@ namespace Capstone.DAO
         IList<MaintenanceRequestsViewsForTenant> GetMaintenanceRequestsForTenant(int tenantId);
 
         IList<MaintenanceRequestsViewsForEmployee> GetMaintenanceRequestsForEmployee(int employeeeId);
+        void CreateRequest(MaintenanceRequest request, int renterId);
     }
 }

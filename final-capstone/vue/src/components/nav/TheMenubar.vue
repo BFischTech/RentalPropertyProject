@@ -12,7 +12,13 @@
 
 <script>
 export default {
-
+  data(){
+    return{
+      mail : 'xavier.seignard+drangies@gmail.com',
+      phone : '06.00.00.00.00',
+      mention : '2018 | mentions légales'
+    }
+  }
 }
 </script>
 
@@ -22,8 +28,12 @@ body {
   padding: 0
 }
 
+header {
+    margin-bottom: 15px;
+}
 header > nav {
   flex-grow: 1;
+
 }
 
 
@@ -52,7 +62,7 @@ header > nav > ul > li {
   color: #707070;
   padding: 0 20px 0 0;
   margin-left: 20px;
-  
+
 }
 
 ul > li > a,

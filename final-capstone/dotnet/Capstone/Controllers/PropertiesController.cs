@@ -18,7 +18,8 @@ namespace Capstone.Controllers
     {
         private readonly IPropertiesDao _propertiesDao;
 
-        public PropertiesController(IPropertiesDao propertiesDao) {
+        public PropertiesController(IPropertiesDao propertiesDao)
+        {
             _propertiesDao = propertiesDao;
         }
 
@@ -37,12 +38,26 @@ namespace Capstone.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Owner")]
-        public ActionResult CreateProperty(NewPropertyPost property)
+        public ActionResult CreateProperty(Property property)
         {
             int ownerId = Convert.ToInt32(User.FindFirst("sub")?.Value);
 
-            _propertiesDao.PostNewProperty(property, ownerId);
+            _propertiesDao.CreateNewProperty(property, ownerId);
             return NoContent();
         }
+
+        [HttpPut("{propertyId}")]
+        [Authorize(Roles = "Owner")]
+        public ActionResult UpdateProperty(int propertyId, Property property)
+        {
+            int ownerId = Convert.ToInt32(User.FindFirst("sub")?.Value);
+
+            _propertiesDao.UpdateProperty(property, ownerId, propertyId);
+            return NoContent();
+        }
+
+
     }
+
 }
+

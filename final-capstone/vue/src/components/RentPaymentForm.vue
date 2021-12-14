@@ -14,13 +14,7 @@
           ></b-form-datepicker>
           <!-- <p>Date Chosen: {{ value }}</p> -->
 
-          <p id="propertyToChoose">Choose a property</p>
-          <b-form-select
-            id="inputPropertySelect"
-            v-model="form.property"
-            :options="properties"
-            required
-          ></b-form-select>
+       
 
           <p id="rentAmount">Enter payment amount</p>
           <b-form-input
