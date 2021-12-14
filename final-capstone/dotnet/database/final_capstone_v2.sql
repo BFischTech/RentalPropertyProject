@@ -369,7 +369,7 @@ VALUES
   (5, 1, 135, 0, 15),
 --Apartment
   (6, 2, 199, 1, 15),
-  (6, 2, 199, 1, 15),
+  (6, 2, 199, 0, 15),
 --Apartment
   (7, 2, 185, 0, 15),
   (7, 2, 185, 0, 15),
@@ -412,7 +412,7 @@ VALUES
 INSERT INTO [maintenance_requests] 
   (tenant_id, request_type_id, concern, request_status_id)
 VALUES	 
-	(15, 2, 'the quick brown fox jumps over the lazy dog', 1),
+  (15, 2, 'the quick brown fox jumps over the lazy dog', 1),
 	(15, 3, 'leaky bathroom ceiling', 2),
   (15, 1, 'sample maintenance request description', 3),
 

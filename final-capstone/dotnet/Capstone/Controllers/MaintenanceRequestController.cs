@@ -20,30 +20,26 @@ namespace Capstone.Controllers
             _maintenceRequestsDao = maintenceRequestsDao;
         }
 
-        [HttpGet("owner/{ownerId}")]
-        [AllowAnonymous]
-        //[Authorize(Roles ="Admin, Owner")]
-        public ActionResult<IList<MaintenanceRequestsViewsForOwner>> GetMaintenanceRequestsForOwner(int ownerId) {
-            //return Ok(_maintenceRequestsDao.GetMaintenanceRequestsByOwner(Convert.ToInt32(User.FindFirst("sub")?.Value)));
-            return Ok(_maintenceRequestsDao.GetMaintenanceRequestsForOwner(ownerId));
+        [HttpGet("owner")]
+        [Authorize(Roles ="Owner")]
+        public ActionResult<IList<MaintenanceRequestsViewsForOwner>> GetMaintenanceRequestsForOwner() {
+            var id = Convert.ToInt32(User.FindFirst("sub")?.Value);
+            return Ok(_maintenceRequestsDao.GetMaintenanceRequestsForOwner(id));
         }
 
-        [HttpGet("tenant/{tenantId}")]
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin, Tenant")]
-        public ActionResult<IList<MaintenanceRequestsViewsForTenant>> GetMaintenanceRequestsByTenant(int tenantId)
-        {
-            /*return Ok(_maintenceRequestsDao.GetMaintenanceRequestsByTenant(Convert.ToInt32(User.FindFirst("sub")?.Value)));*/
-            return Ok(_maintenceRequestsDao.GetMaintenanceRequestsForTenant(tenantId));
+        [HttpGet("tenant")]
+        [Authorize(Roles = "Tenant")]
+        public ActionResult<IList<MaintenanceRequestsViewsForTenant>> GetMaintenanceRequestsByTenant() {
+            var id = Convert.ToInt32(User.FindFirst("sub")?.Value);
+            return Ok(_maintenceRequestsDao.GetMaintenanceRequestsForTenant(id));
         }
 
-        [HttpGet("employee/{employeeId}")]
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin, Employee")]
-        public ActionResult<IList<MaintenanceRequestsViewsForTenant>> GetMaintenanceRequestsByEmployee(int employeeId)
+        [HttpGet("employee")]
+        [Authorize(Roles = "Employee")]
+        public ActionResult<IList<MaintenanceRequestsViewsForTenant>> GetMaintenanceRequestsByEmployee()
         {
-            
-            return Ok(_maintenceRequestsDao.GetMaintenanceRequestsForEmployee(employeeId));
+            var id = Convert.ToInt32(User.FindFirst("sub")?.Value);
+            return Ok(_maintenceRequestsDao.GetMaintenanceRequestsForEmployee(id));
         }
     }
 }

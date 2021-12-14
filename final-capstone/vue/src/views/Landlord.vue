@@ -1,5 +1,5 @@
 <template>
-  <landlord></landlord>
+  <landlord>There is some text here to denote a thing</landlord>
 </template>
 
 <script>

@@ -8,5 +8,7 @@ export default {
 
     getAllUnits() {
         return axios.get('/units')
-    }
+    },
+    
+
 }
