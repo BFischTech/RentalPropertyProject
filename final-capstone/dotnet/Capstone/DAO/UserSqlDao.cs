@@ -61,6 +61,10 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@salt", hash.Salt);
                     cmd.Parameters.AddWithValue("@user_role", role);
                     cmd.ExecuteNonQuery();
+
+                    string sql = "";
+                    SqlCommand cmd1 = new SqlCommand(sql, conn);
+
                 }
             }
             catch (SqlException)
