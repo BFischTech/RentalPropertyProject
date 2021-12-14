@@ -33,16 +33,21 @@
         required
       />
 
-      <div>
-        <b-form-select v-model="user.role" :options="options"></b-form-select>
-      </div>
+    <div>
+
+       <b-form-select v-model="selected" :options="options"></b-form-select>
+
+    </div>
 
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      
     </form>
+    
   </div>
+  
 </template>
 
 <script>
