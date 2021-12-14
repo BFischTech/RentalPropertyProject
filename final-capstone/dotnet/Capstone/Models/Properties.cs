@@ -14,7 +14,7 @@ namespace Capstone.Models
         public int availableUnits { get; set; }
     }
 
-    public class NewPropertyPost
+    public class Property
     {
         public string propertyName { get; set; }
         public string propertyDescription { get; set; }

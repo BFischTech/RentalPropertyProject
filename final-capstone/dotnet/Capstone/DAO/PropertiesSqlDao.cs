@@ -14,6 +14,36 @@ namespace Capstone.DAO
             _connectionString = dbConnectionString;
         }
 
+        public void UpdateProperty(Property property, int ownerId, int propertyId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    conn.Open();
+                    string sql = "UPDATE properties SET name = @name, description = @description, address = @address, city = @city, state = @state, zip_code = @zip_code, image_url = @image_url, owner_id = @owner_id " +
+                                 "WHERE property_id = @property_id;";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@name", property.propertyName);
+                    cmd.Parameters.AddWithValue("@description", property.propertyDescription);
+                    cmd.Parameters.AddWithValue("@address", property.propertyAddress);
+                    cmd.Parameters.AddWithValue("@city", property.propertyCity);
+                    cmd.Parameters.AddWithValue("@state", property.propertyState);
+                    cmd.Parameters.AddWithValue("@zip_code", property.propertyZipCode);
+                    cmd.Parameters.AddWithValue("@image_url", property.propertyImgUrl);
+                    cmd.Parameters.AddWithValue("@owner_id", ownerId);
+                    cmd.Parameters.AddWithValue("@property_id", propertyId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+
+                throw;
+            }
+        }
+
         public IList<PropertiesWithAvailableUnits> GetAllPropertiesWithAvailableUnits() {
             IList<PropertiesWithAvailableUnits> propertyWithAvailableUnitsList = new List<PropertiesWithAvailableUnits>();
             try {
@@ -44,7 +74,7 @@ namespace Capstone.DAO
         }
 
        
-        public void PostNewProperty(NewPropertyPost property, int ownerId)
+        public void CreateNewProperty(Property property, int ownerId)
         {
 
             try
@@ -93,5 +123,6 @@ namespace Capstone.DAO
 
             return propertyWithAvailableUnits;
         }
+
     }
 }
