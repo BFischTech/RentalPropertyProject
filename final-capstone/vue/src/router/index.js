@@ -9,6 +9,7 @@ import Renter from '../views/Renter.vue'
 import Contact from '../views/Contact.vue'
 import Landlord from '../views/Landlord.vue'
 import Employee from '../views/Employee.vue'
+import Unit from '../views/Unit.vue'
 
 
 Vue.use(Router)
@@ -26,6 +27,14 @@ const router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [
+        {
+            path: '/property/:id',
+            name: 'unitPage',
+            component: Unit,
+            meta: {
+                requiresAuth: false
+            }
+        },
         {
             path: '/',
             name: 'home',

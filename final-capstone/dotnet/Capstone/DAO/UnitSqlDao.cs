@@ -123,16 +123,17 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
                     conn.Open();
-                    string sql = "SELECT unit_id, bedroom_count, bathroom_count, pet_friendly, non_smoking, pool_access, parking_spots, rent_amount, is_rented, rent_due_date, property_id " +
-                                 "FROM unit " +
-                                 "WHERE property_id = @id;";
+                    string sql = "SELECT u.unit_id, a.bedroom_count, a.bathroom_count, a.pet_allowed, a.smoking_allowed, a.pool_access," +
+                        " a.parking_spots, u.rent_amount, u.is_rented, u.rent_due_date FROM" +
+                        " units u JOIN amenities a ON u.unit_id = a.unit_id WHERE u.property_id = @propertyId;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@propertyId", id);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
+
                         unitList.Add(GetAllUnitsFromReader(reader));
                     }
                 }
@@ -197,14 +198,14 @@ namespace Capstone.DAO
                 unitId = Convert.ToInt32(reader["unit_id"]),
                 bedroomCount = Convert.ToInt32(reader["bedroom_count"]),
                 bathroomCount = Convert.ToDecimal(reader["bathroom_count"]),
-                petFriendly = Convert.ToBoolean(reader["pet_friendly"]),
-                nonSmoking = Convert.ToBoolean(reader["non_smoking"]),
+                petFriendly = Convert.ToBoolean(reader["pet_allowed"]),
+                nonSmoking = Convert.ToBoolean(reader["smoking_allowed"]),
                 poolAccess = Convert.ToBoolean(reader["pool_access"]),
-                parkingSpots = Convert.ToDecimal(reader["parking_spots"]),
+                parkingSpots = Convert.ToInt32(reader["parking_spots"]),
                 rentAmount = Convert.ToDecimal(reader["rent_amount"]),
                 isRented = Convert.ToBoolean(reader["is_rented"]),
                 rentDueDate = Convert.ToString(reader["rent_due_date"]),
-                propertyId = Convert.ToInt32(reader["property_id"])
+                //propertyId = Convert.ToInt32(reader["property_id"])
             };
             return units;
         }

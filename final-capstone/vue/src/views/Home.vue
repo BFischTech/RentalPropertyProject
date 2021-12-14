@@ -12,15 +12,14 @@
         <i class="fa fa-shower" aria-hidden="true">{{ property.bathroomCount }} Bathroom&#40;s&#41;</i>
 
         <div>
-          <router-link>
-            <b-button href="#" variant="primary">View Details</b-button>
-          </router-link>
+          
           <p v-if="property.availableUnits >= 1 && property.propertyType !== 'House'">{{ property.availableUnits }} -
             Available Unit&#40;s&#41;</p>
           <p v-if="property.availableUnits >= 1 && property.propertyType === 'House'">Available To Rent</p>
         </div>
-        <b-button href="#" variant="primary">View Details</b-button>
-
+        <!-- <b-button href="#" variant="primary"  >View Details</b-button> -->
+        <!--*SHIT <button @click="$router.push('../src/property')">View Details</button> -->
+        <router-link :to="{ name: 'unitPage', params: { id: property.propertyId }}">View Details</router-link>
       </b-card>
 
 

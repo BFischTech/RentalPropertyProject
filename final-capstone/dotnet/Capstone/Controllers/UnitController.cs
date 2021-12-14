@@ -27,13 +27,13 @@ namespace Capstone.Controllers
             return Ok(_unitDao.GetAllUnits());
         }
 
-        ////get all units by propertyId as a list
-        //[HttpGet("{id}")]
-        //[AllowAnonymous]
-        //public ActionResult<List<Unit>> GetAllUnitsByPropertyId(int id)
-        //{
-        //    return Ok(_unitDao.GetUnitsByPropertyId(id));
-        //}
+        //get all units by propertyId as a list
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        public ActionResult<List<Unit>> GetAllUnitsByPropertyId(int id)
+        {
+            return Ok(_unitDao.GetUnitsByPropertyId(id));
+        }
 
         [HttpGet("AvailableUnits")]
         [AllowAnonymous]
@@ -42,11 +42,11 @@ namespace Capstone.Controllers
             return Ok(_unitDao.GetAllAvailableUnits());
         }
 
-        [HttpGet("{unitId}")]
-        [AllowAnonymous]
-        public ActionResult<DetailedUnit> UnitDetails(int unitId)
-        {
-            return Ok(_unitDao.GetUnitDetails(unitId));
-        }
+        //[HttpGet("/property/{unitId}")]
+        //[AllowAnonymous]
+        //public ActionResult<DetailedUnit> UnitDetails(int unitId)
+        //{
+        //    return Ok(_unitDao.GetUnitDetails(unitId));
+        //}
     }
 }

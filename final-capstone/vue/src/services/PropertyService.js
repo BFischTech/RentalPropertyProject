@@ -9,6 +9,10 @@ export default {
     getAllUnits() {
         return axios.get('/units')
     },
+
+    getAllUnitsById(propertyid) {
+        return axios.get(`/unit/${propertyid}`)
+    },
     
 
 }

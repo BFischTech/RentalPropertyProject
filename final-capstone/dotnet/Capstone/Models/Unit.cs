@@ -13,7 +13,7 @@ namespace Capstone.Models
         public bool petFriendly { get; set; }
         public bool nonSmoking { get; set; }
         public bool poolAccess { get; set; } = false;
-        public decimal parkingSpots { get; set; } = 0;
+        public int parkingSpots { get; set; } = 0;
         public decimal rentAmount { get; set; }
         public bool isRented { get; set; }
         public string rentDueDate { get; set; }
