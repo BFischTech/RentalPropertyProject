@@ -47,5 +47,14 @@ namespace Capstone.Models
         public string EmployeeeAssigned { get; set; }
     }
 
+    public class MaintenanceRequest
+    {
+        public int tenantId { get; set; }
+        public int requestTypeId { get; set; }
+        public string concern { get; set; }
+        public string DateTime { get; set; }
+        public int requestStatusId { get; set; } = 1;
+
+    }
 
 }

@@ -14,6 +14,34 @@ namespace Capstone.DAO
             this._connectionString = connectionString;
         }
 
+        public void CreateRequest(MaintenanceRequest request, int tenantId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+
+                {
+                    conn.Open();
+                    string sql = "INSERT INTO maintenance_requests (tenant_id, request_type_id, concern, request_date_time, request_status_id) " +
+                                 "VALUES (@tenant_id, @request_type_id, @concern, @request_date_time, @request_status_id)";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@tenant_id", tenantId);
+                    cmd.Parameters.AddWithValue("@request_type_id", request.requestTypeId);
+                    cmd.Parameters.AddWithValue("@concern", request.concern);
+                    cmd.Parameters.AddWithValue("@request_date_time", request.DateTime);
+                    cmd.Parameters.AddWithValue("@request_status_id", request.requestStatusId);
+                    
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+
+                throw;
+            }
+        }
+
         public IList<MaintenanceRequestsViewsForEmployee> GetMaintenanceRequestsForEmployee(int employeeeId)
         {
             IList<MaintenanceRequestsViewsForEmployee> requests = new List<MaintenanceRequestsViewsForEmployee>();
