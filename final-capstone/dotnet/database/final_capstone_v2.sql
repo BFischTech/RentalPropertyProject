@@ -53,10 +53,10 @@ CREATE TABLE [users] (
 
 CREATE TABLE [owner] (
   owner_id            INT           NOT NULL,
-  first_name          VARCHAR(255)  NOT NULL,
-  last_name           VARCHAR(255)  NOT NULL,
-  email               VARCHAR(255)  NOT NULL,
-  mobile_number       VARCHAR(255)  NOT NULL,
+  first_name          VARCHAR(255)  ,
+  last_name           VARCHAR(255)  ,
+  email               VARCHAR(255)  ,
+  mobile_number       VARCHAR(255)  ,
 
   CONSTRAINT [PK_owner_id] PRIMARY KEY (owner_id),
   CONSTRAINT [FK_owner_id] FOREIGN KEY (owner_id) REFERENCES [users] (user_id)
@@ -64,10 +64,10 @@ CREATE TABLE [owner] (
 
 CREATE TABLE [employee] (
   employee_id         INT           NOT NULL,
-  first_name          VARCHAR(255)  NOT NULL,
-  last_name           VARCHAR(255)  NOT NULL,
-  email               VARCHAR(255)  NOT NULL,
-  mobile_number       VARCHAR(255)  NOT NULL,
+  first_name          VARCHAR(255)  ,
+  last_name           VARCHAR(255)  ,
+  email               VARCHAR(255)  ,
+  mobile_number       VARCHAR(255)  ,
 
   CONSTRAINT [PK_employee_id] PRIMARY KEY (employee_id),
   CONSTRAINT [FK_employee_id] FOREIGN KEY (employee_id) REFERENCES [users] (user_id)
