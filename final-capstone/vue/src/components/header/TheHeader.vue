@@ -17,14 +17,19 @@
           </ul>
         </div> 
       </div>
-  
-      <h1 v-if="$store.state.token != ''">Welcome! {{ $store.state.user.role }}</h1>
+
+
+
+      
+      <b-button class="w-50 h-75 loginButton" :to="$store.state.user.role" variant="outline-dark" pill="true" v-if="$store.state.token != ''">Welcome! {{ $store.state.user.role }}</b-button>
       <b-button class="w-50 h-75 loginButton" href="/logout" variant="outline-dark" pill="true" v-if="$store.state.token != ''">Logout</b-button>
       <b-button class="w-50 h-75 loginButton" href="/login" variant="outline-dark" pill="true" v-if="$store.state.token === ''">Login</b-button>
       <b-button class="w-50 h-75 loginButton" href="/register" variant="outline-dark" pill="true" v-if="$store.state.token === ''">Register</b-button>
 
     </div>
 </template>
+
+
 
 <style scoped>
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);

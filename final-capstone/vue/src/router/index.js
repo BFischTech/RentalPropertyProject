@@ -23,86 +23,86 @@ Vue.use(Router)
  */
 
 const router = new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/login",
-      name: "login",
-      components: { default: Login, main: Home },
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/logout",
-      name: "logout",
-      components: { default: Logout, main: Home },
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/register",
-      name: "register",
-      components: { default: Register, main: Home },
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: '/renter',
-      name: 'renter',
-      component: Renter,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/contact',
-      name: 'contact',
-      component: Contact,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/employee',
-      name: 'employee',
-      component: Employee,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/landlord',
-      name: 'landlord',
-      component: Landlord,
-      meta: {
-        requiresAuth: true
-      }
-    },
-  ]
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: Home,
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
+            path: "/login",
+            name: "login",
+            components: {default: Login, main: Home},
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
+            path: "/logout",
+            name: "logout",
+            components: {default: Logout, main: Home},
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
+            path: "/register",
+            name: "register",
+            components: {default: Register, main: Home},
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
+            path: '/Tenant',
+            name: 'renter',
+            component: Renter,
+            meta: {
+                requiresAuth: true
+            }
+        }, {
+            path: '/contact',
+            name: 'contact',
+            component: Contact,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: '/Employee',
+            name: 'employee',
+            component: Employee,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: '/Owner',
+            name: 'landlord',
+            component: Landlord,
+            meta: {
+                requiresAuth: true
+            }
+        },
+    ]
 })
 
 router.beforeEach((to, from, next) => {
-  // Determine if the route requires Authentication
-  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+    // Determine if the route requires Authentication
+    const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
 
-  // If it does and they are not logged in, send the user to "/login"
-  if (requiresAuth && store.state.token === '') {
-    next();
-  } else {
-    // Else let them go to their next destination
-    next();
-  }
+    // If it does and they are not logged in, send the user to "/login"
+    if (requiresAuth && store.state.token === '') {
+        next();
+    } else {
+        // Else let them go to their next destination
+        next();
+    }
 });
 
 export default router;
