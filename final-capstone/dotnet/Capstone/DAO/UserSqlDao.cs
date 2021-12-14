@@ -62,8 +62,30 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@user_role", role);
                     cmd.ExecuteNonQuery();
 
-                    string sql = "";
-                    SqlCommand cmd1 = new SqlCommand(sql, conn);
+                    if (role == "Employee")
+                    {
+                        string sql = "DECLARE @latestUserId INT; select @latestUserId = (select MAX(user_id) from users); " +
+                                        "insert into employee(employee_id)values(@latestUserId)";
+                        SqlCommand cmd1 = new SqlCommand(sql, conn);
+                        cmd1.ExecuteNonQuery();
+                    } else if (role == "Owner")
+                    {
+                        string sql = "DECLARE @latestUserId INT; select @latestUserId = (select MAX(user_id) from users); " +
+                                        "insert into owner(owner_id)values(@latestUserId)";
+                        SqlCommand cmd1 = new SqlCommand(sql, conn);
+                        cmd1.ExecuteNonQuery();
+                    } else if (role == "Tenant")
+                    {
+                        string sql = "DECLARE @latestUserId INT; select @latestUserId = (select MAX(user_id) from users); " +
+                                        "insert into tenant(tenant_id)values(@latestUserId)";
+                        SqlCommand cmd1 = new SqlCommand(sql, conn);
+                        cmd1.ExecuteNonQuery();
+                    }
+
+
+                    //string sql = "INSERT INTO employee (employee_id) VALUES (@employee_id)";
+                    //SqlCommand cmd1 = new SqlCommand(sql, conn);
+
 
                 }
             }
