@@ -13,5 +13,7 @@ namespace Capstone.DAO
 
         IList<AvailableUnits> GetAllAvailableUnits();
         DetailedUnit GetUnitDetails(int unitId);
+
+        IList<AvailbleUnitsByOwnerId> GetAllAvailableUnitsByOwnerId(int ownerId);
     }
 }

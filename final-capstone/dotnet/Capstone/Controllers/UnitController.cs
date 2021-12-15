@@ -16,10 +16,12 @@ namespace Capstone.Controllers
     public class UnitController : ControllerBase {
         private readonly IUnitDao _unitDao;
         private readonly IImagesDao _imagesDao;
+        private readonly ITenantDao _tenantDao;
 
-        public UnitController(IUnitDao unitDao, IImagesDao imagesDao) {
+        public UnitController(IUnitDao unitDao, IImagesDao imagesDao, ITenantDao tenantDao) {
             _unitDao = unitDao;
             _imagesDao = imagesDao;
+            _tenantDao = tenantDao;
         }
 
         //get all units as a list
@@ -42,13 +44,19 @@ namespace Capstone.Controllers
 
         }
 
-        [HttpGet("AvailableUnits")]
-        [AllowAnonymous]
-        public ActionResult<List<AvailableUnits>> GetAvailableUnits()
-        {
-            return Ok(_unitDao.GetAllAvailableUnits());
-        }
+        [HttpGet("owner")]
+        [Authorize(Roles ="Owner")]
+        public ActionResult<UnitAvailableByOwnerIdListOfTenentWithoutRentedUnit>  GetAllAvailableUnitsByOwnerAndTenantWithoutRentedUnit() {
 
+
+            int ownerId = Convert.ToInt32(User.FindFirst("sub")?.Value);
+            var units = _unitDao.GetAllAvailableUnitsByOwnerId(ownerId);
+            var tenants = _tenantDao.GetAllTenantWithoutRentedUnit();
+            UnitAvailableByOwnerIdListOfTenentWithoutRentedUnit unitAvailableAndTenantWithoutRentedUnit = new UnitAvailableByOwnerIdListOfTenentWithoutRentedUnit(units, tenants);
+
+            return Ok(unitAvailableAndTenantWithoutRentedUnit);
+
+        }
 
 
         //[HttpGet("/property/{unitId}")]

@@ -16,6 +16,22 @@ namespace Capstone.Models
 
     }
 
+    public class UnitAvailableByOwnerIdListOfTenentWithoutRentedUnit {
+        public IList<AvailbleUnitsByOwnerId> Unit { get; set; }
+        public IList<TenantWithoutRentedUnit> Tenant { get; set; }
+
+        public UnitAvailableByOwnerIdListOfTenentWithoutRentedUnit(IList<AvailbleUnitsByOwnerId> availbleUnitsByOwnerId, IList<TenantWithoutRentedUnit> tenantWithoutRentedUnit) {
+            Unit = availbleUnitsByOwnerId;
+            Tenant = tenantWithoutRentedUnit;
+        }
+
+    }
+
+    public class AvailbleUnitsByOwnerId {
+        public int unitId { get; set; }
+        public string unitType { get; set; }
+    }
+
     public class Unit
     {
         public int unitId { get; set; }
