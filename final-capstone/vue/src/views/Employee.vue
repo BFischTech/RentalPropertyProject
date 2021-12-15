@@ -1,10 +1,13 @@
 <template>
-  <employee></employee>
+  <div>
+    employee
+  </div>
 </template>
 
 <script>
+import EmployeeService from "../services/EmployeeService.js";
 export default {
-    name: 'Employee',
+    name: 'employee',
 }
 </script>
 
