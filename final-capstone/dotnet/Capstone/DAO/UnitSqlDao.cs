@@ -125,7 +125,7 @@ namespace Capstone.DAO
                     conn.Open();
                     string sql = "SELECT u.unit_id, a.bedroom_count, a.bathroom_count, a.pet_allowed, a.smoking_allowed, a.pool_access," +
                         " a.parking_spots, u.rent_amount, u.is_rented, u.rent_due_date FROM" +
-                        " units u JOIN amenities a ON u.unit_id = a.unit_id WHERE u.property_id = @propertyId;";
+                        " units u JOIN amenities a ON u.unit_id = a.unit_id WHERE u.property_id = @propertyId AND u.is_rented=0;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@propertyId", id);
 
