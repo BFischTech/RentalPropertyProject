@@ -49,7 +49,6 @@ export default {
   },
 }
 
-console.log("I'm Here!!")
 </script>
 
 <style scoped>
