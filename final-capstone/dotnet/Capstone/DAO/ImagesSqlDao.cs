@@ -11,22 +11,23 @@ namespace Capstone.DAO {
             _connectionString = dbConnectionString;
         }
 
-        public IList<Images> GetAllImagesByUnitId(int unitId) {
+        public IList<Images> GetAllUnitImagesByPropertyId(int propertyId) {
             IList<Images> imgList = new List<Images>();
 
             try {
                 using (SqlConnection conn = new SqlConnection(_connectionString)) {
                     conn.Open();
-                    var sql = 
-                        "SELECT image_url " +
-                        "FROM unit_images " +
-                        "WHERE unit_id = @unitId;";
+                    var sql =
+                        "SELECT ui.image_id, ui.image_url, ui.image_caption " +
+                        "FROM unit_images ui " +
+                        "INNER JOIN units u ON u.unit_id = ui.unit_id " +
+                        "WHERE u.property_id = @propertyId AND u.is_rented = 0;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@unitId", unitId);
+                    cmd.Parameters.AddWithValue("@propertyId", propertyId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read()) {
-                        imgList.Add(GetAllImagesByUnitIdFromReader(reader));
+                        imgList.Add(GetAllUnitImagesByPropertyIdFromReader(reader));
                     }
                 }
             } catch (Exception) {
@@ -35,9 +36,11 @@ namespace Capstone.DAO {
             return imgList;
         }
 
-        private Images GetAllImagesByUnitIdFromReader(SqlDataReader reader) {
+        private Images GetAllUnitImagesByPropertyIdFromReader(SqlDataReader reader) {
             Images images = new Images() {
-                imageUrl = Convert.ToString(reader["image_url"])
+                imageId = Convert.ToInt32(reader["image_id"]),
+                imageUrl = Convert.ToString(reader["image_url"]),
+                imageCaption = Convert.ToString(reader["image_caption"])
             };
             return images;
         }
