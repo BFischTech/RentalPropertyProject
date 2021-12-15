@@ -1,15 +1,28 @@
 <template>
-  <div>
-      <div id="unit" v-for="unit in units" :key="unit.unitId">
-          {{unit.bedroomCount}}, {{unit.bathroomCount}}, {{unit.petFriendly}}
-      </div>
+  <div id="container-grid">
+
+    <div id="unit" v-for="unit in units" :key="unit.unitId">
+      <b-card :title="'Available Unit'" :sub-title="'Rent is $' + unit.rentAmount + ' a month'" class="text-center"> 
+      <b-card-text>Bedroom Count {{ unit.bedroomCount }} <br>
+        Bathroom Count {{ unit.bathroomCount }} <br>
+        Is Pet Friendly {{ unit.petFriendly }}  <br>
+        Allows Smoking? {{ unit.nonSmoking }} <br>
+        Has a Pool? {{ unit.poolAccess }}  <br>
+        Parking Spots?{{ unit.parkingSpots }}  <br>
+        Rent Amount: {{ unit.rentAmount }} <br>
+        Rent Due Date: {{ unit.rentDueDate }} <br>
+      </b-card-text>
+      </b-card>
+    </div>
+
   </div>
 </template>
 
 <script>
 import PropertyService from "../services/PropertyService.js";
+
 export default {
-name: "unitPage",
+  name: "unitPage",
   data() {
     return {
       units: [],
@@ -25,7 +38,7 @@ name: "unitPage",
 console.log("I'm Here!!")
 </script>
 
-<style >
+<style scoped>
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
 
@@ -35,30 +48,26 @@ console.log("I'm Here!!")
     height: 20rem;
   }
 
+  
+
   #container-grid {
-    display: grid;
-    grid-template: 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: row;
     row-gap: 5px;
     column-gap: 5px;
-    grid-template-areas: 
-    "property property property";
     justify-content: space-evenly;
-    justify-items: center;
-    align-content: space-evenly;
-    align-items: center;
+  }
+  
   }
 
-  #property {
+  #unit {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 
-  #container {
-    background-color: white;
-    width: 35rem;
-    padding: 20px;
-  }
-}
+
+
 
 @madia (max-width:800px) {
   img {
@@ -67,28 +76,22 @@ console.log("I'm Here!!")
   }
 
   #container-grid {
-    display: grid;
-    grid-template: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
     row-gap: 5px;
     column-gap: 5px;
-    grid-template-areas: 
-    "property property";
     justify-content: space-evenly;
-    justify-items: center;
-    align-content: space-evenly;
-    align-items: center;
   }
 
-  #property {
-    display: flex;
-    align-items: center;
-  }
-
-  #container {
-    background-color: white;
-    width: 35rem;
-    padding: 20px;
-  }
 }
+
+#unit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
+
 
 </style>

@@ -93,7 +93,10 @@ ul > li > a:hover {
 }
 
 .logo {
-  width: 140px;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  
 }
 
 #ll-grid {
