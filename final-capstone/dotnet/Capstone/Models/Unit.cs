@@ -5,6 +5,17 @@ using System.Threading.Tasks;
 
 namespace Capstone.Models
 {
+    public class UnitWithImages {
+        public IList<Unit> Unit { get; set; }
+        public IList<Images> Image { get; set; }
+
+        public UnitWithImages(IList<Unit> units, IList<Images> image) {
+            Unit = units;
+            Image = image;
+        }
+
+    }
+
     public class Unit
     {
         public int unitId { get; set; }
@@ -17,7 +28,6 @@ namespace Capstone.Models
         public decimal rentAmount { get; set; }
         public bool isRented { get; set; }
         public string rentDueDate { get; set; }
-        public int propertyId { get; set; }
     }
 
     public class AvailableUnits

@@ -11,20 +11,22 @@ namespace Capstone.DAO {
             _connectionString = dbConnectionString;
         }
 
-        public IList<Images> GetAllImages() {
+        public IList<Images> GetAllImagesByUnitId(int unitId) {
             IList<Images> imgList = new List<Images>();
 
             try {
                 using (SqlConnection conn = new SqlConnection(_connectionString)) {
                     conn.Open();
                     var sql = 
-                        "SELECT image_id, image_url, description, unit_id " +
-                        "FROM images";
+                        "SELECT image_url " +
+                        "FROM unit_images " +
+                        "WHERE unit_id = @unitId;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@unitId", unitId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read()) {
-                        imgList.Add(GetAllImagesFromReader(reader));
+                        imgList.Add(GetAllImagesByUnitIdFromReader(reader));
                     }
                 }
             } catch (Exception) {
@@ -33,12 +35,9 @@ namespace Capstone.DAO {
             return imgList;
         }
 
-        private Images GetAllImagesFromReader(SqlDataReader reader) {
+        private Images GetAllImagesByUnitIdFromReader(SqlDataReader reader) {
             Images images = new Images() {
-                imageId = Convert.ToInt32(reader["image_id"]),
-                imageUrl = Convert.ToString(reader["image_url"]),
-                description = Convert.ToString(reader["description"]),
-                unitId = Convert.ToInt32(reader["unit_id"])
+                imageUrl = Convert.ToString(reader["image_url"])
             };
             return images;
         }

@@ -123,7 +123,8 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
                     conn.Open();
-                    string sql = "SELECT u.unit_id, a.bedroom_count, a.bathroom_count, a.pet_allowed, a.smoking_allowed, a.pool_access," +
+                    string sql = 
+                        "SELECT u.unit_id, a.bedroom_count, a.bathroom_count, a.pet_allowed, a.smoking_allowed, a.pool_access," +
                         " a.parking_spots, u.rent_amount, u.is_rented, u.rent_due_date FROM" +
                         " units u JOIN amenities a ON u.unit_id = a.unit_id WHERE u.property_id = @propertyId;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
@@ -133,7 +134,6 @@ namespace Capstone.DAO
 
                     while (reader.Read())
                     {
-
                         unitList.Add(GetAllUnitsFromReader(reader));
                     }
                 }

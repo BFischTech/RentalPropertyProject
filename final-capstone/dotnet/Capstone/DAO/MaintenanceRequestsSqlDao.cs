@@ -73,7 +73,7 @@ namespace Capstone.DAO
                         "LEFT JOIN maintenance_request_types mrt ON mr.request_type_id = mrt.maintenance_request_type_id  " +
                         "LEFT JOIN maintenance_request_status mrs ON mr.request_status_id = mrs.maintenance_request_status_id  " +
                         "LEFT JOIN properties p ON u.property_id = p.property_id " +
-                        "LEFT JOIN unit_types ut ON u.unit_id = ut.unit_type_id " +
+                        "LEFT JOIN unit_types ut ON ut.unit_type_id = u.unit_type_id " +
                         "WHERE mr.employee_assigned_id = @employeeId;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@employeeId", employeeeId);
@@ -121,6 +121,7 @@ namespace Capstone.DAO
                         "LEFT JOIN maintenance_request_types mrt ON mr.request_type_id = mrt.maintenance_request_type_id " +
                         "LEFT JOIN maintenance_request_status mrs ON mr.request_status_id = mrs.maintenance_request_status_id " +
                         "LEFT JOIN properties p ON u.property_id = p.property_id " +
+                        "LEFT JOIN unit_types ut ON u.unit_id = ut.unit_type_id " +
                         "WHERE owner_id = @ownerId;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@ownerId", ownerId);
@@ -153,6 +154,7 @@ namespace Capstone.DAO
                         "SELECT " +
                             "mr.maintenance_request_id, " +
                             "mrt.maintenance_request_type_name, " +
+                            "mr.concern AS 'concern', " +
                             "mr.request_date_time AS 'request_date_time', " +
                             "mrs.maintenance_request_status_name AS 'status', " +
                             "(e.last_name + ', ' + e.first_name) AS 'employee_name' " +
@@ -187,9 +189,9 @@ namespace Capstone.DAO
             MaintenanceRequestsViewsForEmployee request = new MaintenanceRequestsViewsForEmployee();
 
             request.maintenanceRequestId = Convert.ToInt32(reader["maintenance_request_id"]);
+            request.fromTenant = Convert.ToString(reader["tenant_name"]);
             request.propertyId = Convert.ToInt32(reader["property_id"]);
             request.unitType = Convert.ToString(reader["unit_type"]);
-            request.fromTenant = Convert.ToString(reader["tenant_name"]);
             request.unitBuildingNumber = Convert.ToInt32(reader["building_no"]);
             request.unitNumber = Convert.ToString(reader["unit_number"]);
             request.unitAdresss = Convert.ToString(reader["address"]);
@@ -208,9 +210,9 @@ namespace Capstone.DAO
             MaintenanceRequestsViewsForOwner request = new MaintenanceRequestsViewsForOwner();
 
             request.maintenanceRequestId = Convert.ToInt32(reader["maintenance_request_id"]);
+            request.fromTenant = Convert.ToString(reader["tenant_name"]);
             request.propertyId = Convert.ToInt32(reader["property_id"]);
             request.unitType = Convert.ToString(reader["unit_type"]);
-            request.fromTenant = Convert.ToString(reader["tenant_name"]);
             request.unitBuildingNumber = Convert.ToInt32(reader["building_no"]);
             request.unitNumber = Convert.ToString(reader["unit_number"]);
             request.unitAdresss = Convert.ToString(reader["address"]);
@@ -232,8 +234,8 @@ namespace Capstone.DAO
             request.requestType = Convert.ToString(reader["maintenance_request_type_name"]);
             request.concern = Convert.ToString(reader["concern"]);
             request.dateTimeRequestMade = Convert.ToString(reader["request_date_time"]);
-            request.requestStatus = Convert.ToString(reader["maintenance_request_status_name"]);
-            request.EmployeeeAssigned = Convert.ToString(reader["first_name"]);
+            request.requestStatus = Convert.ToString(reader["status"]);
+            request.EmployeeeAssigned = Convert.ToString(reader["employee_name"]);
 
             return request;
         }

@@ -15,9 +15,11 @@ namespace Capstone.Controllers
 
     public class UnitController : ControllerBase {
         private readonly IUnitDao _unitDao;
+        private readonly IImagesDao _imagesDao;
 
-        public UnitController(IUnitDao unitDao) {
+        public UnitController(IUnitDao unitDao, IImagesDao imagesDao) {
             _unitDao = unitDao;
+            _imagesDao = imagesDao;
         }
 
         //get all units as a list
@@ -30,9 +32,14 @@ namespace Capstone.Controllers
         //get all units by propertyId as a list
         [HttpGet("{id}")]
         [AllowAnonymous]
-        public ActionResult<List<Unit>> GetAllUnitsByPropertyId(int id)
-        {
-            return Ok(_unitDao.GetUnitsByPropertyId(id));
+        public ActionResult<UnitWithImages>  GetAllUnitsByPropertyId(int id) {
+
+            var units = _unitDao.GetUnitsByPropertyId(id);
+            var images = _imagesDao.GetAllImagesByUnitId(id);
+            UnitWithImages unitWithImages = new UnitWithImages(units, images);
+
+            return Ok(unitWithImages);
+
         }
 
         [HttpGet("AvailableUnits")]
@@ -41,6 +48,8 @@ namespace Capstone.Controllers
         {
             return Ok(_unitDao.GetAllAvailableUnits());
         }
+
+
 
         //[HttpGet("/property/{unitId}")]
         //[AllowAnonymous]

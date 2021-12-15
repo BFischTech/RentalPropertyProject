@@ -21,11 +21,11 @@ namespace Capstone.Controllers
             _imagesDao = imagesDao;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         [AllowAnonymous]
-        public ActionResult<List<Images>> GetAllImgages()
+        public ActionResult<List<Images>> GetAllImgages(int id)
         {
-            return Ok(_imagesDao.GetAllImages());
+            return Ok(_imagesDao.GetAllImagesByUnitId(id));
         }
     }
 }
