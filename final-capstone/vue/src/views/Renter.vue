@@ -3,9 +3,9 @@
   <h2 id="greeting">Please don't hesitate to <a href="/contact">contact us</a>!</h2>
   <div>
     <b-button id="form" v-b-modal.rent-modal>Rental Payment</b-button>
-      <b-modal id="rent-modal"><rent-payment-form></rent-payment-form></b-modal><br>
+      <b-modal ok-disabled ok- id="rent-modal"><rent-payment-form></rent-payment-form></b-modal><br>
     <b-button id="form" v-b-modal.maintenance-modal>Maintenance Request</b-button>
-      <b-modal id="maintenance-modal"><maintenance-form></maintenance-form></b-modal>
+      <b-modal ok-disabled id="maintenance-modal"><maintenance-form></maintenance-form></b-modal>
   </div></div>
 </template>
 
@@ -13,15 +13,24 @@
 
     import RentPaymentForm from '../components/RentPaymentForm.vue'
     import MaintenanceForm from '../components/MaintenanceForm.vue'
+    import RenterService from '../services/RenterService.js'
     
     export default {
+        
         name: 'Renter',
         components: 
         {
           RentPaymentForm,
-          MaintenanceForm
+          MaintenanceForm,
+          
         },
-    
+      methods: {
+       createMaintenanceRequest(){
+         RenterService
+          .createMaintenanceRequest(this.MaintenanceForm)
+       },
+       }
+      
     }
 
 </script>

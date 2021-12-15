@@ -22,13 +22,12 @@ namespace Capstone.DAO
 
                 {
                     conn.Open();
-                    string sql = "INSERT INTO maintenance_requests (tenant_id, request_type_id, concern, request_date_time, request_status_id) " +
-                                 "VALUES (@tenant_id, @request_type_id, @concern, @request_date_time, @request_status_id)";
+                    string sql = "INSERT INTO maintenance_requests (tenant_id, request_type_id, concern, request_status_id) " +
+                                 "VALUES (@tenant_id, @request_type_id, @concern, @request_status_id)";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@tenant_id", tenantId);
                     cmd.Parameters.AddWithValue("@request_type_id", request.requestTypeId);
                     cmd.Parameters.AddWithValue("@concern", request.concern);
-                    cmd.Parameters.AddWithValue("@request_date_time", request.DateTime);
                     cmd.Parameters.AddWithValue("@request_status_id", request.requestStatusId);
                     
 

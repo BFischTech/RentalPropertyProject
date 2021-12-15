@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< Updated upstream
     <div
       id="employee"
       v-for="request in maintanceRequests"
@@ -24,11 +25,16 @@
         </b-card-text>
       </b-card>
     </div>
+=======
+    <employee></employee>
+>>>>>>> Stashed changes
   </div>
 </template>
 
 <script>
-import EmployeeService from "../services/EmployeeService.js";
+
+// import EmployeeService from "../services/EmployeeService.js";
+
 export default {
   name: "employee",
   data() {
