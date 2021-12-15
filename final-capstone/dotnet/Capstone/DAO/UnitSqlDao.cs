@@ -126,7 +126,7 @@ namespace Capstone.DAO
                     string sql = 
                         "SELECT u.unit_id, a.bedroom_count, a.bathroom_count, a.pet_allowed, a.smoking_allowed, a.pool_access," +
                         " a.parking_spots, u.rent_amount, u.is_rented, u.rent_due_date FROM" +
-                        " units u JOIN amenities a ON u.unit_id = a.unit_id WHERE u.property_id = @propertyId AND u.is_rented=0;";
+                        " units u JOIN amenities a ON u.unit_id = a.unit_id WHERE u.property_id = @propertyId AND u.is_rented = 0;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@propertyId", id);
 
@@ -144,6 +144,49 @@ namespace Capstone.DAO
             }
             return unitList;
         }
+
+        public IList<AvailbleUnitsByOwnerId> GetAllAvailableUnitsByOwnerId(int ownerId) {
+            IList<AvailbleUnitsByOwnerId> availableUnitsByOwnerId = new List<AvailbleUnitsByOwnerId>();
+
+            try {
+                using (SqlConnection conn = new SqlConnection(_connectionString)) {
+                    conn.Open();
+                    string sql =
+                        "SELECT " +
+                            "u.unit_id AS 'unitId', " +
+                            "ut.unit_type_name AS 'unitType' " +
+                        "FROM units u " +
+                        "INNER JOIN properties p ON p.property_id = u.property_id " +
+                        "INNER JOIN unit_types ut ON ut.unit_type_id = u.unit_type_id " +
+                        "WHERE  " +
+                        "u.is_rented <> 1 AND " +
+                        "p.owner_id = @ownerId;";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@ownerId", ownerId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read()) {
+                        availableUnitsByOwnerId.Add(GetAllAvailableUnitsByOwnerIdsFromReader(reader));
+                    }
+                }
+            } catch (SqlException) {
+                throw;
+            }
+            return availableUnitsByOwnerId;
+        }
+
+
+        //Helper method that is used for GetAllAvailableUnitsByOwnerId()
+        private AvailbleUnitsByOwnerId GetAllAvailableUnitsByOwnerIdsFromReader(SqlDataReader reader) {
+            AvailbleUnitsByOwnerId availbleUnitsByOwnerId = new AvailbleUnitsByOwnerId();
+
+            availbleUnitsByOwnerId.unitId = Convert.ToInt32(reader["unitId"]);
+            availbleUnitsByOwnerId.unitType = Convert.ToString(reader["unitType"]);
+
+            return availbleUnitsByOwnerId;
+        }
+
 
         //Helper method that is used for GetUnitDetails()
         private DetailedUnit GetDetailedUnitReader(SqlDataReader reader)

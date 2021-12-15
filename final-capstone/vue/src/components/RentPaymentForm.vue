@@ -58,13 +58,7 @@ export default {
         property: null,
         checked: [],
       },
-      properties: [
-        { text: "Select One", value: null },
-        "Example Property 1",
-        "Example Property 2",
-        "Example Property 3",
-        "Example Property 4",
-      ],
+      
       show: true,
       date: "",
     };

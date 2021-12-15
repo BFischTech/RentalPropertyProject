@@ -65,9 +65,8 @@
           food: null,
           checked: []
         },
-        foods: [{ text: 'Select One', value: null }, 'I\'d like to tour a unit.', 'Professional Media', 'I\'ve fallen and can\'t get up!', 'Tenant complaint', 'You have committed crimes against Skyrim and her people. What say you in your defense'],
-        show:true, 
-        text: ''
+        foods: [{ text: 'Select One', value: null }, 'I\'d like to tour a unit.', 'Professional Media', 'I\'ve fallen and can\'t get up!', 'Tenant complaint'],
+        show:true,
       }
     },
     methods: {

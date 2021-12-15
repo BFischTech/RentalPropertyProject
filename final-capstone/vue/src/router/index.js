@@ -10,7 +10,7 @@ import Contact from '../views/Contact.vue'
 import Landlord from '../views/Landlord.vue'
 import Employee from '../views/Employee.vue'
 import Unit from '../views/Unit.vue'
-
+import LandlordPropertyListing from '../views/LandlordPropertyListing.vue'
 
 Vue.use(Router)
 
@@ -94,6 +94,14 @@ const router = new Router({
             path: '/Owner',
             name: 'landlord',
             component: Landlord,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: '/NewPropertyListing',
+            name: 'newpropertylisting',
+            component: LandlordPropertyListing,
             meta: {
                 requiresAuth: true
             }

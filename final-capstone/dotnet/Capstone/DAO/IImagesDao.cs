@@ -9,6 +9,6 @@ namespace Capstone.DAO
 
     public interface IImagesDao
     {
-        IList<Images> GetAllImagesByUnitId(int unitId);
+        IList<Images> GetAllUnitImagesByPropertyId(int propertyId);
     }
 }
