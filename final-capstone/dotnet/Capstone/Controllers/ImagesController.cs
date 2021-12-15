@@ -25,7 +25,7 @@ namespace Capstone.Controllers
         [AllowAnonymous]
         public ActionResult<List<Images>> GetAllImgages(int id)
         {
-            return Ok(_imagesDao.GetAllImagesByUnitId(id));
+            return Ok(_imagesDao.GetAllUnitImagesByPropertyId(id));
         }
     }
 }
