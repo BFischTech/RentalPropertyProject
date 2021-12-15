@@ -35,7 +35,7 @@ namespace Capstone.Controllers
         public ActionResult<UnitWithImages>  GetAllUnitsByPropertyId(int id) {
 
             var units = _unitDao.GetUnitsByPropertyId(id);
-            var images = _imagesDao.GetAllImagesByUnitId(id);
+            var images = _imagesDao.GetAllUnitImagesByPropertyId(id);
             UnitWithImages unitWithImages = new UnitWithImages(units, images);
 
             return Ok(unitWithImages);

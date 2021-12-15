@@ -34,9 +34,10 @@
       />
 
     <div>
-
-       <b-form-select v-model="selected" :options="options"></b-form-select>
-
+        <b-form-select v-model="user.role" required>
+        <option value="" disabled>Please Select Role</option>
+        <option v-for="option in options" :value="option.value" :key="option.value">{{ option.text }}</option>
+       </b-form-select>
     </div>
 
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
@@ -65,7 +66,6 @@ export default {
       },
         selected: null,
         options: [
-          { value: null, text: 'Please Select Role' },
           { value: 'Employee', text: 'Employee' },
           { value: 'Owner', text: 'Owner' },
           { value: 'Tenant', text: 'Tenant' },
