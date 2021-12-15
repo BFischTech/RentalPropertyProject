@@ -29,7 +29,7 @@
 
 <script>
 
-// import EmployeeService from "../services/EmployeeService.js";
+import EmployeeService from "../services/EmployeeService.js";
 
 export default {
   name: "employee",
