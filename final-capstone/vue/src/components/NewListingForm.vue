@@ -7,7 +7,7 @@
         <b-form-group id="input-group-1">
           <b-form-input
             id="input-2"
-            v-model="property.name"
+            v-model="property.propertyName"
             type="string"
             placeholder="Name of property"
             required
@@ -17,7 +17,7 @@
 
           <b-form-input
             id="input-3"
-            v-model="property.description"
+            v-model="property.propertyDescription"
             type="string"
             placeholder="Description"
             required
@@ -27,7 +27,7 @@
 
           <b-form-input
             id="input-4"
-            v-model="property.address"
+            v-model="property.propertyAddress"
             type="string"
             placeholder="Address"
             required
@@ -37,7 +37,7 @@
 
           <b-form-input
             id="input-5"
-            v-model="property.city"
+            v-model="property.propertyCity"
             type="string"
             placeholder="City"
             required
@@ -47,7 +47,7 @@
 
           <b-form-input
             id="input-6"
-            v-model="property.state"
+            v-model="property.propertyState"
             type="string"
             placeholder="State"
             required
@@ -57,7 +57,7 @@
 
           <b-form-input
             id="input-7"
-            v-model="property.zip"
+            v-model="property.propertyZipCode"
             type="string"
             placeholder="Zip Code"
             required
@@ -67,7 +67,7 @@
 
           <b-form-input
             id="input-8"
-            v-model="property.url"
+            v-model="property.propertyImgUrl"
             type="string"
             placeholder="Image URL"
           ></b-form-input>
@@ -101,28 +101,26 @@ export default {
   data() {
     return {
       property: {
-        name: "",
-        description: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        url: "",
+        propertyName: "",
+        propertyDescription: "",
+        propertyAddress: "",
+        propertyCity: "",
+        propertyState: "",
+        propertyZipCode: "",
+        propertyImgUrl: "",
       },
     };
   },
   methods: {
-    onSubmit(event) {
-      event.preventDefault();
-      alert(JSON.stringify(this.form));
+    onSubmit() {
       const newProperty = {
-        name: this.property.name,
-        description: this.property.description,
-        address: this.property.address,
-        city: this.property.city,
-        state: this.property.state,
-        zip: this.property.zip,
-        url: this.property.url,
+        propertyName: this.property.propertyName,
+        propertyDescription: this.property.propertyDescription,
+        propertyAddress: this.property.propertyAddress,
+        propertyCity: this.property.propertyCity,
+        propertyState: this.property.propertyState,
+        propertyZipCode: this.property.propertyZipCode,
+        url: this.property.propertyImgUrl,
       };
 
 

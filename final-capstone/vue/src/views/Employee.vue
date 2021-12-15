@@ -2,7 +2,7 @@
   <div>
     <div
       id="employee"
-      v-for="request in maintanceRequests"
+      v-for="request in maintenanceRequests"
       :key="request.maintenanceRequestId"
     >
       <b-card
@@ -14,7 +14,7 @@
           <div>Property ID: {{ request.propertyId }}</div>
           <div>Unit Type: {{ request.unitType }}</div>
           <div>Tenant: {{ request.fromTenant }}</div>
-          <div>Unit Numbe:r {{ request.unitNumber }}</div>
+          <div>Unit Number: {{ request.unitNumber }}</div>
           <div>Adresss: {{ request.unitAdresss }}</div>
           <div>Type: {{ request.requestType }}</div>
           <div>Concern: {{ request.concern }}</div>
@@ -34,11 +34,11 @@ import EmployeeService from "../services/EmployeeService.js";
 export default {
   name: "employee",
   data() {
-    return { maintananceRequests: [] };
+    return { maintenanceRequests: [] };
   },
   created() {
     EmployeeService.getMaintenanceByID().then((response) => {
-      this.maintanceRequests = response.data;
+      this.maintenanceRequests = response.data;
     });
   },
 };
