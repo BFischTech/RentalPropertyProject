@@ -13,6 +13,10 @@ export default {
     getAllUnitsById(propertyid) {
         return axios.get(`/unit/${propertyid}`)
     },
+
+    addNewProperty(property) {
+        return axios.post('/properties', property)
+      }
     
 
 }

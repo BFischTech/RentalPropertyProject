@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>testing</h1>
+  <h1>Enter New Property Details</h1>
   <new-listing-form>
     <h1>experimenting</h1>
   </new-listing-form>
@@ -19,6 +19,8 @@ name: 'NewListing',
 }
 </script>
 
-<style>
-
+<style scoped>
+h1{
+  text-align: center;
+}
 </style>
