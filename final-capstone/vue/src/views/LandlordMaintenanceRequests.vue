@@ -78,7 +78,7 @@
 import LandlordService from "../services/LandlordService.js";
 
 export default {
-  name: "landlordmaintenancerequests",
+  name: "maintenanceowner",
   data() {
     return { maintenanceRequests: [] };
   },
