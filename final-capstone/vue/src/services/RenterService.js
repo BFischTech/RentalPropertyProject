@@ -3,6 +3,6 @@
 export default {
     
  createMaintenanceRequest(request) {
-    return axios.put('/MaintenanceRequest', request);
+    return axios.post('/MaintenanceRequest', request);
   }
 };
