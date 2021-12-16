@@ -1,12 +1,15 @@
 <template>
   <div>
-    <div>
-      <!-- <label>
+    <!-- <div>
+      <h2></h2>
+
+      <label>
         <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
+
         <button @click="addLocationMarker">Add</button>
       </label>
-      <br/>  -->
-    </div>
+      <br/>
+    </div> -->
     <br>
     <gmap-map
         :zoom="14"    

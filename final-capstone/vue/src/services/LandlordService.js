@@ -5,4 +5,8 @@ export default {
     GetAllAvailableUnitsByOwnerAndTenantWithoutRentedUnit() {
         return axios.get('/unit/owner')
     },
+
+    AssignTenantToUnit(unitAndTenant) {
+        return axios.put('unit/owner/update', unitAndTenant)
+    },
 }

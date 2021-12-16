@@ -1,20 +1,23 @@
 <template>
   <div class="container">
-    <div id="divOption">
-      <label for="">Select Unit Id:</label>&nbsp;
-        <b-form-select v-model="unitAndTenant.unitId" required>
-        <option value="" disabled>Unit Id</option>
-        <option v-for="unit in unitAndTenants.unit" :value="unit.unitId" :key="unit.unitId">{{ unit.unitId }}</option>
-       </b-form-select>
-    </div>
+    <b-form @submit.prevent="onSubmit">
+      <div id="divOption">
+        <label for="">Select Unit Id:</label>&nbsp;
+          <b-form-select v-model="unitAndTenant.unitId" required>
+          <option value="" disabled>Unit Id</option>
+          <option v-for="unit in unitAndTenants.unit" :value="unit.unitId" :key="unit.unitId">{{ unit.unitId }}</option>
+        </b-form-select>
+      </div>
 
-    <div id="divOption">
-        <label for="">Select Tenant Id: </label>&nbsp;
-        <b-form-select v-model="unitAndTenant.tenantId" required>
-        <option value="" disabled>Tenant Id</option>
-        <option v-for="tenant in unitAndTenants.tenant" :value="tenant.tenantId" :key="tenant.tenantId">{{ tenant.tenantId }}</option>
-       </b-form-select>
-    </div>
+      <div id="divOption">
+          <label for="">Select Tenant Id: </label>&nbsp;
+          <b-form-select v-model="unitAndTenant.tenantId" required>
+          <option value="" disabled>Tenant Id</option>
+          <option v-for="tenant in unitAndTenants.tenant" :value="tenant.tenantId" :key="tenant.tenantId">{{ tenant.tenantId }}</option>
+        </b-form-select>
+      </div>
+      <b-button type="submit" variant="primary">Submit</b-button>
+    </b-form>
   </div>
 </template>
 
@@ -37,6 +40,27 @@ export default {
       this.unitAndTenants = response.data;
     });
   },
+
+  methods: {
+    onSubmit() {
+      const newUnitAndTenant = {
+        unitId: this.unitAndTenant.unitId,
+        tenantId: this.unitAndTenant.tenantId,
+      };
+      LandlordService.AssignTenantToUnit(newUnitAndTenant)
+        .then((response) => {
+          if (response.status === 204) {
+            this.$router.put(`unit/owner/update`);
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "updating");
+        });
+
+        this.$forceUpdate();
+    },
+  },
+
 };
 </script>
 
