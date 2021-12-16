@@ -57,4 +57,9 @@ namespace Capstone.Models
 
     }
 
+    public class StatusIdRequestId
+    {
+        public int statusId { get; set;}
+        public int requestId { get; set;}
+    }
 }

@@ -13,7 +13,31 @@ namespace Capstone.DAO
         {
             this._connectionString = connectionString;
         }
+        //TODO -------------------------------------------------------------------------------------------------------------------
+        public void UpdateRequeststatus(StatusIdRequestId statusIdRequestId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
 
+                {
+                    conn.Open();
+                    string sql = "UPDATE maintenance_requests SET request_status_id = @requestStatusID WHERE maintenance_request_id = @requestId; ";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@requestId", statusIdRequestId.requestId);
+                    cmd.Parameters.AddWithValue("@requestStatusID", statusIdRequestId.statusId);
+                    
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+
+                throw;
+            }
+        }
+        //---------------------------------------------------------------------------------------------------------------------
         public void CreateRequest(MaintenanceRequest request, int tenantId)
         {
             try

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     
     <b-alert variant="danger" class="text-center" show>You have {{ pendingRequest.length }} pending tickets!</b-alert>
     <div
@@ -30,17 +30,17 @@
           <div>
             <b-button-group class="mt-3">
               <b-button>Save</b-button>
-              <b-dropdown right text="Change Status">
-                <b-dropdown-item>Completed</b-dropdown-item>
-                <b-dropdown-item>Cancelled</b-dropdown-item>
-                
-              </b-dropdown>
+              <select v-model="request.requestStatus">
+                  <option value="" selected disabled>Change Status Here</option>
+                  <option>Completed</option>
+                  <option>Cancelled</option>
+                </select>
             </b-button-group>
           </div>
         </b-card-text>
       </b-card>
     </div>
-    <b-alert variant="success" class="text-center" show>You have {{ resolvedRequest.length }} pending tickets!</b-alert>
+    <b-alert variant="success" class="text-center" show>You have {{ resolvedRequest.length }} resolved tickets!</b-alert>
     <div
       id="resolved"
       v-for="request in resolvedRequest"
@@ -79,6 +79,7 @@ export default {
   name: "employee",
   data() {
     return { maintenanceRequests: [] };
+    
   },
   created() {
     EmployeeService.getMaintenanceByID().then((response) => {
@@ -98,6 +99,7 @@ export default {
       );
     },
   },
+
 };
 </script>
 

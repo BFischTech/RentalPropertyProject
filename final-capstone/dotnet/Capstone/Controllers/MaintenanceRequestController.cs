@@ -51,5 +51,13 @@ namespace Capstone.Controllers
             _maintenceRequestsDao.CreateRequest(request, tenantId);
             return NoContent();
         }
+
+        [HttpPut("employee/update")]
+        [Authorize(Roles = "Employee")]
+        public ActionResult NewUpdateRequeststatus(StatusIdRequestId statusIdRequestId)
+        {
+            _maintenceRequestsDao.UpdateRequeststatus(statusIdRequestId);
+            return NoContent();
+        }
     }
 }
