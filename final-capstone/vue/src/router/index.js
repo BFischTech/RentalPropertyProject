@@ -68,7 +68,7 @@ const router = new Router({
             }
         },
         {
-            path: '/Tenant',
+            path: '/tenant',
             name: 'renter',
             component: Renter,
             meta: {
@@ -83,7 +83,7 @@ const router = new Router({
             }
         },
         {
-            path: '/Employee',
+            path: '/employee',
             name: 'employee',
             component: Employee,
             meta: {
@@ -91,7 +91,7 @@ const router = new Router({
             }
         },
         {
-            path: '/Owner',
+            path: '/owner',
             name: 'landlord',
             component: Landlord,
             meta: {
@@ -99,8 +99,8 @@ const router = new Router({
             }
         },
         {
-            path: '/NewPropertyListing',
-            name: 'newpropertylisting',
+            path: '/newPropertyListing',
+            name: 'newPropertyListing',
             component: LandlordPropertyListing,
             meta: {
                 requiresAuth: true

@@ -2,7 +2,7 @@
 
 export default {
     
- createMaintenanceRequest(formData) {
-    return axios.put(/maintenance-requests/, formData);
+ createMaintenanceRequest(request) {
+    return axios.put('/MaintenanceRequest', request);
   }
 };
