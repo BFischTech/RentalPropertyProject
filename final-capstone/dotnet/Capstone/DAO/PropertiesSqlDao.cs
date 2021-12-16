@@ -173,6 +173,7 @@ namespace Capstone.DAO
             return propertyWithAvailableUnits;
         }
 
+        //helper method for GetAllPropertiesByOwnerid
         private PropertyByOwnerId GetAllPropertiesByOwnerFromReaders(SqlDataReader reader)
         {
             PropertyByOwnerId property = new PropertyByOwnerId();

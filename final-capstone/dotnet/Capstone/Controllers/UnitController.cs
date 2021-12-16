@@ -66,6 +66,15 @@ namespace Capstone.Controllers
             return NoContent();
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Owner")]
+        public ActionResult CreateUnit(int propertyId, CreateUnit unit)
+        {
+            _unitDao.CreateNewUnit(propertyId, unit);
+
+            return NoContent();
+        }
+
         //[HttpGet("/property/{unitId}")]
         //[AllowAnonymous]
         //public ActionResult<DetailedUnit> UnitDetails(int unitId)
