@@ -123,10 +123,33 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
                     conn.Open();
-                    string sql = 
-                        "SELECT u.unit_id, a.bedroom_count, a.bathroom_count, a.pet_allowed, a.smoking_allowed, a.pool_access," +
-                        " a.parking_spots, u.rent_amount, u.is_rented, u.rent_due_date FROM" +
-                        " units u JOIN amenities a ON u.unit_id = a.unit_id WHERE u.property_id = @propertyId AND u.is_rented = 0;";
+                    string sql =
+                        "SELECT " +
+                        "u.unit_id, " +
+                        "ut.unit_type_name AS 'type', " +
+                        "a.bedroom_count, " +
+                        "a.bathroom_count, " +
+                        "a.pet_allowed, " +
+                        "a.smoking_allowed, " +
+                        "a.pool_access, " +
+                        "a.parking_spots, " +
+                        "u.rent_amount, " +
+                        "u.is_rented, " +
+                        "u.rent_due_date, " +
+                        "p.name, " +
+                        "p.description, " +
+                        "ul.unit_building_number, " +
+                        "ul.unit_number, " +
+                        "ul.unit_street_address, " +
+                        "ul.unit_city, " +
+                        "ul.unit_state, " +
+                        "ul.unit_zip_code " +
+                        "FROM units u " +
+                        "INNER JOIN properties p ON p.property_id = u.property_id " +
+                        "INNER JOIN amenities a ON u.unit_id = a.unit_id " +
+                        "INNER JOIN unit_location ul ON ul.unit_location_id = u.unit_id " +
+                        "INNER JOIN unit_types ut ON ut.unit_type_id = u.unit_type_id " +
+                        "WHERE u.property_id = @propertyId AND u.is_rented = 0;";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@propertyId", id);
 
@@ -138,7 +161,7 @@ namespace Capstone.DAO
                     }
                 }
             }
-            catch (Exception)
+            catch (SqlException)
             {
                 throw;
             }
@@ -239,6 +262,7 @@ namespace Capstone.DAO
             Unit units = new Unit()
             {
                 unitId = Convert.ToInt32(reader["unit_id"]),
+                unitType = Convert.ToString(reader["type"]),
                 bedroomCount = Convert.ToInt32(reader["bedroom_count"]),
                 bathroomCount = Convert.ToDecimal(reader["bathroom_count"]),
                 petFriendly = Convert.ToBoolean(reader["pet_allowed"]),
@@ -248,7 +272,14 @@ namespace Capstone.DAO
                 rentAmount = Convert.ToDecimal(reader["rent_amount"]),
                 isRented = Convert.ToBoolean(reader["is_rented"]),
                 rentDueDate = Convert.ToString(reader["rent_due_date"]),
-                //propertyId = Convert.ToInt32(reader["property_id"])
+                name = Convert.ToString(reader["name"]),
+                description = Convert.ToString(reader["description"]),
+                unitBuildingNumber = Convert.ToInt32(reader["unit_building_number"]),
+                unitNumber = Convert.ToString(reader["unit_number"]),
+                address = Convert.ToString(reader["unit_street_address"]),
+                unitCity = Convert.ToString(reader["unit_city"]),
+                unitState = Convert.ToString(reader["unit_state"]),
+                unitZipCode = Convert.ToString(reader["unit_zip_code"])
             };
             return units;
         }

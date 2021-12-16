@@ -11,13 +11,8 @@ import Landlord from '../views/Landlord.vue'
 import Employee from '../views/Employee.vue'
 import Unit from '../views/Unit.vue'
 import LandlordPropertyListing from '../views/LandlordPropertyListing.vue'
-<<<<<<< HEAD
 import LandlordUnitListing from '../views/LandlordUnitListing.vue'
-
-
-=======
 import LandlordAddRenterToUnit from '../views/LandlordAddRenterToUnit.vue'
->>>>>>> d6ca356f34148d73e8127c1da43094276956f774
 
 Vue.use(Router)
 
