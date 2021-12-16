@@ -36,10 +36,7 @@
 </script>
 
 <style scoped>
-
-
 #container-grid {
-  
   display: grid;
   grid-template-columns: 50% 25% 25%;
   row-gap: 5px;
@@ -49,10 +46,5 @@
   justify-items: center;
   align-content: space-evenly;
   align-items: center;
-  
 }
-
-
-
-
 </style>
