@@ -420,8 +420,14 @@ VALUES
 	
 INSERT INTO [maintenance_requests] 
   (tenant_id, request_type_id, concern, request_status_id, employee_assigned_id)
-VALUES	 
-	(16, 1, 'Toilet is loud', 3, 11);
+VALUES	
+	(15, 1, 'Lights flicker', 1, 11),
+	(15, 2, 'Broken gate', 2, 11),
+	(15, 3, 'Paint is flaky', 3, 11),
+	(15, 4, 'Leaky faucet', 2, 11),
+	(16, 5, 'Hole in wall', 1, 11),
+	(16, 6, 'Floor creaks', 3, 11),
+	(16, 4, 'Toilet is loud', 3, 11);
 
 
 INSERT INTO [unit_images] 
