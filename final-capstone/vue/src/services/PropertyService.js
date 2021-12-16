@@ -16,7 +16,15 @@ export default {
 
     addNewProperty(property) {
         return axios.post('/properties', property)
-      }
-    
+    },
+
+    addNewUnit(unit) {
+        return axios.post('/units', unit)
+    },
+
+
+
+
+
 
 }
