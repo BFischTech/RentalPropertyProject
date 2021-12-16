@@ -14,6 +14,38 @@ namespace Capstone.DAO
             _connectionString = dbConnectionString;
         }
 
+        public IList<PropertyByOwnerId> GetAllPropertiesByOwnerid(int ownerId)
+        {
+            IList<PropertyByOwnerId> property = new List<PropertyByOwnerId>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    conn.Open();
+
+                    var sql = "SELECT name, property_id " +
+                              "FROM properties " +
+                              "WHERE owner_id = @ownerId;";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@ownerId", ownerId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        property.Add(GetAllPropertiesByOwnerFromReaders(reader));
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return property;
+
+        }
+
         public void UpdateProperty(Property property, int ownerId, int propertyId)
         {
             try
@@ -139,6 +171,18 @@ namespace Capstone.DAO
 
 
             return propertyWithAvailableUnits;
+        }
+
+        private PropertyByOwnerId GetAllPropertiesByOwnerFromReaders(SqlDataReader reader)
+        {
+            PropertyByOwnerId property = new PropertyByOwnerId();
+
+            property.propertyName = Convert.ToString(reader["name"]);
+
+            property.propertyId = Convert.ToInt32(reader["property_id"]);
+
+            return property;
+
         }
 
     }

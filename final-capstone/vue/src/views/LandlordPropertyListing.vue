@@ -2,7 +2,6 @@
 <div>
   <h1>Enter New Property Details</h1>
   <new-listing-form>
-    <h1>experimenting</h1>
   </new-listing-form>
 </div>
   

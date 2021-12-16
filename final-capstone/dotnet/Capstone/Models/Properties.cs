@@ -29,4 +29,9 @@ namespace Capstone.Models
         public int propertyOwnerId { get; set; }
     }
 
+    public class PropertyByOwnerId
+    {
+        public string propertyName { get; set; }
+        public int propertyId { get; set; }
+    }
 }

@@ -47,6 +47,25 @@ namespace Capstone.DAO
             return tenantWithoutRentedUnit;
         }
 
+        public void AssignTenantToAvailableUnit(UnitAndTenant unitAndTenant) {
+            try {
+                using (SqlConnection conn = new SqlConnection(_connectionString)) {
+                    conn.Open();
+
+                    var sql = 
+                        "UPDATE tenant SET unit_rented_id = @unitId WHERE tenant_id = @tenantId;" +
+                        "UPDATE units SET is_rented = 1 WHERE unit_id = @unitId;";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@unitId", unitAndTenant.unitId);
+                    cmd.Parameters.AddWithValue("@tenantId", unitAndTenant.tenantId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            } catch (SqlException) {
+                throw;
+            }
+
+        }
         
         //Helper method that is used for GetAllAvailableUnitsByOwnerId()
         private TenantWithoutRentedUnit GetAllTenantWithoutRentedUnitFromReader(SqlDataReader reader) {

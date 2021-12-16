@@ -13,4 +13,9 @@ namespace Capstone.Models
         public string email { get; set; }
         public string mobileNumber { get; set; }
     }
+
+    public class UnitAndTenant {
+        public int unitId { get; set; }
+        public int tenantId { get; set; }
+    }
 }

@@ -35,6 +35,7 @@ namespace Capstone.Models
     public class Unit
     {
         public int unitId { get; set; }
+        public string unitType { get; set; }
         public int bedroomCount { get; set; }
         public decimal bathroomCount { get; set; }
         public bool petFriendly { get; set; }
@@ -44,6 +45,15 @@ namespace Capstone.Models
         public decimal rentAmount { get; set; }
         public bool isRented { get; set; }
         public string rentDueDate { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public int unitBuildingNumber { get; set; }
+        public string unitNumber { get; set; }
+        public string address { get; set; }
+        public string unitCity { get; set; }
+        public string unitState { get; set; }
+        public string unitZipCode { get; set; }
+
     }
 
     public class AvailableUnits

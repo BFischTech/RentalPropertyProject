@@ -1,24 +1,8 @@
 <template>
-  <div class="container">
-    <div class="container">
-<div>
-  <b-form >
-    <label class="mr-sm-2" for="inline-form-custom-select-pref">Preference</label>
-    <b-form-select
-      id="inline-form-custom-select-pref"
-      class="mb-2 mr-sm-2 mb-sm-0"
-      :options="[{ text: 'Choose...', value: null }, 'One', 'Two', 'Three']"
-      :value="null"
-    ></b-form-select>
-
-    <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">Remember my preference</b-form-checkbox>
-
-    <b-button variant="primary">Save</b-button>
-  </b-form>
-</div>
-    </div>
-
-    <div id="unitAvailable">
+  <div class="container" id="div-container">
+    <header><h3>Assign Tenant To Available Unit</h3></header>
+    <landlord-add-renter-to-unit></landlord-add-renter-to-unit>
+    <div id="div-table">
       <h2>Unit Available</h2>
       <b-table-simple responsive>
         <b-thead>
@@ -36,7 +20,7 @@
       </b-table-simple>
     </div>
     <br>
-    <div id="tenantAvailable">
+    <div id="div-table">
       <h2>Tenant Available</h2>
       <b-table-simple responsive>
         <b-thead>
@@ -60,14 +44,16 @@
   </div>
 </template>
 
-
 <script>
 import LandlordService from "../services/LandlordService.js";
+import LandlordAddRenterToUnit from '../components/LandlordAddRenterToUnit.vue'
 
 export default {
+  components: { 
+    LandlordAddRenterToUnit 
+  },
   data() {
     return {
-      unitId: null,
       unitAndTenants: [],
     }
   },
@@ -81,4 +67,31 @@ export default {
 
 <style scoped>
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
+header {
+  width: 100%;
+  height: 5rem;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#div-container {
+  margin: 2rem auto;
+  max-width: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  padding:  1rem;
+  text-align: center;
+}
+
+#div-table {
+  margin: 2rem auto;
+  max-width: auto;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.26);
+  padding:  1rem;
+  text-align: center;
+}
 </style>

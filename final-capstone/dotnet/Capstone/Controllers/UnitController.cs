@@ -58,6 +58,13 @@ namespace Capstone.Controllers
 
         }
 
+        
+        [HttpPut("owner/update")]
+        [Authorize(Roles ="Owner")]
+        public ActionResult AssignTenantToAvailableUnit(UnitAndTenant unitAndTenant) {
+            _tenantDao.AssignTenantToAvailableUnit(unitAndTenant);
+            return NoContent();
+        }
 
         //[HttpGet("/property/{unitId}")]
         //[AllowAnonymous]

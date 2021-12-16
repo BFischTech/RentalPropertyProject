@@ -16,13 +16,11 @@ export default {
   components: { 
     TheHeader,
     TheMenubar,
-    TheFooter 
+    TheFooter
   },
 };
 </script>
 
 <style>
-
-
 
 </style>

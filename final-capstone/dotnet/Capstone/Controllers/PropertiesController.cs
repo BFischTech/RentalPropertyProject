@@ -56,6 +56,16 @@ namespace Capstone.Controllers
             return NoContent();
         }
 
+        [HttpGet("owner")]
+        [Authorize(Roles = "Owner")]
+        public ActionResult<List<PropertyByOwnerId>> GetAllPropertiesByOwnerId()
+        {
+            int ownerId = Convert.ToInt32(User.FindFirst("sub")?.Value);
+
+           return Ok(_propertiesDao.GetAllPropertiesByOwnerid(ownerId));
+            
+        }
+
 
     }
 
