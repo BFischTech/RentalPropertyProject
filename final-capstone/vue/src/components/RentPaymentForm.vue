@@ -1,13 +1,10 @@
 <template>
-  <div>
+  <div id="container">
+    <b-form-group>
     <b-card bg-variant="light">
-      <p id="submitFormHeading">Submit Rent Form</p>
-      <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-        <b-form-group id="rentPaymentFormGroup">
-      
-
-       
-
+      <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show">
+        <p id="submitFormHeading">Submit Rent Form</p>
+        
           <p id="rentAmount">Enter payment amount</p>
           <b-form-input
             id="inputRent"
@@ -18,66 +15,63 @@
             data-type="currency"
             placeholder="$1.00"
             required
-          >
-          </b-form-input>
+          ></b-form-input>
+       
 
-         
-        </b-form-group>
-        
-        <b-form-group class="buttons">
-          <b-button class="submitButton" type="submit" variant="primary"
-            >Submit</b-button
-          >
-          <b-button class="resetButton" type="reset" variant="danger"
-            >Reset</b-button
-          >
-        </b-form-group>
+        <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button type="reset" variant="danger">Reset</b-button>
       </b-form>
     </b-card>
+    </b-form-group>
   </div>
 </template>
 
 <script>
-import RenterService from "../services/RenterService.js";
+import renterService from '../services/RenterService.js'
 
 export default {
   data() {
     return {
       tenant: {
-        amount: 0,
+        amount: '',
+        tenantId: null,
       },
-      
+
       show: true,
-      
-    };
+    }
   },
   methods: {
     onSubmit() {
-     const newRentPayment = {
-        amount: this.tenant.amount,
-      };
-RenterService.addNewPayment(newRentPayment)
-      .then((response) => {
-        if (response === 204 ){this.$router.push(`/tenant`);}
+      const newRentPayment = {
+        amount: parseInt(this.tenant.amount),
+        tenantId: this.$store.state.user.userId,
+      }
+
+      renterService
+        .addNewPayment(newRentPayment)
+        .then((response) => {
+          if (response.status === 204) {
+            this.$router.push(`/`)
+          }
         })
-          .catch((error) => {
-            this.handleErrorResponse(error, "adding");
-          });
+        .catch((error) => {
+          console.log(error)
+        })
     },
 
-     
-    },
     onReset(event) {
-      event.preventDefault();
+      event.preventDefault()
       // Reset our form values
-      this.tenant.amount = "";
+      this.tenant.amount = ''
+      this.tenant.tenantId = null
       // Trick to reset/clear native browser form validation state
-      this.show = false;
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     },
-};
+  },
+}
 </script>
 
 <style scoped>

@@ -82,7 +82,7 @@ export default {
     .createMaintenanceRequest(formData)
         .then((response) => {
           if (response.status === 204) {
-            this.$router.push(`/MaintenanceRequest`);
+            this.$router.push(`/`);
           }
         })
         .catch((error) => {

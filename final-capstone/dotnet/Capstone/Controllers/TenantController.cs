@@ -27,8 +27,6 @@ namespace Capstone.Controllers
         [Authorize(Roles = "Tenant")]
         public ActionResult PayRent (TenantRent tenantRent)
         {
-            int tenantId = Convert.ToInt32(User.FindFirst("sub")?.Value);
-
             _tenantDao.TenantRent(tenantRent);
             
             return NoContent();
