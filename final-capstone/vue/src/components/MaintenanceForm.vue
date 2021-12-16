@@ -33,6 +33,21 @@
 import renterService from "../services/RenterService";
 
 export default {
+  name: "",
+  props: {
+    maintenanceRequestId: {
+      type: Number,
+      default: 0,
+    },
+    requestDateTime: {
+      type: String,
+      default: "",
+    },
+    employeeAssignedId: {
+      type: Number,
+      default: null,
+    },
+  },
   data() {
     return {
       form: {
@@ -54,13 +69,18 @@ export default {
   methods: {
     onSubmit() {
       
-      const formData = this.form;
+      const formData = {
+          requestTypeId: this.form.requestTypeId,
+          concern: this.form.concern,
+          tenantId: this.tenantId,
+          requestStatusId: this.requestStatusId
+      };
       
     renterService
     .createMaintenanceRequest(formData)
         .then((response) => {
           if (response.status === 204) {
-            this.$router.push(`/maintenanceRequest`);
+            this.$router.push(`/MaintenanceRequest`);
           }
         })
         .catch((error) => {
