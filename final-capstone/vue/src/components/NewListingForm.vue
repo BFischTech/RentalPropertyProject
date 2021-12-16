@@ -120,7 +120,7 @@ export default {
         propertyCity: this.property.propertyCity,
         propertyState: this.property.propertyState,
         propertyZipCode: this.property.propertyZipCode,
-        url: this.property.propertyImgUrl,
+        propertyImgUrl: this.property.propertyImgUrl,
       };
 
 
