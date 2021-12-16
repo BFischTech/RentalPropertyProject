@@ -18,4 +18,15 @@ namespace Capstone.Models
         public int unitId { get; set; }
         public int tenantId { get; set; }
     }
+
+    public class TenantRent
+    
+    {
+        public decimal amount { get; set; }
+        public int tenantId { get; set; }
+        public string dateRentPaid { get; set; }
+        
+        
+    }
+    
 }

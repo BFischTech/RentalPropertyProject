@@ -4,22 +4,14 @@
       <p id="submitFormHeading">Submit Rent Form</p>
       <b-form @submit="onSubmit" @reset="onReset" v-if="show">
         <b-form-group id="rentPaymentFormGroup">
-          <p id="inputPaymentDate">Choose a payment date</p>
-          <b-form-datepicker
-            label
-            for="datepicker"
-            id="inputDatepicker"
-            v-model="date"
-            class="datepicker"
-          ></b-form-datepicker>
-          <!-- <p>Date Chosen: {{ value }}</p> -->
+      
 
        
 
           <p id="rentAmount">Enter payment amount</p>
           <b-form-input
             id="inputRent"
-            v-model="form.rent"
+            v-model="tenant.amount"
             type="number"
             pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"
             value=""
@@ -29,11 +21,7 @@
           >
           </b-form-input>
 
-          <b-form-checkbox-group v-model="form.checked" id="inputCheckbox">
-            <b-form-checkbox value="agree"
-              >&nbsp; I agree to the terms and conditions</b-form-checkbox
-            >
-          </b-form-checkbox-group>
+         
         </b-form-group>
         
         <b-form-group class="buttons">
@@ -50,37 +38,45 @@
 </template>
 
 <script>
+import RenterService from "../services/RenterService.js";
+
 export default {
   data() {
     return {
-      form: {
-        date: "",
-        property: null,
-        checked: [],
+      tenant: {
+        amount: 0,
       },
       
       show: true,
-      date: "",
+      
     };
   },
   methods: {
-    onSubmit(event) {
-      event.preventDefault();
-      alert(JSON.stringify(this.form));
+    onSubmit() {
+     const newRentPayment = {
+        amount: this.tenant.amount,
+      };
+RenterService.addNewPayment(newRentPayment)
+      .then((response) => {
+        if (response === 204 ){this.$router.push(`/tenant`);}
+        })
+          .catch((error) => {
+            this.handleErrorResponse(error, "adding");
+          });
+    },
+
+     
     },
     onReset(event) {
       event.preventDefault();
       // Reset our form values
-      this.form.date = "";
-      this.form.property = null;
-      this.form.checked = [];
+      this.tenant.amount = "";
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
         this.show = true;
       });
     },
-  },
 };
 </script>
 

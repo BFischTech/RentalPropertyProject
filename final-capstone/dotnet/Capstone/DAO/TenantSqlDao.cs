@@ -17,6 +17,27 @@ namespace Capstone.DAO
             _connectionString = dbConnectionString;
         }
 
+        public void TenantRent(TenantRent tenantRent)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    conn.Open();
+                    string sql = "UPDATE tenant SET rent_paid = rent_paid + @rentPaid, date_rent_paid = GETDATE() WHERE tenant_id = @tenantId";
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    
+                    cmd.Parameters.AddWithValue("@rentPaid", tenantRent.amount);
+                    cmd.Parameters.AddWithValue("@tenantId", tenantRent.tenantId);
+                    cmd.ExecuteNonQuery();
+                }
+            } catch (SqlException)
+            {
+                throw;
+            } 
+        }
+
         public IList<TenantWithoutRentedUnit> GetAllTenantWithoutRentedUnit() {
             IList<TenantWithoutRentedUnit> tenantWithoutRentedUnit = new List<TenantWithoutRentedUnit>();
 

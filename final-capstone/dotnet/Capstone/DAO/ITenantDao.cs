@@ -9,6 +9,9 @@ namespace Capstone.DAO
     public interface ITenantDao
     {
         IList<TenantWithoutRentedUnit> GetAllTenantWithoutRentedUnit();
+       
         public void AssignTenantToAvailableUnit(UnitAndTenant unitAndTenant);
+
+        public void TenantRent(TenantRent tenantRent);
     }
 }
