@@ -4,7 +4,7 @@
         <b-button id="form" @click="goToAddPropertyPage()">Add New Property</b-button> <br>
         <b-button id="form" @click="goToAddUnitPage()">Add New Unit</b-button><br>
         <b-button id="form" @click="goToAddRenterToUnit()">Add Renter to Available Unit!</b-button><br>
-        <b-button id="form" @click="goToAddUnitPage()">View Maintenance Requests</b-button><br>
+        <b-button id="form" @click="goToMaintenanceRequestsPage()">View Maintenance Requests</b-button><br>
         <b-button id="form" @click="goToAddUnitPage()">Update a Property</b-button><br>
   </div>
 </template>
@@ -22,6 +22,9 @@ export default {
     },
     goToAddRenterToUnit() {
       this.$router.push("owner/addRenterToUnit");
+    },
+    goToMaintenanceRequestsPage() {
+      this.$router.push("/MaintenanceRequest/owner");
     },
   },
 };

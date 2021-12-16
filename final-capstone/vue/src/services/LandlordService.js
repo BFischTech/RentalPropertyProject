@@ -9,4 +9,8 @@ export default {
     AssignTenantToUnit(unitAndTenant) {
         return axios.put('unit/owner/update', unitAndTenant)
     },
+
+    getMaintenanceForOwner() {
+        return axios.get('/MaintenanceRequest/owner')
+    },
 }
