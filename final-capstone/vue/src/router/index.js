@@ -11,6 +11,7 @@ import Landlord from '../views/Landlord.vue'
 import Employee from '../views/Employee.vue'
 import Unit from '../views/Unit.vue'
 import LandlordPropertyListing from '../views/LandlordPropertyListing.vue'
+import LandlordAddRenterToUnit from '../views/LandlordAddRenterToUnit.vue'
 
 Vue.use(Router)
 
@@ -68,7 +69,7 @@ const router = new Router({
             }
         },
         {
-            path: '/tenant',
+            path: '/Tenant',
             name: 'renter',
             component: Renter,
             meta: {
@@ -83,7 +84,7 @@ const router = new Router({
             }
         },
         {
-            path: '/employee',
+            path: '/Employee',
             name: 'employee',
             component: Employee,
             meta: {
@@ -91,7 +92,7 @@ const router = new Router({
             }
         },
         {
-            path: '/owner',
+            path: '/Owner',
             name: 'landlord',
             component: Landlord,
             meta: {
@@ -99,8 +100,16 @@ const router = new Router({
             }
         },
         {
-            path: '/newPropertyListing',
-            name: 'newPropertyListing',
+            path: '/owner/addRenterToUnit',
+            name: 'addRenterToUnit',
+            component: LandlordAddRenterToUnit,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: '/NewPropertyListing',
+            name: 'newpropertylisting',
             component: LandlordPropertyListing,
             meta: {
                 requiresAuth: true

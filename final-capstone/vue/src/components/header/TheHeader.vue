@@ -18,7 +18,7 @@
         </div> 
       </div>
       
-      <b-button class="w-50 h-65 loginButton" :to="$store.state.user.role" variant="outline-dark" pill="true" v-if="$store.state.token != ''">Welcome! {{ $store.state.user.role }}</b-button>
+      <b-button class="w-50 h-65 loginButton" :to="'/'+$store.state.user.role" variant="outline-dark" pill="true" v-if="$store.state.token != ''">Welcome! {{ $store.state.user.role }}</b-button>
       <b-button class="w-50 h-65 loginButton" href="/logout" variant="outline-dark" pill="true" v-if="$store.state.token != ''">Logout</b-button>
       <b-button class="w-50 h-65 loginButton" href="/login" variant="outline-dark" pill="true" v-if="$store.state.token === ''">Login</b-button>
       <b-button class="w-50 h-65 loginButton" href="/register" variant="outline-dark" pill="true" v-if="$store.state.token === ''">Register</b-button>
