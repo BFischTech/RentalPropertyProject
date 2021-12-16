@@ -1,6 +1,6 @@
 ﻿<template>
   <div id="container">
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show">
       <b-form-group id="input-group-3" label="What seems to be the problem?" label-for="input-3">
         <b-form-select
             id="input-3"
@@ -53,6 +53,8 @@ export default {
       form: {
         requestTypeId: null,
         concern: null,
+        tenantId: null,
+        requestStatusId: 0,
       },
       maintenanceTypes: [{text: 'Select One', value: null}, {text: 'Electrical', value: 1}, {
         text: 'Fences',

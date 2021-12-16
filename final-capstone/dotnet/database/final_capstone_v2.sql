@@ -155,6 +155,7 @@ CREATE TABLE [tenant] (
   last_name       VARCHAR(255),
   email           VARCHAR(255),
   mobile_number   VARCHAR(255),
+  rent_paid		  DECIMAL,
   
   CONSTRAINT [PK_tenant_id] PRIMARY KEY (tenant_id),
   CONSTRAINT [FK_tenant_id] FOREIGN KEY (tenant_id) REFERENCES [users] (user_id),
@@ -408,10 +409,10 @@ VALUES
   (13, 1, 1, 1, 1, 1, 1);
 
 INSERT INTO [tenant] 
-  (tenant_id, unit_rented_id, first_name, last_name, email, mobile_number)
+  (tenant_id, unit_rented_id, first_name, last_name, email, mobile_number, rent_paid)
 VALUES	 
-  (15, 1, 'Aubrie', 'Wall', 'WallAubrie@gmail.com', '5131234567'),
-  (16, 6, 'Kiley', 'Coleman', 'KileyColeman@gmail.com', '5131234567');
+  (15, 1, 'Aubrie', 'Wall', 'WallAubrie@gmail.com', '5131234567', 100),
+  (16, 6, 'Kiley', 'Coleman', 'KileyColeman@gmail.com', '5131234567', 250);
 
 INSERT INTO [tenant] 
   (tenant_id, first_name, last_name, email, mobile_number)
