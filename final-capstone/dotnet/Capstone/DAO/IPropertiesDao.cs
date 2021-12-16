@@ -12,5 +12,6 @@ namespace Capstone.DAO
         void CreateNewProperty(Property property, int ownerId);
         void UpdateProperty(Property property, int ownerId, int propertyId);
         IList<PropertyByOwnerId> GetAllPropertiesByOwnerid(int ownerId);
+        
     }
 }
