@@ -200,22 +200,26 @@ CREATE TABLE [maintenance_requests] (
 INSERT INTO [users] 
   (username, password_hash, salt, user_role)
 VALUES 
-	('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Admin'),
+  ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Admin'),
   ('owner1','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
-	('owner2','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
-	('owner3','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
+  ('owner2','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
+  ('owner3','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
   ('owner4','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
-	('owner5','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
+  ('owner5','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
   ('owner6','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
-	('owner7','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
+  ('owner7','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
   ('owner8','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
-	('owner9','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
+  ('owner9','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Owner'),
   ('employee1','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Employee'),
   ('employee2','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Employee'),
-	('user1','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','User'),
+  ('user1','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','User'),
   ('user2','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','User'),
-	('tenant1','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
-  ('tenant2','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant');
+  ('tenant1','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant2','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant3','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant4','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant5','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant'),
+  ('tenant6','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','Tenant');
 
 
 INSERT INTO [owner] 
@@ -409,11 +413,19 @@ VALUES
   (15, 1, 'Aubrie', 'Wall', 'WallAubrie@gmail.com', '5131234567'),
   (16, 6, 'Kiley', 'Coleman', 'KileyColeman@gmail.com', '5131234567');
 
+INSERT INTO [tenant] 
+  (tenant_id, first_name, last_name, email, mobile_number)
+VALUES	 
+  (17, 'Lorene', 'Hubbard', 'Hubbard@gmail.com', '5131234567'),
+  (18, 'Edgar', 'French', 'French@gmail.com', '5131234567'),
+  (19, 'Ted', 'Ortega', 'Ortega@gmail.com', '5131234567'),
+  (20, 'Frank', 'Roberson', 'Roberson@gmail.com', '5131234567');
+
 INSERT INTO [maintenance_requests] 
   (tenant_id, request_type_id, concern, request_status_id)
 VALUES	 
   (15, 2, 'the quick brown fox jumps over the lazy dog', 1),
-	(15, 3, 'leaky bathroom ceiling', 2),
+  (15, 3, 'leaky bathroom ceiling', 2),
   (15, 1, 'sample maintenance request description', 3),
 
   (16, 6, 'sample maintenance request description', 1);

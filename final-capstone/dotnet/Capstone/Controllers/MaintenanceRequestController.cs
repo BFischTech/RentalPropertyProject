@@ -46,9 +46,9 @@ namespace Capstone.Controllers
         [Authorize(Roles = "Tenant")]
         public ActionResult CreateRequest(MaintenanceRequest request)
         {
-            int renterId = Convert.ToInt32(User.FindFirst("sub")?.Value);
+            int tenantId = Convert.ToInt32(User.FindFirst("sub")?.Value);
 
-            _maintenceRequestsDao.CreateRequest(request, renterId);
+            _maintenceRequestsDao.CreateRequest(request, tenantId);
             return NoContent();
         }
     }

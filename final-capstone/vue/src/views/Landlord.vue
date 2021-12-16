@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     <div id="container-grid">
       <h1 id="header">Owner Portal</h1>
@@ -19,6 +20,16 @@
           >Add New Unit</b-button
         >
       </div>
+=======
+ <div class="container">
+   <ul>
+     <li><router-link :to="{ name: 'newpropertylisting'}">Enter a New Property Listing</router-link></li>
+     <li><router-link :to="{ name: 'newpropertylisting'}">Enter a New Unit Listing</router-link></li>
+    <li><router-link :to="{ name: 'addRenterToUnit'}">Add Renter to Available Unit!</router-link></li>
+   </ul>
+ </div>
+</template>
+>>>>>>> d6ca356f34148d73e8127c1da43094276956f774
 
       <div>
         <b-button
