@@ -138,18 +138,6 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-
-.card-body {
- background-color: #c0ddb5
-}
-
-.container{
-background-color: #80b969;}
-
-
-</style>>
-=======
   .container {
     background-color: #80B969;
     width: 100rem;
@@ -159,4 +147,3 @@ background-color: #80b969;}
   }
 
 </style>
->>>>>>> 3b6d5a3faf5bc8eb8c8025881a010fa771d77c7a

@@ -278,37 +278,37 @@ VALUES
     'Hamilton', 
     'OH', 
     '56122',
-    'https://hosting.photobucket.com/images/i/clarkjtm/1.jpg',  
+    'https://12b85ee3ac237063a29d-5a53cc07453e990f4c947526023745a3.ssl.cf5.rackcdn.com/final/6240/118289.jpg',  
     2
   ),
 	(
     'The Cozy Cumberland', 
-    'The Cozy Cumberland is a well-furnished 3 Bedroom 2 Bath “Entire House” with complete privacy', 
+    'The Cozy Cumberland comes furnished and move in ready.', 
     '4321 Queens island ln', 
     'Cincinnati', 
     'OH', 
     '45999',
-    'https://hosting.photobucket.com/images/i/clarkjtm/2.jpg',  
+    'https://a0.muscache.com/im/pictures/87daa0f8-0bd8-4419-9bb5-ee4ee8dcf917.jpg?aki_policy=large',  
     3
   ),
   (
     'Corner House', 
-    'Four bedroom House', 
+    'Need more room?  How about this 4br beauty?!', 
     '176 StoneRidge Blvd', 
     'South Lebanon', 
     'OH', 
     '45065',
-    'https://hosting.photobucket.com/images/i/clarkjtm/3.jpg',  
+    'https://ap.rdcpix.com/8733ccb00d478b9c2da5f180004934b2l-m746260011xd-w1020_h770_q80.jpg',  
     4
   ),
   (
     'Beach House', 
-    'Beach House, private beach access',  
+    'Head down to your own private beach!',  
     '627 Cherry Grove St', 
     'Casper', 
     'SC', 
     '78140', 
-    'https://hosting.photobucket.com/images/i/clarkjtm/4.jpg',
+    'https://images.trvl-media.com/hotels/37000000/36280000/36275400/36275335/468a8b77.jpg?impolicy=fcrop&w=670&h=385&p=1&q=medium',
     5
   ),
 	(
@@ -318,28 +318,28 @@ VALUES
     'Alpena', 
     'MI', 
     '6754',
-    'https://hosting.photobucket.com/images/i/clarkjtm/5.jpg', 
+    'https://i.pinimg.com/originals/6f/a8/e7/6fa8e75cc0236600fcd3772ed33f2c4a.jpg', 
     6
   ),
   --Apartment
 	(
     'Steeple Chase', 
-    'Apartment complex that has nice ponds', 
+    'Beautiful water features and amenities', 
     '3219 Steeple Chase Ln', 
     'Loveland', 
     'OH', 
     '45140',
-    'https://hosting.photobucket.com/images/i/clarkjtm/6.jpg',  
+    'https://www.apartmentsearch.com/databaseimages/c53cc674-8feb-4f59-8777-c0090dac2615.jpg?w=750&h=500&404=~/assets/images/caro-coming-soon.jpg&mode=crop',  
     7
   ),
 	(
-    'Afordable Houseing', 
-    'Apartment complex for the poor',  
+    'Gregory Heights', 
+    'Discover the sights of NYC!',  
     '983 Georgey Rows Ave', 
     'NY', 
     'NY', 
     '2341',
-    'https://hosting.photobucket.com/images/i/clarkjtm/7.jpg', 
+    'https://cdn.buttercms.com/Tk9SIslGQZqBnYf1zi4E', 
     8
   ),
   
@@ -351,7 +351,7 @@ VALUES
     'Casper', 
     'NY', 
     '54222',
-    'https://hosting.photobucket.com/images/i/clarkjtm/8.jpg', 
+    'https://media-cdn.tripadvisor.com/media/vr-splice-j/02/91/5e/05.jpg', 
     9
   ),
   (
@@ -361,7 +361,7 @@ VALUES
     'Alpena', 
     'MI', 
     '78442',
-    'https://hosting.photobucket.com/images/i/clarkjtm/9.jpg', 
+    'https://media.vrbo.com/lodging/25000000/24080000/24075200/24075172/5a226b2b.f10.jpg', 
     10
   );
 
@@ -447,36 +447,47 @@ VALUES
 INSERT INTO [unit_images] 
   (unit_id, image_url, image_caption)
 VALUES 
-	(1, 'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2065&q=80', 'OH GOD WHAT IS THAT'),
-	(2, 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80', 'Affordable housing img'),
-  (3, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'OH GOD WHAT IS THAT'),
-	(4, 'https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741', 'Affordable housing img'),
-  (5, 'https://media.istockphoto.com/photos/colonial-style-house-picture-id1284097677', 'OH GOD WHAT IS THAT'),
-	(6, 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Affordable housing img'),
-  (7, 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Affordable housing img'),
-  (8, 'https://media.istockphoto.com/photos/exterior-view-of-modern-apartment-building-picture-id1273552068', 'OH GOD WHAT IS THAT'),
-  (9, 'https://media.istockphoto.com/photos/exterior-view-of-modern-apartment-building-picture-id1273552068', 'OH GOD WHAT IS THAT'),
-	(10, 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Affordable housing img'),
-	(11, 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Affordable housing img'),
-  (12, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT'),
-  (13, 'https://i.imgur.com/eyhMgSx.png', 'OH GOD WHAT IS THAT');
+	(1, 'https://www.californiahomedesign.com/wp-content/uploads/2019/03/2011_05_18_chdr9-1.jpg', 'Interior 1'),
+	(2, 'https://a0.muscache.com/pictures/caf27453-e047-47dd-b24c-7ae43a5cdb18.jpg', 'Interior 1'),
+  (3, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/244171030.jpg?k=335f4734ff2cf8b97cfe5083604be311322e198289b2ed8f4eec2d1a5dc8e17d&o=&hp=1', 'Interior 1'),
+	(4, 'https://www.thespruce.com/thmb/57vlQEyDh8xHzg0WNrHi3cc1R3o=/1460x1082/filters:no_upscale():max_bytes(150000):strip_icc()/Relaxing-beach-house-living-room-Butler-Armsden-1535676652f94c8d9ca72c64194b9e43.jpg', 'Interior 2'),
+  (5, 'https://static.onecms.io/wp-content/uploads/sites/24/2012/08/2140101_richa_019_0-1.jpg', 'Interior 1'),
+	(6, 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Interior 2'),
+  (7, 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', 'Interior 2'),
+  (8, 'http://cdn.home-designing.com/wp-content/uploads/2013/01/modern-bedroom-ideas.jpg', 'Interior 1'),
+  (9, 'http://cdn.home-designing.com/wp-content/uploads/2013/01/modern-bedroom-ideas.jpg', 'Interior 1'),
+	(10, 'https://images1.apartments.com/i2/5GZQh2TSFKDdqPmWGUDTWBTYQxWKU_7LMS0qv0kbSZM/111/the-summit-apartments-memphis-tn-primary-photo.jpg', 'Interior 2'),
+	(11, 'https://images1.apartments.com/i2/5GZQh2TSFKDdqPmWGUDTWBTYQxWKU_7LMS0qv0kbSZM/111/the-summit-apartments-memphis-tn-primary-photo.jpg', 'Interior 2'),
+  (12, 'https://media.istockphoto.com/photos/beach-house-sun-room-picture-id157403495?k=20&m=157403495&s=612x612&w=0&h=wawvbLXw5oG17L9TK7tkKkswKbTK_06aKhj98z2h0rg=', 'Interior 1'),
+  (13, 'https://media.istockphoto.com/photos/beach-house-sun-room-picture-id157403495?k=20&m=157403495&s=612x612&w=0&h=wawvbLXw5oG17L9TK7tkKkswKbTK_06aKhj98z2h0rg=', 'Interior 1'),
+  	(1, 'https://i.pinimg.com/originals/7e/71/ea/7e71ea2512c4b9a1eb59bf4873c4dc77.jpg', 'Interior 2'),
+	(2, 'https://media-cdn.tripadvisor.com/media/vr-splice-j/06/2c/e1/2b.jpg', 'A nice view'),
+  (3, 'https://www.theplancollection.com/Upload/Designers/161/1001/Plan1611001Image_18_1_2021_1153_48_891_593.jpg', 'Interior 1'),
+	(4, 'https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741', 'Interior 2'),
+  (5, 'https://www.settingforfour.com/wp-content/uploads/2019/06/lake-house-bedroom-design.jpg', 'Interior 1'),
+	(6, 'https://lineups.imgix.net/rockstar/steeplechase-pool-default.jpg', 'Interior 2'),
+  (7, 'https://lineups.imgix.net/rockstar/steeplechase-pool-default.jpg', 'Interior 2'),
+  (8, 'https://www.idesignarch.com/wp-content/uploads/Modern-Milan-Apartment_2.jpg', 'Interior 1'),
+  (9, 'https://www.idesignarch.com/wp-content/uploads/Modern-Milan-Apartment_2.jpg', 'Interior 1'),
+	(10, 'https://www.summitaptsca.com/wp-content/uploads/2020/10/Summit-Interior-2020-9-scaled.jpg', 'Interior 2'),
+	(11, 'https://www.summitaptsca.com/wp-content/uploads/2020/10/Summit-Interior-2020-9-scaled.jpg', 'Interior 2'),
+  (12, 'https://cdn.homedit.com/wp-content/uploads/2012/07/beach-house-interior-picture1.jpg', 'Interior 1'),
+  (13, 'https://cdn.homedit.com/wp-content/uploads/2012/07/beach-house-interior-picture1.jpg', 'Interior 1'),
+  	(1, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+	(2, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+  (3, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+	(4, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+  (5, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+	(6, 'https://i.imgur.com/eyhMgSx.png', 'Logo'),
+  (7, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+  (8, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+  (9, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+	(10, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+	(11, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+  (12, 'https://i.imgur.com/piJomOK.png', 'Logo'),
+  (13, 'https://i.imgur.com/piJomOK.png', 'Logo');
 
-INSERT INTO [unit_images] 
-  (unit_id, image_caption)
-VALUES 
-	(1, 'blank default img url'),
-	(2, 'blank default img url'),
-	(3, 'blank default img url'),
-	(4, 'blank default img url'),
-  (5, 'blank default img url'),
-	(6, 'blank default img url'),
-	(7, 'blank default img url'),
-	(8, 'blank default img url'),
-  (9, 'blank default img url'),
-  (10, 'blank default img url'),
-  (11, 'blank default img url'),
-  (12, 'blank default img url'),
-  (13, 'blank default img url');
+
 
 INSERT INTO [unit_location] 
   (unit_location_id, unit_building_number, unit_number, unit_street_address, unit_city, unit_state, unit_zip_code)

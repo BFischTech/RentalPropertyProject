@@ -1,5 +1,5 @@
 <template>
-  <div id="container-grid">
+  <div id="container-grid" style=#c0ddb5>
     <div style="background-color: #212529" id="property" v-for="property in properties" :key="property.propertyId">
       <b-card  style="border-color: #212529" :header="property.propertyType" :title="property.name" :img-src="property.imageUrl"
               :sub-title="'$'+property.rentAmount + ' monthly'" img-alt="Image" img-top tag="article" class="mb-2">
@@ -19,7 +19,7 @@
         </div>
         <!-- <b-button href="#" variant="primary"  >View Details</b-button> -->
         <!--*SHIT <button @click="$router.push('../src/property')">View Details</button> -->
-        <router-link :to="{ name: 'unitPage', params: { id: property.propertyId }}">View Details</router-link>
+        <b-button style="background-color:#212529" id="login" class="text-center"><router-link class="linkText" :to="{ name: 'unitPage', params: { id: property.propertyId }}">View Details</router-link></b-button>
       </b-card>
 
 
@@ -50,9 +50,24 @@ export default {
 <style scoped>
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
+.card-header {
+  background-color: #212529;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+}
 
+.card-body {
+  background-color:#c0ddb5
+}
 
+.linkText {
+  color: white;
+}
 
+  #a{
+    color: #212529;
+  }
 
   img {
     width: 30rem;
