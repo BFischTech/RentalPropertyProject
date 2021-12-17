@@ -1,19 +1,28 @@
 <template>
-  <div id="container-grid">
-    <div id="divContainer">
-      <b-carousel
-        id="carousel-fade"
-        style="text-shadow: 0px 0px 2px #000"
-        fade
-        indicators
-      >
+  <div id="container-grid" style="background-color: #80B969">
+    <div bg-variant="dark" style="background-color: #212529" id="divContainer">
+          <b-carousel
+      id="carousel-1"
+      v-model="slide"
+      :interval="3000"
+      controls
+      indicators
+      background="#c0ddb5"
+      img-width="1024"
+      img-height="480"
+      style="text-shadow: 1px 1px 2px #333;"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd"
+    >
         <b-carousel-slide id="image" v-for="unitImage in units.image" :key="unitImage.imageId"
           :caption="unitImage.imageCaption"
           :img-src="unitImage.imageUrl"
         ></b-carousel-slide>
       </b-carousel>
+
+
       <div v-for="unit in units.unit" :key="unit.unitId">
-        <b-card :title="unit.name" sub-title="(Available)" class="text-center"> 
+        <b-card style="background-color: #c0ddb5" :title="unit.name" sub-title="(Available)" class="text-center"> 
           <b-card-text>
             <i>'Rent is &dollar;{{unit.rentAmount}} a month'</i><br><br>
               <h5>&#8220;{{ unit.description }}&#8221;</h5>
@@ -28,7 +37,7 @@
           </b-card-text>
         </b-card>
       </div>
-     <AddGoogleMap />
+    
     </div>
 
   </div>
@@ -36,11 +45,10 @@
 
 <script>
 import PropertyService from "../services/PropertyService.js";
-import AddGoogleMap from "../components/AddGoogleMap";
+
 export default {
-  components: { 
-    AddGoogleMap 
-  },
+
+  
   name: "unitPage",
   data() {
     return {
@@ -70,13 +78,16 @@ export default {
     width: 30rem;
     height: 20rem;
   }
+  
 #divContainer {
   margin: 2rem auto;
   max-width: 30rem;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.26);
-  padding:  1rem;
+  padding:  .7rem;
   text-align: center;
+  border-style: solid;
+  border-color: black;
 }
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
