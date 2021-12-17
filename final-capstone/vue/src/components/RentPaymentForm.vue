@@ -3,8 +3,8 @@
     <b-form-group>
     <b-card bg-variant="light">
       <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show">
-        <p id="submitFormHeading">Submit Rent Form</p>
         
+        <p>Thank you for your payment!</p>
           <p id="rentAmount">Enter payment amount</p>
           <b-form-input
             id="inputRent"
@@ -86,7 +86,7 @@ export default {
 }
 
 #rentAmount {
-  padding: 50px 0px 0px 0px;
+  padding: 25px 0px 0px 0px;
 }
 
 #inputCheckbox {

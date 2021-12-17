@@ -1,5 +1,5 @@
 <template>
-  <div id="register" class="text-center">
+  <div style="background-color:#80B969;  border-radius:12px; border-style:solid; border-color:212529;" id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -34,7 +34,7 @@
       />
 
     <div>
-        <b-form-select v-model="user.role" required>
+        <b-form-select size="lg" v-model="user.role" required>
         <option value="" disabled>Please Select Role</option>
         <option v-for="option in options" :value="option.value" :key="option.value">{{ option.text }}</option>
        </b-form-select>
@@ -108,4 +108,21 @@ export default {
 </script>
 
 <style>
+
+#register{
+  margin: auto;
+  width: 50%;
+  padding: 20px;
+  border-radius: 12px;
+  border-style: solid;
+  border-color: 212529;
+}
+
+.form-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  
+}
 </style>

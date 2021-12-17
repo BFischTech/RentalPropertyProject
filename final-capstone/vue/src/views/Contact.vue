@@ -1,5 +1,5 @@
 <template>
- <contact-form style="background-color:#80B969; max-width: 100%"></contact-form>
+ <contact-form style="background-color:#80B969;  border-radius:12px; border-style:solid; border-color:212529;"></contact-form>
 </template>
 
 

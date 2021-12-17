@@ -3,7 +3,8 @@
   <the-header></the-header>
   <the-menubar></the-menubar>
   <router-view></router-view>
-  <the-footer></the-footer>
+  <div>
+  <the-footer></the-footer></div>
   </div>
 </template>
 

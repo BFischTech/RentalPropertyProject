@@ -1,6 +1,7 @@
 ﻿<template>
   <div id="container">
     <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show">
+      <p>We apologize for the trouble you are having.  Please fill out the form below and we'll get right on it!</p>
       <b-form-group id="input-group-3" label="What seems to be the problem?" label-for="input-3">
         <b-form-select
             id="input-3"

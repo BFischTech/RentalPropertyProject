@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" >
     
     <b-alert variant="danger" class="text-center" show>You have {{ pendingRequest.length }} pending tickets!</b-alert>
     <div
@@ -47,6 +47,7 @@
       :key="request.maintenanceRequestId"
     >
       <b-card
+
         :title="'Ticket #' + request.maintenanceRequestId"
         :sub-title="'Requested ' + request.dateTimeRequestMade"
         class="text-left"
@@ -103,5 +104,14 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style scoped>
+
+.card-body {
+ background-color: #c0ddb5
+}
+
+.container{
+background-color: #80b969;}
+
+
+</style>>

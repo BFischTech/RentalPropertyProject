@@ -13,5 +13,6 @@ export default {
 <style>
 .fluid-container.footer{
   background: #95C482;
+  position: sticky bottom;
 }
 </style>

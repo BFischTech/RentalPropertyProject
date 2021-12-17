@@ -1,7 +1,7 @@
 <template>
   <div id="container-grid">
-    <div id="property" v-for="property in properties" :key="property.propertyId">
-      <b-card  style="background-color:#c0ddb5" :header="property.propertyType" :title="property.name" :img-src="property.imageUrl"
+    <div style="background-color: #212529" id="property" v-for="property in properties" :key="property.propertyId">
+      <b-card  style="border-color: #212529" :header="property.propertyType" :title="property.name" :img-src="property.imageUrl"
               :sub-title="'$'+property.rentAmount + ' monthly'" img-alt="Image" img-top tag="article" class="mb-2">
         <b-card-text>
           "{{ property.description.substring(0, 60) + '...' }}"
@@ -52,6 +52,8 @@ export default {
 
 
 
+
+
   img {
     width: 30rem;
     height: 20rem;
@@ -69,8 +71,14 @@ export default {
   }
 
   #property {
+    margin: 2rem auto;
     display: flex;
     align-items: center;
+    border-radius: .3rem;
+    border-style: solid;
+    border-color: #212529;
+    padding:  .7rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.26)
   }
 
   #container {

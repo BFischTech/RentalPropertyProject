@@ -87,7 +87,7 @@ export default {
   padding:  .7rem;
   text-align: center;
   border-style: solid;
-  border-color: black;
+  border-color: #212529;
 }
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 

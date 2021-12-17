@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #80B969" id="login" class="text-center">
+  <div style="background-color:#80B969;  border-radius:12px; border-style:solid; border-color:212529;" id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -31,8 +31,8 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <router-link :to="{ name: 'register' }">Need an account?</router-link> <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
   </div>
 </template>
@@ -78,3 +78,24 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+#login{
+  margin: auto;
+  width: 50%;
+  padding: 20px;
+  border-radius: 12px;
+  border-style: solid;
+  border-color: 212529;
+}
+
+.form-signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  
+}
+
+</style>
