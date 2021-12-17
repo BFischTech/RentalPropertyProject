@@ -27,9 +27,7 @@ body {
   padding: 0
 }
 
-header {
-    margin-bottom: 15px;
-}
+
 header > nav {
   flex-grow: 1;
 
@@ -37,7 +35,7 @@ header > nav {
 
 
 #menubar {
-  background-color: #95C482;
+  background-color: #c0ddb5;
   padding: 20px;
 }
 
@@ -58,7 +56,7 @@ header > nav > ul > li {
   font-family: 'Oswald', sans-serif;
   font-size: 3vh;
   text-transform: uppercase;
-  color: #707070;
+  color: #DBFFD7;
   padding: 0 20px 0 0;
   margin-left: 20px;
 

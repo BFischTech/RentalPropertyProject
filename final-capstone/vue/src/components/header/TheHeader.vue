@@ -9,7 +9,7 @@
 
         <div id="social-bar">    
         <ul>  
-            <i class="fa fa-facebook-official" aria-hidden="true">  <a href="https://www.facebook.com/techelevator/" target="_blank">Like us on Facebook</a></i>
+            <i class="fa fa-facebook-official" aria-hidden="true" color>  <a href="https://www.facebook.com/techelevator/" target="_blank">Like us on Facebook</a></i>
             <br>
             <i class="fa fa-instagram" aria-hidden="true">  <a href="https://www.instagram.com/techelevator/?hl=en" target="_blank">Follow us on instagram</a></i>
             <br>
@@ -18,10 +18,10 @@
         </div> 
       </div>
       
-      <b-button class="w-50 h-65 loginButton" :to="'/'+$store.state.user.role" variant="outline-dark" pill="true" v-if="$store.state.token != ''">Welcome! {{ $store.state.user.role }}</b-button>
-      <b-button class="w-50 h-65 loginButton" href="/logout" variant="outline-dark" pill="true" v-if="$store.state.token != ''">Logout</b-button>
-      <b-button class="w-50 h-65 loginButton" href="/login" variant="outline-dark" pill="true" v-if="$store.state.token === ''">Login</b-button>
-      <b-button class="w-50 h-65 loginButton" href="/register" variant="outline-dark" pill="true" v-if="$store.state.token === ''">Register</b-button>
+      <b-button class="w-50 h-65 loginButton" :to="'/'+$store.state.user.role" variant="dark" v-if="$store.state.token != ''">Welcome! {{ $store.state.user.role }}</b-button>
+      <b-button class="w-50 h-65 loginButton" href="/logout" variant="dark"  v-if="$store.state.token != ''">Logout</b-button>
+      <b-button class="w-50 h-65 loginButton" href="/login" variant="dark"  v-if="$store.state.token === ''">Login</b-button>
+      <b-button class="w-50 h-65 loginButton" href="/register" variant="dark"  v-if="$store.state.token === ''">Register</b-button>
 
     </div>
 </template>
@@ -75,14 +75,14 @@ header > nav > ul > li {
   font-family: 'Oswald', sans-serif;
   font-size: 20px;
   text-transform: uppercase;
-  color: #707070;
+  color: #DBFFD7;
   padding: 0 20px 0 0;
   margin-left: 20px;
 }
 
 ul > li > a,
 a:visited {
-  color: #707070;
+  color: #DBFFD7;
   text-decoration: none;
 }
 
@@ -105,6 +105,7 @@ ul > li > a:hover {
   grid-template-areas:
     "ll-child-grid ll-child-grid login-bar";
   align-items: left;
+  background-color: #80B969;
 }
 
 #login-bar {

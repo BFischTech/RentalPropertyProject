@@ -1,7 +1,7 @@
 <template>
   <div id="container-grid">
     <div id="property" v-for="property in properties" :key="property.propertyId">
-      <b-card :header="property.propertyType" :title="property.name" :img-src="property.imageUrl"
+      <b-card  style="background-color:#c0ddb5" :header="property.propertyType" :title="property.name" :img-src="property.imageUrl"
               :sub-title="'$'+property.rentAmount + ' monthly'" img-alt="Image" img-top tag="article" class="mb-2">
         <b-card-text>
           "{{ property.description.substring(0, 60) + '...' }}"
@@ -51,23 +51,21 @@ export default {
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
 
-@media (min-width: 801px) {
+
   img {
     width: 30rem;
     height: 20rem;
   }
 
   #container-grid {
-    display: grid;
-    grid-template: 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     row-gap: 5px;
     column-gap: 5px;
-    grid-template-areas: 
-    "property property property";
     justify-content: space-evenly;
     justify-items: center;
-    align-content: space-evenly;
-    align-items: center;
+    background-color: #80B969;
+    padding-top: 30px;
   }
 
   #property {
@@ -76,41 +74,12 @@ export default {
   }
 
   #container {
-    background-color: white;
+    background-color:#c0ddb5;
     width: 35rem;
     padding: 20px;
   }
-}
 
-@madia (max-width:800px) {
-  img {
-    width: 35rem;
-    height: 20rem;
-  }
 
-  #container-grid {
-    display: grid;
-    grid-template: 1fr 1fr;
-    row-gap: 5px;
-    column-gap: 5px;
-    grid-template-areas: 
-    "property property";
-    justify-content: space-evenly;
-    justify-items: center;
-    align-content: space-evenly;
-    align-items: center;
-  }
 
-  #property {
-    display: flex;
-    align-items: center;
-  }
-
-  #container {
-    background-color: white;
-    width: 35rem;
-    padding: 20px;
-  }
-}
 
 </style>
