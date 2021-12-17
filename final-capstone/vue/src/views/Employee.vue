@@ -137,7 +137,12 @@ export default {
 </script>
 
 <style scoped>
-{
+  .container {
+    background-color: #80B969;
+    width: 100rem;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 20px;
+  }
 
-}
 </style>
