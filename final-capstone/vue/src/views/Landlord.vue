@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color: #80B969">
       <header><h1>Owner Portal</h1></header><br>
         <b-button id="form" @click="goToAddPropertyPage()">Add New Property</b-button> <br>
         <b-button id="form" @click="goToAddUnitPage()">Add New Unit</b-button><br>

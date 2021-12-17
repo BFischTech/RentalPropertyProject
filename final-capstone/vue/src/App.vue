@@ -23,6 +23,4 @@ export default {
 
 <style>
 
-
-
 </style>
