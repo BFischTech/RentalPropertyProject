@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    
-    <b-alert variant="danger" class="text-center" show>You have {{ pendingRequest.length }} pending tickets!</b-alert>
+    <b-alert variant="danger" class="text-center" show
+      >You have {{ pendingRequest.length }} pending tickets!</b-alert
+    >
     <div
       id="pending"
       v-for="request in pendingRequest"
@@ -28,19 +29,33 @@
           <div>employeeeAssigned: {{ request.employeeeAssigned }}</div>
           <div>Request Status: {{ request.requestStatus }}</div>
           <div>
-            <b-button-group class="mt-3">
-              <b-button>Save</b-button>
-              <select v-model="request.requestStatus">
-                  <option value="" selected disabled>Change Status Here</option>
-                  <option>Completed</option>
-                  <option>Cancelled</option>
-                </select>
-            </b-button-group>
+              <div>-------------------------------------</div>
+            <b-form @submit.prevent="OnCompletedClick">
+              <b-form-select v-model="statusIdRequestId.requestId" required>
+                <option :value="request.maintenanceRequestId">
+                  Completed
+                </option>
+                
+              </b-form-select>
+              <b-button pill type="submit" variant="secondary">Completed</b-button>
+            </b-form>
+            <div>-------------------------------------</div>
+            <b-form @submit.prevent="OnCancelledClick">
+              <b-form-select  v-model="statusIdRequestId.requestId" required>
+                <option :value="request.maintenanceRequestId">
+                  Cancelled
+                </option>
+              </b-form-select>
+              <b-button pill type="submit" variant="secondary">Cancelled</b-button>
+            </b-form>
+
           </div>
         </b-card-text>
       </b-card>
     </div>
-    <b-alert variant="success" class="text-center" show>You have {{ resolvedRequest.length }} resolved tickets!</b-alert>
+    <b-alert variant="success" class="text-center" show
+      >You have {{ resolvedRequest.length }} resolved tickets!</b-alert
+    >
     <div
       id="resolved"
       v-for="request in resolvedRequest"
@@ -78,8 +93,10 @@ import EmployeeService from "../services/EmployeeService.js";
 export default {
   name: "employee",
   data() {
-    return { maintenanceRequests: [] };
-    
+    return {
+      maintenanceRequests: [],
+      statusIdRequestId: { statusId: "", requestId: "" },
+    };
   },
   created() {
     EmployeeService.getMaintenanceByID().then((response) => {
@@ -100,8 +117,27 @@ export default {
     },
   },
 
+  methods: {
+    OnCompletedClick() {
+      const completedPayload = {
+        statusId: 3,
+        requestId: this.statusIdRequestId.requestId,
+      };
+      EmployeeService.UpdateEmployeeStatus(completedPayload);
+    },
+    OnCancelledClick() {
+      const completedPayload = {
+        statusId: 2,
+        requestId: this.statusIdRequestId.requestId,
+      };
+      EmployeeService.UpdateEmployeeStatus(completedPayload);
+    },
+  },
 };
 </script>
 
-<style>
+<style scoped>
+{
+
+}
 </style>
