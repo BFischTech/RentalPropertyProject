@@ -6,4 +6,7 @@ export default {
         return axios.get('/MaintenanceRequest/employee')
     },
 
+    UpdateEmployeeStatus(statusIdRequestId) {
+        return axios.put('/MaintenanceRequest/employee/update', statusIdRequestId)
+    },
 }

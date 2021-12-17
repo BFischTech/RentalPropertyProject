@@ -15,7 +15,7 @@ namespace Capstone.DAO
             _connectionString = dbConnectionString;
         }
 
-        public void CreateNewUnit(CreateUnit unit)
+        public void CreateNewUnit(CreateUnit createUnit)
         {
 
             try
@@ -26,10 +26,10 @@ namespace Capstone.DAO
                     string sql = "INSERT INTO units (property_id, unit_type_id, rent_amount, rent_due_date) " +
                                  "VALUES (@property_id, @unit_type_id, @rent_amount, @rent_due_date);";
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@property_id", unit.propertyId);
-                    cmd.Parameters.AddWithValue("@unit_type_id", unit.unitType);
-                    cmd.Parameters.AddWithValue("@rent_amount", unit.unitRentAmount);
-                    cmd.Parameters.AddWithValue("@rent_due_date", unit.rentDueDate);
+                    cmd.Parameters.AddWithValue("@property_id", createUnit.propertyId);
+                    cmd.Parameters.AddWithValue("@unit_type_id", createUnit.unitType);
+                    cmd.Parameters.AddWithValue("@rent_amount", createUnit.unitRentAmount);
+                    cmd.Parameters.AddWithValue("@rent_due_date", createUnit.rentDueDate);
 
                     cmd.ExecuteNonQuery();
 
@@ -42,26 +42,25 @@ namespace Capstone.DAO
                                   "INSERT INTO unit_images(unit_id, image_url) " +
                                   "VALUES (@latestUnitId, @imgUrl);";
                     SqlCommand cmd1 = new SqlCommand(sql1, conn);
-                    cmd1.Parameters.AddWithValue("@unit_building_number", unit.buildingNumber);
-                    cmd1.Parameters.AddWithValue("@unit_number", unit.unitNumber);
-                    cmd1.Parameters.AddWithValue("@unit_street_address", unit.unitAddress);
-                    cmd1.Parameters.AddWithValue("@unit_city", unit.unitCity);
-                    cmd1.Parameters.AddWithValue("@unit_state", unit.unitState);
-                    cmd1.Parameters.AddWithValue("@unit_zip_code", unit.unitZipCode);
-                    cmd1.Parameters.AddWithValue("@bedroom_count", unit.bedroomCount);
-                    cmd1.Parameters.AddWithValue("@bathroom_count", unit.bathroomCount);
-                    cmd1.Parameters.AddWithValue("@pet_allowed", unit.petFriendly);
-                    cmd1.Parameters.AddWithValue("@smoking_allowed", unit.smokingAllowed);
-                    cmd1.Parameters.AddWithValue("@pool_access", unit.poolAccess);
-                    cmd1.Parameters.AddWithValue("@parking_spots", unit.parkingSpots);
-                    cmd1.Parameters.AddWithValue("@imgUrl", unit.imgUrl);
+                    cmd1.Parameters.AddWithValue("@unit_building_number", createUnit.buildingNumber);
+                    cmd1.Parameters.AddWithValue("@unit_number", createUnit.unitNumber);
+                    cmd1.Parameters.AddWithValue("@unit_street_address", createUnit.unitAddress);
+                    cmd1.Parameters.AddWithValue("@unit_city", createUnit.unitCity);
+                    cmd1.Parameters.AddWithValue("@unit_state", createUnit.unitState);
+                    cmd1.Parameters.AddWithValue("@unit_zip_code", createUnit.unitZipCode);
+                    cmd1.Parameters.AddWithValue("@bedroom_count", createUnit.bedroomCount);
+                    cmd1.Parameters.AddWithValue("@bathroom_count", createUnit.bathroomCount);
+                    cmd1.Parameters.AddWithValue("@pet_allowed", createUnit.petFriendly);
+                    cmd1.Parameters.AddWithValue("@smoking_allowed", createUnit.smokingAllowed);
+                    cmd1.Parameters.AddWithValue("@pool_access", createUnit.poolAccess);
+                    cmd1.Parameters.AddWithValue("@parking_spots", createUnit.parkingSpots);
+                    cmd1.Parameters.AddWithValue("@imgUrl", createUnit.imgUrl);
 
                     cmd1.ExecuteNonQuery();
                 }
             }
             catch (SqlException)
             {
-
                 throw;
             }
         }
