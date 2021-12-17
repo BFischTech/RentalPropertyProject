@@ -15,9 +15,9 @@ namespace Capstone.DAO
             _connectionString = dbConnectionString;
         }
 
-        public void CreateNewUnit(int propertyId, CreateUnit unit)
+        public void CreateNewUnit(CreateUnit unit)
         {
-            propertyId = 8;
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -26,7 +26,7 @@ namespace Capstone.DAO
                     string sql = "INSERT INTO units (property_id, unit_type_id, rent_amount, rent_due_date) " +
                                  "VALUES (@property_id, @unit_type_id, @rent_amount, @rent_due_date);";
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@property_id", propertyId);
+                    cmd.Parameters.AddWithValue("@property_id", unit.propertyId);
                     cmd.Parameters.AddWithValue("@unit_type_id", unit.unitType);
                     cmd.Parameters.AddWithValue("@rent_amount", unit.unitRentAmount);
                     cmd.Parameters.AddWithValue("@rent_due_date", unit.rentDueDate);
@@ -158,7 +158,7 @@ namespace Capstone.DAO
                     }
                 }
             }
-            catch (Exception)
+            catch (SqlException)
             {
                 throw;
             }

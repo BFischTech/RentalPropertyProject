@@ -68,9 +68,9 @@ namespace Capstone.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Owner")]
-        public ActionResult CreateUnit(int propertyId, CreateUnit unit)
+        public ActionResult CreateUnit(CreateUnit unit)
         {
-            _unitDao.CreateNewUnit(propertyId, unit);
+            _unitDao.CreateNewUnit(unit);
 
             return NoContent();
         }

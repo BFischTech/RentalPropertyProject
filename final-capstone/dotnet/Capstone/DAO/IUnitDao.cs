@@ -18,6 +18,6 @@ namespace Capstone.DAO
 
         IList<AvailbleUnitsByOwnerId> GetAllAvailableUnitsByOwnerId(int ownerId);
 
-        void CreateNewUnit(int propertyId, CreateUnit unit);
+        void CreateNewUnit(CreateUnit unit);
     }
 }

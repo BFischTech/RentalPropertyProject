@@ -19,8 +19,12 @@ export default {
     },
 
     addNewUnit(unit) {
-        return axios.post('/units', unit)
+        return axios.post('/Unit', unit)
     },
+
+    getAllPropertiesByOwnerId() {
+        return axios.get(`/Properties/owner`)
+    }
 
 
 
