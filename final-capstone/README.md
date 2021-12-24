@@ -1,5 +1,26 @@
 # Final Capstone
 
-This directory contains all of the starter projects for the final capstone. The Vue starter project works with both the Java and .NET backend projects with a single configuration update that you can read about in the README.
+This final capstone project in a property management web app for 4 users: anonymous, tenant, landlord, maintenance.  It includes the following full stack functionality:
 
-Each project contains instructions that provides information about the starting code and explains how to get started with the final capstone project.
+Anonymous - 
+  Log in
+  Log out
+  Contact us form
+  Browse currently available properties & see unit details
+  Register
+
+Tenant - 
+  Log in/out
+  Pay rent
+  Submit maintenance requests
+
+Landlord - 
+  See properties and assign tenants to them
+  See maintenance requests
+  Assign maintenance request
+  Create new property listing
+  Create new unit (nested inside property) listing.
+  
+Maintenance - 
+  See maintenance requests assigned to them
+  Mark requests as completed
